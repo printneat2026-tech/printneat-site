@@ -191,6 +191,26 @@ footer a:hover{color:var(--fg)}
   <h1>Simple, honest <span>pricing</span></h1>
   <p>Start free. Upgrade only when your business needs it. No subscriptions — pay once, own forever.</p>
 
+  <!-- COUNTDOWN -->
+  <div style="display:flex;justify-content:center;margin:8px 0 4px">
+    <div style="background:linear-gradient(135deg,rgba(200,112,90,.12),rgba(200,112,90,.05));border:1px solid rgba(200,112,90,.3);border-radius:18px;padding:16px 28px;text-align:center;max-width:500px;width:100%;box-shadow:0 4px 24px rgba(200,112,90,.15)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#C8705A;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px">
+        <span style="width:7px;height:7px;border-radius:50%;background:#C8705A;display:inline-block;animation:pulse 1.5s infinite"></span>
+        Launch price expires in
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;align-items:flex-end">
+        <div style="text-align:center"><div style="font-size:34px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-days">--</div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5a6e8a;margin-top:4px">days</div></div>
+        <div style="font-size:26px;font-weight:300;color:rgba(200,112,90,.4);padding-bottom:4px">:</div>
+        <div style="text-align:center"><div style="font-size:34px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-hours">--</div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5a6e8a;margin-top:4px">hours</div></div>
+        <div style="font-size:26px;font-weight:300;color:rgba(200,112,90,.4);padding-bottom:4px">:</div>
+        <div style="text-align:center"><div style="font-size:34px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-mins">--</div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5a6e8a;margin-top:4px">mins</div></div>
+        <div style="font-size:26px;font-weight:300;color:rgba(200,112,90,.4);padding-bottom:4px">:</div>
+        <div style="text-align:center"><div style="font-size:34px;font-weight:900;color:#C8705A;line-height:1;font-variant-numeric:tabular-nums" id="cd-secs">--</div><div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#5a6e8a;margin-top:4px">secs</div></div>
+      </div>
+      <div style="font-size:11px;color:#5a6e8a;margin-top:10px">After this, PRO → <strong style="color:#eef2fc">€49.90</strong> · XL → <strong style="color:#eef2fc">€69.90</strong></div>
+    </div>
+  </div>
+
   <!-- ANNUAL TOGGLE -->
   <div class="billing-toggle">
     <span>Monthly</span>
@@ -412,6 +432,19 @@ var PRO_URL  = '#'; // substituir com URL do Gumroad quando pronto
 var XL_URL   = '#'; // substituir com URL do Gumroad quando pronto
 
 var billingAnnual = false;
+
+// Countdown
+(function(){
+  var end = (function(){ var n=new Date(); return new Date(n.getFullYear(),n.getMonth()+1,0,23,59,59); }());
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var diff=Math.max(0,Math.floor((end-Date.now())/1000));
+    var vals=[Math.floor(diff/86400),Math.floor((diff%86400)/3600),Math.floor((diff%3600)/60),diff%60];
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id,i){var el=document.getElementById(id);if(el)el.textContent=pad(vals[i]);});
+    if(diff>0)setTimeout(tick,1000);
+  }
+  tick();
+}());
 
 function toggleBilling() {
   billingAnnual = !billingAnnual;

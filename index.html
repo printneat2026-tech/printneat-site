@@ -863,6 +863,38 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   <h2 class="text-center reveal reveal-delay-1">One payment.<br>Yours forever.</h2>
   <p class="section-sub text-center reveal reveal-delay-2">No monthly fees. No subscriptions. Pay once, use forever. Your data never leaves your computer.</p>
 
+  <!-- COUNTDOWN -->
+  <div class="reveal" style="display:flex;justify-content:center;margin:36px 0 8px">
+    <div style="background:linear-gradient(135deg,rgba(200,112,90,.12),rgba(200,112,90,.05));border:1px solid rgba(200,112,90,.3);border-radius:18px;padding:18px 32px;text-align:center;max-width:520px;width:100%;box-shadow:0 4px 24px rgba(200,112,90,.15)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--clay);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px">
+        <span style="width:7px;height:7px;border-radius:50%;background:var(--clay);display:inline-block;animation:pulse 1.5s infinite"></span>
+        Launch price expires in
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;align-items:flex-end" id="countdown-wrap">
+        <div style="text-align:center">
+          <div style="font-size:36px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-days">--</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-top:4px">days</div>
+        </div>
+        <div style="font-size:28px;font-weight:300;color:rgba(200,112,90,.4);padding-bottom:4px">:</div>
+        <div style="text-align:center">
+          <div style="font-size:36px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-hours">--</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-top:4px">hours</div>
+        </div>
+        <div style="font-size:28px;font-weight:300;color:rgba(200,112,90,.4);padding-bottom:4px">:</div>
+        <div style="text-align:center">
+          <div style="font-size:36px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-mins">--</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-top:4px">mins</div>
+        </div>
+        <div style="font-size:28px;font-weight:300;color:rgba(200,112,90,.4);padding-bottom:4px">:</div>
+        <div style="text-align:center">
+          <div style="font-size:36px;font-weight:900;color:var(--clay);line-height:1;font-variant-numeric:tabular-nums" id="cd-secs">--</div>
+          <div style="font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted2);margin-top:4px">secs</div>
+        </div>
+      </div>
+      <div style="font-size:11px;color:var(--muted2);margin-top:12px">After this, PRO goes to <s style="color:var(--muted)">€39.90</s> → <strong style="color:var(--fg)">€49.90</strong> and XL to <strong style="color:var(--fg)">€69.90</strong></div>
+    </div>
+  </div>
+
   <div class="pricing-grid">
     <!-- LITE -->
     <div class="price-card reveal">

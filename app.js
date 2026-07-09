@@ -554,6 +554,40 @@ document.querySelectorAll('.stat-val').forEach(function (el) {
   document.body.appendChild(btn);
 }());
 
+// ── COUNTDOWN TIMER ──
+(function () {
+  var END_DATE = (function () {
+    // Target: last day of current month at 23:59:59 local time
+    var now = new Date();
+    return new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+  }());
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function tick() {
+    var diff = Math.max(0, Math.floor((END_DATE - Date.now()) / 1000));
+    var d = Math.floor(diff / 86400);
+    var h = Math.floor((diff % 86400) / 3600);
+    var m = Math.floor((diff % 3600) / 60);
+    var s = diff % 60;
+
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function (id, i) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var val = pad([d,h,m,s][i]);
+      if (el.textContent !== val) el.textContent = val;
+    });
+
+    if (diff > 0) setTimeout(tick, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tick);
+  } else {
+    tick();
+  }
+}());
+
 // ── KEYBOARD: Escape closes modal ──
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); closePayModal(); closePolicy(); } });
 

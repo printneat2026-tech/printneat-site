@@ -326,6 +326,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:72px;dis
           </div>
         </div>
 
+        <!-- COUNTDOWN -->
+        <div style="padding:16px 28px;border-bottom:1px solid rgba(255,255,255,.05);text-align:center">
+          <div style="font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#C8705A;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:6px">
+            <span style="width:6px;height:6px;border-radius:50%;background:#C8705A;display:inline-block;animation:pulse 1.5s infinite"></span>
+            Launch price expires in
+          </div>
+          <div style="display:flex;gap:8px;justify-content:center;align-items:flex-end">
+            <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-days">--</div><div style="font-size:8px;color:#5a6e8a;margin-top:2px;text-transform:uppercase;letter-spacing:.1em">days</div></div>
+            <div style="font-size:20px;color:rgba(200,112,90,.4);padding-bottom:3px">:</div>
+            <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-hours">--</div><div style="font-size:8px;color:#5a6e8a;margin-top:2px;text-transform:uppercase;letter-spacing:.1em">hrs</div></div>
+            <div style="font-size:20px;color:rgba(200,112,90,.4);padding-bottom:3px">:</div>
+            <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#fff;line-height:1;font-variant-numeric:tabular-nums" id="cd-mins">--</div><div style="font-size:8px;color:#5a6e8a;margin-top:2px;text-transform:uppercase;letter-spacing:.1em">min</div></div>
+            <div style="font-size:20px;color:rgba(200,112,90,.4);padding-bottom:3px">:</div>
+            <div style="text-align:center"><div style="font-size:26px;font-weight:900;color:#C8705A;line-height:1;font-variant-numeric:tabular-nums" id="cd-secs">--</div><div style="font-size:8px;color:#5a6e8a;margin-top:2px;text-transform:uppercase;letter-spacing:.1em">sec</div></div>
+          </div>
+        </div>
+
         <div class="summary-cta">
           <button class="pay-btn pay-btn-pro" id="pay-btn" onclick="proceedToPayment()">
             <span class="pay-btn-icon">🔒</span>
@@ -385,6 +402,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:72px;dis
 <div id="toast"></div>
 
 <script>
+// Countdown
+(function(){
+  var end=(function(){var n=new Date();return new Date(n.getFullYear(),n.getMonth()+1,0,23,59,59);})();
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var diff=Math.max(0,Math.floor((end-Date.now())/1000));
+    var vals=[Math.floor(diff/86400),Math.floor((diff%86400)/3600),Math.floor((diff%3600)/60),diff%60];
+    ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(function(id,i){var el=document.getElementById(id);if(el)el.textContent=pad(vals[i]);});
+    if(diff>0)setTimeout(tick,1000);
+  }
+  tick();
+}());
+
 // ── CONFIG — update with Gumroad URLs when products are created ──
 var GUMROAD = {
   pro: '#',  // e.g. https://printneat.gumroad.com/l/pro
