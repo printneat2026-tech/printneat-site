@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrintNeat — Plans & Pricing</title>
+<meta name="description" content="Choose the PrintNeat plan that fits your 3D printing business. Free LITE forever, PRO at €29.90, XL at €49.90.">
+<meta property="og:title" content="PrintNeat — Plans & Pricing">
+<meta property="og:description" content="LITE is free forever. Upgrade to PRO or XL when you're ready to scale.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --clay:#C8705A;--clay2:#9a4030;--gold:#D4A843;--sage:#4A7C6F;--purple:#a78bfa;
+  --bg:#060810;--bg2:#0b0e1a;--bg3:#0f1220;
+  --card:rgba(255,255,255,.04);--border:rgba(255,255,255,.07);
+  --fg:#e8eef8;--muted:#4a5a72;
+  --r:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,8,16,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:baseline;gap:0;text-decoration:none}
+.nav-logo-p{font-size:19px;font-weight:900;color:#fff;letter-spacing:.04em}
+.nav-logo-n{font-size:19px;font-weight:200;color:var(--clay);letter-spacing:.04em}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--fg)}
+.nav-links a.active{color:#fff;font-weight:700}
+.burger-btn{display:none;background:none;border:none;color:#fff;cursor:pointer;font-size:22px;padding:4px}
+.nav-btns{display:flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:99px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;border:none;font-family:inherit}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,.12)}
+.btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.25)}
+.btn-clay{background:linear-gradient(135deg,var(--clay),var(--clay2));color:#fff;box-shadow:0 3px 14px rgba(200,112,90,.35)}
+.btn-clay:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(200,112,90,.5)}
+
+/* HERO */
+.page-hero{padding:140px 5% 60px;text-align:center;position:relative;overflow:hidden}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(200,112,90,.14),transparent 70%);top:-80px;left:50%;transform:translateX(-50%)}
+.page-hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:99px;background:rgba(200,112,90,.1);border:1px solid rgba(200,112,90,.22);font-size:11px;font-weight:700;color:var(--clay);letter-spacing:.12em;text-transform:uppercase;margin-bottom:24px}
+.page-hero h1{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:16px}
+.page-hero h1 span{background:linear-gradient(135deg,var(--clay),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.page-hero p{font-size:18px;color:#6a7a92;max-width:520px;margin:0 auto 48px}
+
+/* TOGGLE */
+.billing-toggle{display:inline-flex;align-items:center;gap:14px;margin-bottom:56px;font-size:14px;color:var(--muted);font-weight:500}
+.toggle-track{width:44px;height:24px;border-radius:99px;background:rgba(255,255,255,.08);border:1px solid var(--border);position:relative;cursor:pointer;transition:background .2s}
+.toggle-track.on{background:var(--clay)}
+.toggle-thumb{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.toggle-track.on .toggle-thumb{transform:translateX(20px)}
+.discount-badge{background:rgba(74,124,111,.15);border:1px solid rgba(74,124,111,.3);color:#5fa895;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px;letter-spacing:.06em}
+
+/* PLANS GRID */
+.plans-wrap{padding:0 5% 100px;position:relative;z-index:1}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1060px;margin:0 auto}
+
+.plan-card{border-radius:20px;border:1px solid var(--border);background:var(--card);padding:36px 32px 40px;position:relative;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+.plan-card:hover{transform:translateY(-6px);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.plan-card.featured{border-color:rgba(200,112,90,.35);background:rgba(200,112,90,.04);box-shadow:0 0 0 1px rgba(200,112,90,.15),0 20px 60px rgba(200,112,90,.08)}
+.plan-card.xl-card{border-color:rgba(167,139,250,.3);background:rgba(138,100,200,.04);box-shadow:0 0 0 1px rgba(167,139,250,.12),0 20px 60px rgba(138,100,200,.07)}
+
+.plan-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);padding:4px 14px;border-radius:99px;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.badge-popular{background:linear-gradient(135deg,var(--clay),var(--clay2));color:#fff}
+.badge-power{background:linear-gradient(135deg,#7c5cbf,#a78bfa);color:#fff}
+
+.plan-label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
+.plan-name{font-size:28px;font-weight:900;margin-bottom:6px}
+.plan-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:28px;flex-shrink:0}
+
+.plan-price{margin-bottom:28px}
+.plan-price-main{font-size:48px;font-weight:900;letter-spacing:-.03em;line-height:1}
+.plan-price-main sup{font-size:22px;font-weight:700;vertical-align:top;margin-top:8px;margin-right:2px}
+.plan-price-period{font-size:13px;color:var(--muted);margin-top:4px}
+.plan-price-annual{font-size:12px;color:#5fa895;margin-top:4px;display:none}
+.plan-price-annual.show{display:block}
+.plan-price-was{text-decoration:line-through;color:var(--muted);font-size:14px;margin-right:6px}
+
+.plan-cta{width:100%;padding:14px;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;border:none;font-family:inherit;transition:all .2s;letter-spacing:.02em;margin-bottom:32px;text-align:center;text-decoration:none;display:block}
+.cta-lite{background:rgba(74,124,111,.15);color:#5fa895;border:1px solid rgba(74,124,111,.3)}
+.cta-lite:hover{background:rgba(74,124,111,.25);transform:translateY(-1px)}
+.cta-pro{background:linear-gradient(135deg,var(--clay),var(--clay2));color:#fff;box-shadow:0 4px 20px rgba(200,112,90,.35)}
+.cta-pro:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,112,90,.5)}
+.cta-xl{background:linear-gradient(135deg,#7c5cbf,#a78bfa);color:#fff;box-shadow:0 4px 20px rgba(138,100,200,.35)}
+.cta-xl:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(138,100,200,.5)}
+
+.plan-divider{height:1px;background:var(--border);margin-bottom:24px}
+.plan-features-title{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:11px;flex:1}
+.plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#b0bdd0;line-height:1.45}
+.plan-features li .check{width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0;margin-top:1px}
+.check-lite{background:rgba(74,124,111,.2);color:#5fa895}
+.check-pro{background:rgba(200,112,90,.2);color:var(--clay)}
+.check-xl{background:rgba(167,139,250,.2);color:var(--purple)}
+.plan-features li .feat-text{flex:1}
+.feat-new{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.feat-new-pro{background:rgba(200,112,90,.15);color:var(--clay)}
+.feat-new-xl{background:rgba(167,139,250,.15);color:var(--purple)}
+
+/* COMPARE TABLE */
+.compare-section{padding:0 5% 100px;max-width:1060px;margin:0 auto;position:relative;z-index:1}
+.section-label{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--clay);margin-bottom:12px;text-align:center}
+.section-title{font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-.02em;text-align:center;margin-bottom:8px}
+.section-sub{font-size:15px;color:var(--muted);text-align:center;margin-bottom:48px}
+
+.compare-table{width:100%;border-collapse:collapse;font-size:13px}
+.compare-table th{padding:14px 18px;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;border-bottom:1px solid var(--border)}
+.compare-table th:not(:first-child){text-align:center}
+.compare-table td{padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.04);color:#b0bdd0}
+.compare-table td:not(:first-child){text-align:center;font-weight:600}
+.compare-table tr:hover td{background:rgba(255,255,255,.02)}
+.compare-table .row-group td{background:rgba(255,255,255,.02);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:10px 18px}
+.c-yes-lite{color:#5fa895}
+.c-yes-pro{color:var(--clay)}
+.c-yes-xl{color:var(--purple)}
+.c-no{color:rgba(255,255,255,.18)}
+.c-label-lite{color:#5fa895;font-weight:800}
+.c-label-pro{color:var(--clay);font-weight:800}
+.c-label-xl{color:var(--purple);font-weight:800}
+
+/* FAQ */
+.faq-section{padding:0 5% 100px;max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{font-size:15px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none}
+.faq-q::after{content:'+';font-size:20px;font-weight:300;color:var(--muted);flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-item.open .faq-a{max-height:400px;padding-top:12px}
+
+/* CTA BOTTOM */
+.cta-bottom{padding:80px 5% 120px;text-align:center;position:relative;overflow:hidden}
+.cta-orb{position:absolute;width:600px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(200,112,90,.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-bottom h2{font-size:clamp(28px,5vw,52px);font-weight:900;letter-spacing:-.02em;margin-bottom:16px}
+.cta-bottom p{font-size:17px;color:var(--muted);margin-bottom:36px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-lg{padding:16px 36px;font-size:15px;border-radius:14px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:36px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--muted)}
+footer a{color:var(--muted);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--fg)}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+
+/* TOAST */
+#toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2030;border:1px solid var(--border);color:var(--fg);padding:12px 24px;border-radius:12px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;pointer-events:none;z-index:9999;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .plans-grid{grid-template-columns:1fr}
+  .plan-card.featured{order:-1}
+  .nav-links{display:none}
+  .burger-btn{display:block}
+}
+@media(max-width:640px){
+  .compare-table{font-size:12px}
+  .compare-table th,.compare-table td{padding:10px 10px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <span class="nav-logo-p">PRINT</span><span class="nav-logo-n">NEAT</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-btns">
+    <a href="index.html#pricing" class="btn btn-ghost">Compare plans</a>
+    <a href="#plans" class="btn btn-clay">Get started</a>
+  </div>
+  <button class="burger-btn" onclick="this.closest('nav').querySelector('.nav-links').style.display='flex'">☰</button>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="hero-orb orb1"></div>
+  <div class="page-hero-badge">🚀 Launch pricing — prices increase as we grow</div>
+  <h1>Simple, honest <span>pricing</span></h1>
+  <p>Start free. Upgrade only when your business needs it. No subscriptions — pay once, own forever.</p>
+
+  <!-- ANNUAL TOGGLE -->
+  <div class="billing-toggle">
+    <span>Monthly</span>
+    <div class="toggle-track" id="billing-toggle" onclick="toggleBilling()">
+      <div class="toggle-thumb"></div>
+    </div>
+    <span>Annual</span>
+    <span class="discount-badge">SAVE 20%</span>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans-wrap" id="plans">
+  <div class="plans-grid">
+
+    <!-- LITE -->
+    <div class="plan-card">
+      <div class="plan-label" style="color:#5fa895">Free forever</div>
+      <div class="plan-name">LITE</div>
+      <div class="plan-desc">Everything you need to start running your 3D printing business properly. No credit card, no expiry.</div>
+      <div class="plan-price">
+        <div class="plan-price-main">Free</div>
+        <div class="plan-price-period">Always free · No credit card</div>
+      </div>
+      <a href="#" onclick="downloadLite(event)" class="plan-cta cta-lite">⬇ Download LITE — Windows</a>
+      <div class="plan-divider"></div>
+      <div class="plan-features-title">What's included</div>
+      <ul class="plan-features">
+        <li><span class="check check-lite">✓</span><span class="feat-text">Cost calculator (filament, time, electricity)</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">Up to 15 orders / month</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">Basic filament inventory</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">Price suggestion engine</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">Dashboard & revenue overview</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">100% offline — your data stays yours</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">Windows desktop app</span></li>
+        <li><span class="check check-lite">✓</span><span class="feat-text">Free updates included</span></li>
+      </ul>
+    </div>
+
+    <!-- PRO -->
+    <div class="plan-card featured">
+      <div class="plan-badge badge-popular">⭐ Most popular</div>
+      <div class="plan-label" style="color:var(--clay)">Best for growing businesses</div>
+      <div class="plan-name">PRO</div>
+      <div class="plan-desc">The full toolkit for serious makers. Unlimited orders, client management, invoicing and SEO — all in one app.</div>
+      <div class="plan-price">
+        <div class="plan-price-main" id="pro-price"><sup>€</sup>29<span style="font-size:26px">.90</span></div>
+        <div class="plan-price-period" id="pro-period">one-time payment · lifetime license</div>
+        <div class="plan-price-annual" id="pro-annual">€23.92 billed annually (save €5.98)</div>
+      </div>
+      <a href="#" onclick="buyPro(event)" class="plan-cta cta-pro">Get PRO — €29.90 →</a>
+      <div class="plan-divider"></div>
+      <div class="plan-features-title">Everything in LITE, plus:</div>
+      <ul class="plan-features">
+        <li><span class="check check-pro">✓</span><span class="feat-text">Unlimited orders</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">PDF invoice generator</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Client CRM & contact management</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Etsy SEO tools <span class="feat-new feat-new-pro">NEW</span></span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Print failure tracker</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Finance charts & revenue goals</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Shipping label generator</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Advanced filament tracking</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">Priority email support</span></li>
+        <li><span class="check check-pro">✓</span><span class="feat-text">All future PRO updates</span></li>
+      </ul>
+    </div>
+
+    <!-- XL -->
+    <div class="plan-card xl-card">
+      <div class="plan-badge badge-power">⚡ Maximum power</div>
+      <div class="plan-label" style="color:var(--purple)">For print farms & studios</div>
+      <div class="plan-name">XL</div>
+      <div class="plan-desc">Everything PrintNeat has to offer. Multi-machine support, business simulator and every module we'll ever build.</div>
+      <div class="plan-price">
+        <div class="plan-price-main" id="xl-price"><sup>€</sup>49<span style="font-size:26px">.90</span></div>
+        <div class="plan-price-period" id="xl-period">one-time payment · lifetime license</div>
+        <div class="plan-price-annual" id="xl-annual">€39.92 billed annually (save €9.98)</div>
+      </div>
+      <a href="#" onclick="buyXL(event)" class="plan-cta cta-xl">Get XL — €49.90 →</a>
+      <div class="plan-divider"></div>
+      <div class="plan-features-title">Everything in PRO, plus:</div>
+      <ul class="plan-features">
+        <li><span class="check check-xl">✓</span><span class="feat-text">Business simulator & forecasting</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Time vs Profit deep analysis</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Multi-machine / print farm support <span class="feat-new feat-new-xl">NEW</span></span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Batch invoicing & bulk labels</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Maintenance scheduler</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Advanced analytics dashboard</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Early access to beta features</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Priority support (same-day response)</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">All upcoming modules — forever</span></li>
+        <li><span class="check check-xl">✓</span><span class="feat-text">Lifetime license — pay once</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="compare-section">
+  <div class="section-label">Full comparison</div>
+  <h2 class="section-title">What's in each plan?</h2>
+  <p class="section-sub">Every detail, side by side.</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:44%">Feature</th>
+        <th><span class="c-label-lite">LITE</span></th>
+        <th><span class="c-label-pro">PRO</span></th>
+        <th><span class="c-label-xl">XL</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-group"><td colspan="4">Core</td></tr>
+      <tr><td>Cost calculator</td><td><span class="c-yes-lite">✓</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Orders per month</td><td>Up to 15</td><td class="c-yes-pro">Unlimited</td><td class="c-yes-xl">Unlimited</td></tr>
+      <tr><td>Filament inventory</td><td><span class="c-yes-lite">Basic</span></td><td><span class="c-yes-pro">Advanced</span></td><td><span class="c-yes-xl">Advanced</span></td></tr>
+      <tr><td>Price suggestion engine</td><td><span class="c-yes-lite">✓</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Revenue dashboard</td><td><span class="c-yes-lite">✓</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>100% offline</td><td><span class="c-yes-lite">✓</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+
+      <tr class="row-group"><td colspan="4">Sales & Clients</td></tr>
+      <tr><td>PDF invoice generator</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Client CRM</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Shipping label generator</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Batch invoicing</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+
+      <tr class="row-group"><td colspan="4">Marketing & SEO</td></tr>
+      <tr><td>Etsy SEO tools</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Listing optimizer</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+
+      <tr class="row-group"><td colspan="4">Analytics & Tracking</td></tr>
+      <tr><td>Finance charts & goals</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Print failure tracker</td><td><span class="c-no">✕</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Time vs Profit analysis</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Advanced analytics</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+
+      <tr class="row-group"><td colspan="4">Scale & Power</td></tr>
+      <tr><td>Business simulator</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Multi-machine / farm support</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Maintenance scheduler</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Early beta access</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>All upcoming modules</td><td><span class="c-no">✕</span></td><td><span class="c-no">✕</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+
+      <tr class="row-group"><td colspan="4">Support & Updates</td></tr>
+      <tr><td>Free updates</td><td><span class="c-yes-lite">✓</span></td><td><span class="c-yes-pro">✓</span></td><td><span class="c-yes-xl">✓</span></td></tr>
+      <tr><td>Email support</td><td>Community</td><td class="c-yes-pro">Priority</td><td class="c-yes-xl">Same-day</td></tr>
+      <tr><td>License type</td><td>Free forever</td><td>Lifetime</td><td>Lifetime</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-label">Questions</div>
+  <h2 class="section-title" style="font-size:clamp(24px,3vw,36px);margin-bottom:40px">Frequently asked</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Is LITE really free forever?</div>
+    <div class="faq-a">Yes. LITE is free with no time limit, no credit card required and no hidden costs. We believe every maker deserves to know their real costs before spending money on software.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Is this a subscription?</div>
+    <div class="faq-a">No. PRO and XL are one-time payments. You pay once and own the license forever, including all future updates for your tier. No recurring charges.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Can I upgrade from LITE to PRO later?</div>
+    <div class="faq-a">Yes. You can download LITE now and upgrade at any time. Your data stays intact when you upgrade — just enter your license key and all features unlock instantly.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Does the app work offline?</div>
+    <div class="faq-a">100% offline. PrintNeat is a Windows desktop app — your data never leaves your computer. No internet connection required to use any feature.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">What's your refund policy?</div>
+    <div class="faq-a">We offer a 14-day money-back guarantee on all paid plans. If PrintNeat isn't right for your business within 14 days of purchase, contact us and we'll refund you in full — no questions asked.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">How many PCs can I install it on?</div>
+    <div class="faq-a">Each license covers 1 PC. If you need to transfer to a new machine, just contact support and we'll help you move your license within minutes.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Will prices stay the same?</div>
+    <div class="faq-a">No — launch pricing is active now and prices will increase as PrintNeat grows and more features are added. If you buy today, you lock in the current price and get all future updates for your tier.</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-bottom">
+  <div class="cta-orb"></div>
+  <h2>Start free today.<br>Upgrade when you're ready.</h2>
+  <p>No credit card. No commitment. Just a smarter way to run your 3D printing business.</p>
+  <div class="cta-btns">
+    <a href="#" onclick="downloadLite(event)" class="btn btn-clay btn-lg">⬇ Download LITE — Free</a>
+    <a href="#plans" class="btn btn-ghost btn-lg">Compare plans</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <span style="color:#fff;font-weight:700">PRINT</span><span style="color:var(--clay);font-weight:200">NEAT</span>
+    <span style="margin-left:16px">© 2026 PrintNeat. All rights reserved.</span>
+  </div>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="products.html">Products</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="mailto:support@printneat.app">Support</a>
+  </div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+var LITE_URL = 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-LITE-v1.2.0.exe';
+var PRO_URL  = '#'; // substituir com URL do Gumroad quando pronto
+var XL_URL   = '#'; // substituir com URL do Gumroad quando pronto
+
+var billingAnnual = false;
+
+function toggleBilling() {
+  billingAnnual = !billingAnnual;
+  var t = document.getElementById('billing-toggle');
+  t.classList.toggle('on', billingAnnual);
+  // PRO
+  document.getElementById('pro-price').innerHTML = billingAnnual
+    ? '<sup>€</sup>23<span style="font-size:26px">.92</span>'
+    : '<sup>€</sup>29<span style="font-size:26px">.90</span>';
+  document.getElementById('pro-annual').classList.toggle('show', billingAnnual);
+  document.getElementById('pro-period').style.display = billingAnnual ? 'none' : '';
+  // XL
+  document.getElementById('xl-price').innerHTML = billingAnnual
+    ? '<sup>€</sup>39<span style="font-size:26px">.92</span>'
+    : '<sup>€</sup>49<span style="font-size:26px">.90</span>';
+  document.getElementById('xl-annual').classList.toggle('show', billingAnnual);
+  document.getElementById('xl-period').style.display = billingAnnual ? 'none' : '';
+}
+
+function downloadLite(e) {
+  e.preventDefault();
+  window.location.href = LITE_URL;
+  showToast('⬇ Download started — LITE v1.2.0');
+}
+
+function buyPro(e) {
+  e.preventDefault();
+  if (PRO_URL === '#') { showToast('⏳ PRO payment coming soon — stay tuned!'); return; }
+  window.open(PRO_URL, '_blank');
+}
+
+function buyXL(e) {
+  e.preventDefault();
+  if (XL_URL === '#') { showToast('⏳ XL payment coming soon — stay tuned!'); return; }
+  window.open(XL_URL, '_blank');
+}
+
+function toggleFaq(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 3500);
+}
+</script>
+</body>
+</html>
