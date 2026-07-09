@@ -513,19 +513,7 @@ function selectPlan(plan, initial) {
 }
 
 function proceedToPayment() {
-  var url = GUMROAD[currentPlan];
-  if (!url || url === '#') {
-    // Show coming soon
-    document.getElementById('coming-soon-box').style.display = 'block';
-    document.getElementById('coming-soon-box').scrollIntoView({behavior:'smooth',block:'center'});
-    showToast('⏳ Payment coming soon — enter your email below');
-    return;
-  }
-  // Open Gumroad in overlay
-  var overlay = document.getElementById('gumroad-overlay');
-  document.getElementById('gumroad-iframe').src = url;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  window.location.href = 'order.html?plan=' + currentPlan;
 }
 
 function closeGumroad() {
