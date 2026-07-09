@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -861,7 +861,7 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 <section id="screenshots" style="background:var(--bg3);padding:100px 5%;overflow:hidden">
   <div class="section-label text-center reveal">See it in action</div>
   <h2 class="text-center reveal reveal-delay-1">Every screen.<br>Built for <span style="background:linear-gradient(135deg,var(--clay),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">3D printing</span>.</h2>
-  <p class="section-sub text-center reveal reveal-delay-2" style="margin:0 auto 48px">Real screens from the app. No mockup magic — this is exactly what you get.</p>
+  <p class="section-sub text-center reveal reveal-delay-2" style="margin:0 auto 48px">Real screenshots from the app. No mockup magic — this is exactly what you get.</p>
 
   <!-- TAB SWITCHER -->
   <div style="display:flex;justify-content:center;margin-bottom:40px;flex-wrap:wrap;gap:8px" class="reveal">
@@ -879,6 +879,8 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   .sc-screen{display:none;animation:fadeUp .35s ease both}
   .sc-screen.active{display:block}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .app-shot-wrap{max-width:960px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.07)}
+  .app-shot-wrap img{width:100%;display:block}
   .app-window{background:linear-gradient(135deg,#1a1f30,#0f1220);border-radius:20px;border:1px solid rgba(255,255,255,.09);overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.05),0 0 60px rgba(200,112,90,.07);max-width:900px;margin:0 auto;position:relative}
   .app-titlebar{background:#0c0f1a;padding:13px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
   .app-dot{width:10px;height:10px;border-radius:50%}
@@ -964,279 +966,36 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 
   <!-- DASHBOARD -->
   <div class="sc-screen active" id="sc-dashboard">
-    <div class="app-window">
-      <div class="app-titlebar">
-        <div class="app-dot" style="background:#FF5F56"></div>
-        <div class="app-dot" style="background:#FFBD2E"></div>
-        <div class="app-dot" style="background:#27C93F"></div>
-        <span class="app-title-txt">PRINTNEAT Workspace — Dashboard</span>
-      </div>
-      <div class="app-body">
-        <div class="app-sidebar">
-          <div class="app-sb-logo"><div><span class="app-sb-lp">PRINT</span><span class="app-sb-ln">NEAT</span></div><div class="app-sb-tag">3D WORKSPACE</div></div>
-          <div class="si a"><span class="si-ic">📊</span> Dashboard</div>
-          <div class="si"><span class="si-ic">🧮</span> Calculator</div>
-          <div class="si"><span class="si-ic">📦</span> Orders</div>
-          <div class="si"><span class="si-ic">💶</span> Finances</div>
-          <div class="si"><span class="si-ic">👥</span> Clients</div>
-          <div class="si"><span class="si-ic">🧵</span> Filaments</div>
-          <div class="si"><span class="si-ic">📈</span> Simulator</div>
-          <div class="si"><span class="si-ic">🏷️</span> SEO Tools</div>
-        </div>
-        <div class="app-main">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-            <div><div style="font-size:14px;font-weight:800;color:#e0e8f8">Good morning, João 👋</div><div style="font-size:9px;color:#3a4a62;margin-top:2px">Here's your business overview · July 2026</div></div>
-            <div style="font-size:9px;background:rgba(200,112,90,.15);color:var(--clay);padding:4px 10px;border-radius:99px;font-weight:700">PRO</div>
-          </div>
-          <div class="mk-kpi">
-            <div class="kpi"><div class="kpi-val" style="color:var(--clay)">€2,840</div><div class="kpi-lbl">Revenue</div></div>
-            <div class="kpi"><div class="kpi-val" style="color:var(--sage2)">24</div><div class="kpi-lbl">Orders</div></div>
-            <div class="kpi"><div class="kpi-val" style="color:var(--gold)">74%</div><div class="kpi-lbl">Avg Margin</div></div>
-          </div>
-          <div style="font-size:9px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em;font-weight:700">Revenue trend — this month</div>
-          <div class="mkbar"><div class="mkbar-fill"></div></div>
-          <div style="font-size:9px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.1em;font-weight:700">Recent orders</div>
-          <div class="mk-row"><span class="mk-dot" style="background:var(--gold)"></span><span style="flex:1">João Silva — Desk Organizer × 3</span><span style="color:var(--clay);font-weight:700">€54</span><span class="order-status st-done" style="font-size:8px;padding:2px 7px">Done</span></div>
-          <div class="mk-row"><span class="mk-dot" style="background:var(--sage2)"></span><span style="flex:1">Maria Santos — Cable Hub × 2</span><span style="color:var(--sage2);font-weight:700">€36</span><span class="order-status st-print" style="font-size:8px;padding:2px 7px">Printing</span></div>
-          <div class="mk-row"><span class="mk-dot" style="background:var(--clay)"></span><span style="flex:1">Carlos Mendes — Vase Set × 1</span><span style="color:var(--muted2);font-weight:700">€32</span><span class="order-status st-wait" style="font-size:8px;padding:2px 7px">Pending</span></div>
-          <div class="mk-row"><span class="mk-dot" style="background:var(--purple)"></span><span style="flex:1">Ana Ribeiro — Phone Stand × 4</span><span style="color:var(--fg2);font-weight:700">€48</span><span class="order-status st-done" style="font-size:8px;padding:2px 7px">Done</span></div>
-        </div>
-      </div>
+    <div class="app-shot-wrap">
+      <img src="screenshots/dashboard.png" alt="PRINTNEAT Dashboard — visão geral das finanças, encomendas e alertas" loading="lazy">
     </div>
   </div>
 
   <!-- CALCULATOR -->
   <div class="sc-screen" id="sc-calc">
-    <div class="app-window">
-      <div class="app-titlebar">
-        <div class="app-dot" style="background:#FF5F56"></div>
-        <div class="app-dot" style="background:#FFBD2E"></div>
-        <div class="app-dot" style="background:#27C93F"></div>
-        <span class="app-title-txt">PRINTNEAT Workspace — Cost Calculator</span>
-      </div>
-      <div class="app-body">
-        <div class="app-sidebar">
-          <div class="app-sb-logo"><div><span class="app-sb-lp">PRINT</span><span class="app-sb-ln">NEAT</span></div><div class="app-sb-tag">3D WORKSPACE</div></div>
-          <div class="si"><span class="si-ic">📊</span> Dashboard</div>
-          <div class="si a"><span class="si-ic">🧮</span> Calculator</div>
-          <div class="si"><span class="si-ic">📦</span> Orders</div>
-          <div class="si"><span class="si-ic">💶</span> Finances</div>
-          <div class="si"><span class="si-ic">👥</span> Clients</div>
-          <div class="si"><span class="si-ic">🧵</span> Filaments</div>
-          <div class="si"><span class="si-ic">📈</span> Simulator</div>
-        </div>
-        <div class="app-main">
-          <div style="font-size:14px;font-weight:800;color:#e0e8f8;margin-bottom:14px">🧮 Cost Calculator</div>
-          <div class="calc-grid">
-            <div>
-              <div class="calc-section">
-                <div class="calc-sec-title">Print parameters</div>
-                <div class="calc-field"><div class="calc-label">Filament used (g)</div><div class="calc-input">85 g</div></div>
-                <div class="calc-field"><div class="calc-label">Print time (h)</div><div class="calc-input">4.5 h</div></div>
-                <div class="calc-field"><div class="calc-label">Filament cost (€/kg)</div><div class="calc-input">€18.90 / kg</div></div>
-                <div class="calc-field"><div class="calc-label">Electricity (€/kWh)</div><div class="calc-input">€0.22 / kWh</div></div>
-              </div>
-              <div class="calc-section" style="margin-top:10px">
-                <div class="calc-sec-title">Pricing</div>
-                <div class="calc-field"><div class="calc-label">Margin target</div><div class="calc-input">65 %</div></div>
-                <div class="calc-field"><div class="calc-label">Labour (€/h)</div><div class="calc-input">€8.00 / h</div></div>
-              </div>
-            </div>
-            <div>
-              <div class="calc-result">
-                <div style="font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:10px">💰 Price breakdown</div>
-                <div class="calc-res-row"><span class="calc-res-label">Filament cost</span><span class="calc-res-val">€1.61</span></div>
-                <div class="calc-res-row"><span class="calc-res-label">Electricity</span><span class="calc-res-val">€0.50</span></div>
-                <div class="calc-res-row"><span class="calc-res-label">Printer wear</span><span class="calc-res-val">€0.45</span></div>
-                <div class="calc-res-row"><span class="calc-res-label">Labour</span><span class="calc-res-val">€2.00</span></div>
-                <div class="calc-res-row" style="border-top:1px solid rgba(255,255,255,.06);margin-top:4px;padding-top:4px"><span class="calc-res-label">Total cost</span><span class="calc-res-val">€4.56</span></div>
-                <div class="calc-res-row"><span class="calc-res-label">Margin (65%)</span><span class="calc-res-val" style="color:var(--sage2)">+€8.47</span></div>
-                <div class="calc-res-total"><span>Suggested price</span><span class="calc-res-total-val">€13.03</span></div>
-                <div style="margin-top:10px;padding-top:8px;border-top:1px solid rgba(200,112,90,.2)">
-                  <div style="font-size:8px;color:var(--muted);margin-bottom:4px">ROUND-UP SUGGESTIONS</div>
-                  <div style="display:flex;gap:6px">
-                    <div style="padding:4px 8px;background:rgba(255,255,255,.05);border-radius:6px;font-size:9px;font-weight:700;color:var(--fg2)">€12.99</div>
-                    <div style="padding:4px 8px;background:rgba(200,112,90,.15);border:1px solid rgba(200,112,90,.3);border-radius:6px;font-size:9px;font-weight:700;color:var(--clay)">€13.50 ✓</div>
-                    <div style="padding:4px 8px;background:rgba(255,255,255,.05);border-radius:6px;font-size:9px;font-weight:700;color:var(--fg2)">€14.99</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="app-shot-wrap">
+      <img src="screenshots/calculator.png" alt="PRINTNEAT Price Calculator — calcula o preço ideal com margem e lucro" loading="lazy">
     </div>
   </div>
 
   <!-- ORDERS -->
   <div class="sc-screen" id="sc-orders">
-    <div class="app-window">
-      <div class="app-titlebar">
-        <div class="app-dot" style="background:#FF5F56"></div>
-        <div class="app-dot" style="background:#FFBD2E"></div>
-        <div class="app-dot" style="background:#27C93F"></div>
-        <span class="app-title-txt">PRINTNEAT Workspace — Orders</span>
-      </div>
-      <div class="app-body">
-        <div class="app-sidebar">
-          <div class="app-sb-logo"><div><span class="app-sb-lp">PRINT</span><span class="app-sb-ln">NEAT</span></div><div class="app-sb-tag">3D WORKSPACE</div></div>
-          <div class="si"><span class="si-ic">📊</span> Dashboard</div>
-          <div class="si"><span class="si-ic">🧮</span> Calculator</div>
-          <div class="si a"><span class="si-ic">📦</span> Orders</div>
-          <div class="si"><span class="si-ic">💶</span> Finances</div>
-          <div class="si"><span class="si-ic">👥</span> Clients</div>
-          <div class="si"><span class="si-ic">🧵</span> Filaments</div>
-        </div>
-        <div class="app-main">
-          <div class="orders-head">
-            <div class="orders-title">📦 Orders</div>
-            <button class="orders-new-btn">+ New order</button>
-          </div>
-          <div style="display:flex;gap:6px;margin-bottom:12px">
-            <div style="padding:4px 10px;background:rgba(200,112,90,.15);border:1px solid rgba(200,112,90,.3);border-radius:99px;font-size:8px;font-weight:800;color:var(--clay)">All (24)</div>
-            <div style="padding:4px 10px;background:rgba(255,255,255,.05);border-radius:99px;font-size:8px;color:var(--muted2)">Pending (3)</div>
-            <div style="padding:4px 10px;background:rgba(255,255,255,.05);border-radius:99px;font-size:8px;color:var(--muted2)">Printing (5)</div>
-            <div style="padding:4px 10px;background:rgba(255,255,255,.05);border-radius:99px;font-size:8px;color:var(--muted2)">Done (16)</div>
-          </div>
-          <div style="display:flex;gap:6px;padding:6px 10px;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">
-            <span style="min-width:36px">#</span><span style="flex:1">Client</span><span style="flex:2">Item</span><span style="min-width:50px;text-align:right">Price</span><span style="min-width:60px;text-align:right">Status</span>
-          </div>
-          <div class="order-row"><span class="order-id">#024</span><span class="order-client">Ana Ribeiro</span><span class="order-item">Phone Stand × 4 — Black PLA</span><span class="order-price">€48</span><span class="order-status st-done">Done</span></div>
-          <div class="order-row"><span class="order-id">#023</span><span class="order-client">Carlos Mendes</span><span class="order-item">Vase Set × 1 — White PETG</span><span class="order-price">€32</span><span class="order-status st-print">Printing</span></div>
-          <div class="order-row"><span class="order-id">#022</span><span class="order-client">Maria Santos</span><span class="order-item">Cable Hub × 2 — Grey PLA</span><span class="order-price">€36</span><span class="order-status st-print">Printing</span></div>
-          <div class="order-row"><span class="order-id">#021</span><span class="order-client">Pedro Costa</span><span class="order-item">Desk Organizer × 1 — Wood PLA</span><span class="order-price">€28</span><span class="order-status st-wait">Pending</span></div>
-          <div class="order-row"><span class="order-id">#020</span><span class="order-client">João Silva</span><span class="order-item">Desk Organizer × 3 — Black PLA</span><span class="order-price">€54</span><span class="order-status st-done">Done</span></div>
-          <div class="order-row"><span class="order-id">#019</span><span class="order-client">Sofia Lima</span><span class="order-item">Planters Set × 2 — Silk PLA</span><span class="order-price">€44</span><span class="order-status st-done">Done</span></div>
-        </div>
-      </div>
+    <div class="app-shot-wrap">
+      <img src="screenshots/orders.png" alt="PRINTNEAT Orders — gestão de encomendas de clientes" loading="lazy">
     </div>
   </div>
 
   <!-- INVOICE -->
   <div class="sc-screen" id="sc-invoice">
-    <div class="app-window">
-      <div class="app-titlebar">
-        <div class="app-dot" style="background:#FF5F56"></div>
-        <div class="app-dot" style="background:#FFBD2E"></div>
-        <div class="app-dot" style="background:#27C93F"></div>
-        <span class="app-title-txt">PRINTNEAT Workspace — Invoice Generator</span>
-      </div>
-      <div class="app-body">
-        <div class="app-sidebar">
-          <div class="app-sb-logo"><div><span class="app-sb-lp">PRINT</span><span class="app-sb-ln">NEAT</span></div><div class="app-sb-tag">3D WORKSPACE</div></div>
-          <div class="si"><span class="si-ic">📊</span> Dashboard</div>
-          <div class="si"><span class="si-ic">📦</span> Orders</div>
-          <div class="si a"><span class="si-ic">🧾</span> Invoicing</div>
-          <div class="si"><span class="si-ic">👥</span> Clients</div>
-          <div class="si"><span class="si-ic">💶</span> Finances</div>
-        </div>
-        <div class="app-main">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-            <div style="font-size:14px;font-weight:800;color:#e0e8f8">🧾 Invoice Generator</div>
-            <div style="display:flex;gap:6px">
-              <div style="padding:5px 10px;background:rgba(255,255,255,.05);border-radius:6px;font-size:9px;color:var(--muted2);font-weight:700">Preview</div>
-              <div style="padding:5px 10px;background:linear-gradient(135deg,var(--clay),var(--clay2));border-radius:6px;font-size:9px;color:#fff;font-weight:800">Export PDF</div>
-            </div>
-          </div>
-          <div style="display:flex;gap:12px">
-            <div class="inv-doc" style="flex:1">
-              <div class="inv-head">
-                <div><span class="inv-brand-p">PRINT</span><span class="inv-brand-n">NEAT</span><div style="font-size:8px;color:var(--muted);margin-top:2px">João Silva 3D · NIF: 123456789</div></div>
-                <div class="inv-num">Invoice<strong>#INV-024</strong><span style="font-size:8px;color:var(--muted)">Jul 9, 2026</span></div>
-              </div>
-              <div class="inv-parties">
-                <div><div class="inv-party-lbl">From</div><div class="inv-party-name">João Silva 3D</div><div class="inv-party-sub">Porto, Portugal</div><div class="inv-party-sub">joao@print3d.pt</div></div>
-                <div><div class="inv-party-lbl">Bill to</div><div class="inv-party-name">TechStart Lda</div><div class="inv-party-sub">Lisboa, Portugal</div><div class="inv-party-sub">finance@techstart.pt</div></div>
-              </div>
-              <div class="inv-items">
-                <div class="inv-item-head"><span class="inv-item-desc">Description</span><span class="inv-item-qty">Qty</span><span class="inv-item-price">Total</span></div>
-                <div class="inv-item-row"><span class="inv-item-desc">Phone Stand — Black PLA</span><span class="inv-item-qty">4</span><span class="inv-item-price">€48.00</span></div>
-                <div class="inv-item-row"><span class="inv-item-desc">Cable Hub — Grey PLA</span><span class="inv-item-qty">2</span><span class="inv-item-price">€36.00</span></div>
-                <div class="inv-item-row"><span class="inv-item-desc">Shipping & handling</span><span class="inv-item-qty">1</span><span class="inv-item-price">€5.00</span></div>
-              </div>
-              <div class="inv-total-row"><span class="inv-total-lbl">Total due</span><span class="inv-total-val">€89.00</span></div>
-              <div><span class="inv-status-badge">✓ Paid · Jul 9, 2026</span></div>
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-              <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:12px">
-                <div style="font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);margin-bottom:8px">Invoice stats</div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted2);margin-bottom:5px"><span>Sent this month</span><span style="color:var(--fg2);font-weight:700">12</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted2);margin-bottom:5px"><span>Total invoiced</span><span style="color:var(--fg2);font-weight:700">€1,240</span></div>
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted2)"><span>Paid / Pending</span><span style="color:var(--sage2);font-weight:700">10 / 2</span></div>
-              </div>
-              <div style="background:rgba(74,124,111,.06);border:1px solid rgba(74,124,111,.15);border-radius:10px;padding:10px;font-size:9px;color:var(--sage2)">✓ PDF exported with your logo, NIF, IBAN and client details automatically</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="app-shot-wrap">
+      <img src="screenshots/products.png" alt="PRINTNEAT Products & Margins — catálogo com margens de lucro" loading="lazy">
     </div>
   </div>
 
   <!-- FILAMENTS -->
   <div class="sc-screen" id="sc-filament">
-    <div class="app-window">
-      <div class="app-titlebar">
-        <div class="app-dot" style="background:#FF5F56"></div>
-        <div class="app-dot" style="background:#FFBD2E"></div>
-        <div class="app-dot" style="background:#27C93F"></div>
-        <span class="app-title-txt">PRINTNEAT Workspace — Filament Inventory</span>
-      </div>
-      <div class="app-body">
-        <div class="app-sidebar">
-          <div class="app-sb-logo"><div><span class="app-sb-lp">PRINT</span><span class="app-sb-ln">NEAT</span></div><div class="app-sb-tag">3D WORKSPACE</div></div>
-          <div class="si"><span class="si-ic">📊</span> Dashboard</div>
-          <div class="si"><span class="si-ic">🧮</span> Calculator</div>
-          <div class="si"><span class="si-ic">📦</span> Orders</div>
-          <div class="si a"><span class="si-ic">🧵</span> Filaments</div>
-          <div class="si"><span class="si-ic">💶</span> Finances</div>
-        </div>
-        <div class="app-main">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-            <div style="font-size:14px;font-weight:800;color:#e0e8f8">🧵 Filament Inventory</div>
-            <div style="display:flex;gap:6px">
-              <div style="padding:5px 10px;background:rgba(255,255,255,.04);border-radius:6px;font-size:8px;color:var(--muted2)">6 spools · €112 value</div>
-              <div style="padding:5px 10px;background:linear-gradient(135deg,var(--clay),var(--clay2));border-radius:6px;font-size:9px;color:#fff;font-weight:800">+ Add spool</div>
-            </div>
-          </div>
-          <div style="font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">⚠️ Low stock alerts</div>
-          <div class="fil-item" style="background:rgba(255,60,60,.05);border:1px solid rgba(255,60,60,.12)">
-            <div class="fil-spool" style="background:rgba(255,60,60,.1)">🔴</div>
-            <div style="flex:1"><div class="fil-name">PLA Black — Bambu Lab</div><div class="fil-brand">⚠️ Only 120g remaining</div></div>
-            <div class="fil-bar-wrap"><div class="fil-bar" style="width:12%;background:linear-gradient(90deg,#f87171,#ef4444)"></div></div>
-            <div class="fil-pct" style="color:#f87171">12%</div>
-            <div class="fil-weight">120g / 1kg</div>
-          </div>
-          <div style="font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 0 8px">All spools</div>
-          <div class="fil-item">
-            <div class="fil-spool" style="background:rgba(255,255,255,.06)">⚪</div>
-            <div style="flex:1"><div class="fil-name">PLA White — Polymaker</div><div class="fil-brand">€18.90/kg</div></div>
-            <div class="fil-bar-wrap"><div class="fil-bar" style="width:78%;background:linear-gradient(90deg,var(--sage2),var(--sage))"></div></div>
-            <div class="fil-pct" style="color:var(--sage2)">78%</div>
-            <div class="fil-weight">780g / 1kg</div>
-          </div>
-          <div class="fil-item">
-            <div class="fil-spool" style="background:rgba(212,168,67,.08)">🟡</div>
-            <div style="flex:1"><div class="fil-name">PETG Yellow — Prusament</div><div class="fil-brand">€24.90/kg</div></div>
-            <div class="fil-bar-wrap"><div class="fil-bar" style="width:55%;background:linear-gradient(90deg,var(--gold),#e8a820)"></div></div>
-            <div class="fil-pct" style="color:var(--gold)">55%</div>
-            <div class="fil-weight">550g / 1kg</div>
-          </div>
-          <div class="fil-item">
-            <div class="fil-spool" style="background:rgba(167,139,250,.08)">🟣</div>
-            <div style="flex:1"><div class="fil-name">PLA Silk Purple — eSUN</div><div class="fil-brand">€21.50/kg</div></div>
-            <div class="fil-bar-wrap"><div class="fil-bar" style="width:92%;background:linear-gradient(90deg,var(--purple),#7c5cbf)"></div></div>
-            <div class="fil-pct" style="color:var(--purple)">92%</div>
-            <div class="fil-weight">920g / 1kg</div>
-          </div>
-          <div class="fil-item">
-            <div class="fil-spool" style="background:rgba(74,124,111,.08)">🟢</div>
-            <div style="flex:1"><div class="fil-name">PLA Green — Bambu Lab</div><div class="fil-brand">€18.90/kg</div></div>
-            <div class="fil-bar-wrap"><div class="fil-bar" style="width:44%;background:linear-gradient(90deg,var(--sage2),var(--sage))"></div></div>
-            <div class="fil-pct" style="color:var(--sage2)">44%</div>
-            <div class="fil-weight">440g / 1kg</div>
-          </div>
-        </div>
-      </div>
+    <div class="app-shot-wrap">
+      <img src="screenshots/filaments.png" alt="PRINTNEAT Filament Cost Comparator — compara custo de filamentos" loading="lazy">
     </div>
   </div>
 
