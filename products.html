@@ -439,14 +439,12 @@ function downloadLite(e) {
 
 function buyPro(e) {
   e.preventDefault();
-  if (PRO_URL === '#') { showToast('⏳ PRO payment coming soon — stay tuned!'); return; }
-  window.open(PRO_URL, '_blank');
+  window.location.href = 'checkout.html?plan=pro';
 }
 
 function buyXL(e) {
   e.preventDefault();
-  if (XL_URL === '#') { showToast('⏳ XL payment coming soon — stay tuned!'); return; }
-  window.open(XL_URL, '_blank');
+  window.location.href = 'checkout.html?plan=xl';
 }
 
 function toggleFaq(el) {
