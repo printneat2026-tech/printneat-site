@@ -420,7 +420,7 @@ document.addEventListener('click', function (e) {
     if (tier === 'lite') {
       openModal('lite'); // download direto grátis
     } else {
-      openPayModal(tier); // modal de pagamento para PRO/XL
+      window.location.href = 'checkout.html?plan=' + tier; // página de pagamento
     }
     track('cta_click', { tier: tier, loc: a.dataset.loc || 'unknown' });
     return;
