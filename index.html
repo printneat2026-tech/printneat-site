@@ -14,7 +14,7 @@
 <meta name="twitter:description" content="Price smarter. Sell more. Grow faster. Free to start.">
 <link rel="canonical" href="https://printneat2026-tech.github.io/printneat-releases/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -374,6 +374,438 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 /* Modal close button */
 .modal-close-btn{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:#8a9ab8;border-radius:50%;width:32px;height:32px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;font-family:inherit;}
 .modal-close-btn:hover{background:rgba(255,255,255,.13);color:#e8eef8;border-color:rgba(255,255,255,.2);}
+
+/* ═══ RETRO OVERRIDE ═══ */
+/* ══════════════════════════════════════════════════
+   RETRO PROFESSIONAL THEME OVERRIDE
+   Palette: Amber on warm near-black — precision instrument / 1970s technical catalogue
+   Type: Space Mono (display) · IBM Plex Serif (body)
+   ══════════════════════════════════════════════════ */
+
+/* ── Google Fonts already linked above; this block injects retro overrides ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --clay:#c8820a;  --clay2:#8a5606;  --clay3:#e8a030;
+  --gold:#a89040;  --gold2:#c8b060;
+  --sage:#5a8840;  --sage2:#7ab060;
+  --bg:#07060a;    --bg2:#0b0a0e;    --bg3:#0f0e12;
+  --card:rgba(200,130,10,.035);  --card2:rgba(200,130,10,.07);
+  --border:rgba(200,130,10,.14);  --border2:rgba(200,130,10,.26);
+  --fg:#e0d4b8;    --fg2:#c0b090;
+  --muted:#4a3c20;  --muted2:#6a5830;
+  --r:4px; --r2:6px;
+  --shadow-clay:0 8px 32px rgba(200,130,10,.22);
+  --shadow-card:0 4px 24px rgba(0,0,0,.5);
+  --amber:#c8820a;
+}
+
+/* ── Dot-grid background texture ── */
+body {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  background: #07060a;
+  background-image:
+    radial-gradient(circle, rgba(200,130,10,.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--fg);
+}
+
+/* Remove old noise texture so dot-grid shows cleanly */
+body::before { display: none; }
+
+/* ── Headings → Space Mono ── */
+h1, h2, h3, h4, .hero-badge, .section-label,
+.price-tier, .feat-title, .why-title, .step-title,
+.testi-name, .nav-logo-p, .nav-logo-n,
+.auth-logo-p, .auth-logo-n,
+.aw-logo-p, .aw-logo-n,
+.mockup-sb-brand-p, .mockup-sb-brand-n {
+  font-family: 'Space Mono', 'Courier New', monospace;
+}
+
+h1 { letter-spacing: -.02em; }
+h2 { letter-spacing: -.015em; font-weight: 700; }
+
+/* ── Nav ── */
+nav {
+  background: rgba(7,6,10,.92);
+  border-bottom: 1px solid rgba(200,130,10,.2);
+  box-shadow: 0 1px 0 rgba(200,130,10,.06);
+}
+.nav-logo-p { color: var(--fg); letter-spacing: .06em; }
+.nav-logo-n { color: var(--clay); letter-spacing: .06em; }
+.nav-links a { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .05em; }
+.nav-links a:hover { color: var(--clay); }
+
+/* ── Buttons ── */
+.btn { border-radius: 2px; letter-spacing: .06em; font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; }
+.btn-ghost { background: transparent; border: 1px solid rgba(200,130,10,.3); color: var(--clay); }
+.btn-ghost:hover { background: rgba(200,130,10,.08); border-color: var(--clay); color: var(--clay3); }
+.btn-primary { background: var(--clay); color: #07060a; box-shadow: none; font-weight: 700; }
+.btn-primary:hover { background: var(--clay3); transform: none; box-shadow: 0 0 0 1px var(--clay3), 0 0 20px rgba(200,130,10,.3); filter: none; }
+.btn-gold { background: transparent; border: 1px solid var(--gold); color: var(--gold); box-shadow: none; }
+.btn-gold:hover { background: rgba(168,144,64,.12); box-shadow: none; transform: none; }
+.btn-lg { border-radius: 2px; }
+
+/* ── Launch banner ── */
+#launch-banner {
+  background: linear-gradient(90deg,#0c0a06,#100e08,#0c0a06);
+  border-bottom: 1px solid rgba(200,130,10,.25);
+}
+.lb-pulse { background: var(--clay); }
+.lb-text { color: var(--muted2); }
+.lb-text strong { color: var(--clay3); }
+.lb-cta { color: var(--clay); border-color: rgba(200,130,10,.3); border-radius: 1px; }
+
+/* ── Hero ── */
+#hero {
+  background: none;
+}
+.hero-orb1, .hero-orb2 { display: none; }
+
+/* Amber ruled-line under hero headline */
+.hero-badge {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.35);
+  border-radius: 0;
+  color: var(--clay);
+  letter-spacing: .2em;
+  font-family: 'Space Mono', monospace;
+}
+.hero-badge-dot { background: var(--clay); }
+
+h1 .accent {
+  background: linear-gradient(90deg, var(--clay), var(--clay3), var(--gold2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: none;
+}
+.hero-sub { font-family: 'IBM Plex Serif', Georgia, serif; font-style: italic; color: var(--muted2); }
+
+/* ── Stats ── */
+.stats-bar {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.2);
+  border-radius: 0;
+  box-shadow: none;
+}
+.stat { border-right-color: rgba(200,130,10,.12); }
+.stat-val {
+  background: none;
+  -webkit-text-fill-color: var(--clay);
+  color: var(--clay);
+  font-family: 'Space Mono', monospace;
+}
+.stat-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .15em; }
+
+/* ── Section labels ── */
+.section-label {
+  background: none;
+  -webkit-text-fill-color: var(--clay);
+  color: var(--clay);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .3em;
+  /* ruled-line treatment */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+.text-center .section-label { justify-content: center; }
+.section-label::before, .section-label::after {
+  content: '';
+  height: 1px;
+  width: 32px;
+  background: rgba(200,130,10,.4);
+}
+
+/* ── Feature cards ── */
+.feat-card {
+  background: rgba(200,130,10,.02);
+  border: 1px solid rgba(200,130,10,.15);
+  border-radius: 0;
+  box-shadow: none;
+}
+.feat-card::before { background: rgba(200,130,10,.04); }
+.feat-card:hover { border-color: rgba(200,130,10,.4); transform: none; box-shadow: inset 0 0 0 1px rgba(200,130,10,.15), 0 0 40px rgba(200,130,10,.06); }
+.feat-title { color: var(--fg); font-size: 13px; letter-spacing: .04em; }
+.feat-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.ft-pro { background: rgba(200,130,10,.08); color: var(--clay); border-color: rgba(200,130,10,.22); border-radius: 0; }
+.ft-xl { background: rgba(168,144,64,.08); color: var(--gold2); border-color: rgba(168,144,64,.22); border-radius: 0; }
+.ft-all { background: rgba(90,136,64,.08); color: var(--sage2); border-color: rgba(90,136,64,.22); border-radius: 0; }
+
+/* ── Why cards ── */
+.why-card {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.12);
+  border-radius: 0;
+}
+.why-card:hover { border-color: rgba(200,130,10,.35); transform: none; box-shadow: inset 0 0 0 1px rgba(200,130,10,.1), 0 0 30px rgba(200,130,10,.05); }
+.why-title { color: var(--fg); font-size: 16px; }
+.why-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.why-pill { background: transparent; color: var(--clay); border-color: rgba(200,130,10,.3); border-radius: 0; font-family: 'Space Mono', monospace; font-size: 8px; }
+
+/* ── Who it's for ── */
+.for-card { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; }
+.for-card:hover { border-color: rgba(200,130,10,.3); transform: none; }
+.for-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 12px; }
+.for-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+
+/* ── Comparison table ── */
+.cmp-table th { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .15em; border-bottom-color: rgba(200,130,10,.12); }
+.cmp-table th.cmp-hl { color: var(--clay); background: rgba(200,130,10,.04); border-radius: 0; }
+.cmp-table td { color: var(--muted2); border-bottom-color: rgba(200,130,10,.06); font-family: 'IBM Plex Serif', serif; }
+.cmp-table td:first-child { color: var(--fg2); }
+.cmp-table td.cmp-hl { background: rgba(200,130,10,.03); color: var(--fg); }
+.cmp-yes { color: var(--sage2); }
+.cmp-no { color: #2a2018; }
+.cmp-part { color: var(--clay); }
+
+/* ── Steps / How it works ── */
+.step-num {
+  background: transparent;
+  border: 1px solid var(--clay);
+  box-shadow: none;
+  color: var(--clay);
+  border-radius: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+}
+.steps::before { background: linear-gradient(90deg, var(--clay), var(--gold), var(--sage2)); opacity: .25; }
+.step-title { color: var(--fg); font-size: 14px; letter-spacing: .03em; }
+.step-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+
+/* ── App mockup shell ── */
+.mockup-frame { background: #0a0906; border: 1px solid rgba(200,130,10,.2); border-radius: 4px; box-shadow: 0 40px 100px rgba(0,0,0,.8), 0 0 0 1px rgba(200,130,10,.08), 0 0 60px rgba(200,130,10,.04); }
+.mockup-bar { background: #060504; border-bottom-color: rgba(200,130,10,.12); }
+.mockup-dot:nth-child(1) { background: #3a2810; }
+.mockup-dot:nth-child(2) { background: #2a2010; }
+.mockup-dot:nth-child(3) { background: rgba(200,130,10,.4); }
+.mockup-title { color: rgba(200,130,10,.3); font-family: 'Space Mono', monospace; font-size: 9px; }
+.mockup-sidebar { background: #050403; border-right-color: rgba(200,130,10,.08); }
+.mockup-sb-brand-p { color: var(--fg); font-size: 11px; }
+.mockup-sb-brand-n { color: var(--clay); font-size: 11px; }
+.mockup-sb-tag { color: rgba(200,130,10,.2); }
+.mkitem { color: #2a2010; border-left-color: transparent; font-family: 'Space Mono', monospace; font-size: 9px; }
+.mkitem.active { background: rgba(200,130,10,.08); color: var(--clay); border-left-color: var(--clay); }
+.mockup-main { background: #080706; }
+.mockup-ph-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 13px; }
+.mockup-ph-sub { color: var(--muted2); }
+.mkcard { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.mkcard-val { color: var(--clay); }
+.mkcard-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.mkbar { background: rgba(200,130,10,.06); }
+.mkbar-fill { background: linear-gradient(90deg, var(--clay), var(--gold)); }
+.mkrow { background: rgba(200,130,10,.025); border-radius: 0; color: var(--muted2); }
+
+/* ── Pricing ── */
+.price-card { background: transparent; border: 1px solid rgba(200,130,10,.12); border-radius: 0; box-shadow: none; }
+.price-card.featured { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.4); box-shadow: inset 0 0 0 1px rgba(200,130,10,.1), 0 0 50px rgba(200,130,10,.08); }
+.price-badge { background: var(--clay); color: #07060a; border-radius: 0; font-family: 'Space Mono', monospace; font-size: 8px; }
+.price-tier { color: var(--clay); font-family: 'Space Mono', monospace; font-size: 9px; }
+.price-tier.gold { color: var(--gold2); }
+.price-tier.purple { color: var(--clay3); }
+.price-name { color: var(--fg); font-family: 'Space Mono', monospace; }
+.price-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.price-val { background: none; -webkit-text-fill-color: var(--clay); color: var(--clay); font-family: 'Space Mono', monospace; }
+.price-val span { color: var(--muted2); }
+.price-period { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.price-divider { background: rgba(200,130,10,.1); }
+.price-features li { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-size: 12px; }
+.price-features li::before { color: var(--sage2); }
+.price-features li.no::before { color: #2a2010; }
+.price-features li.no { color: #2a2010; }
+
+/* ── Testimonials ── */
+.testi-card { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; box-shadow: none; }
+.testi-card:hover { border-color: rgba(200,130,10,.3); transform: none; box-shadow: 0 0 30px rgba(200,130,10,.04); }
+.testi-stars { color: var(--clay); }
+.testi-text { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-style: italic; }
+.testi-name { color: var(--fg); font-size: 11px; letter-spacing: .04em; }
+.testi-role { color: var(--muted2); font-size: 9px; font-family: 'Space Mono', monospace; }
+.testi-avatar { background: rgba(200,130,10,.12); border: 1px solid rgba(200,130,10,.25); border-radius: 0; }
+
+/* ── FAQ ── */
+.faq-item { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; }
+.faq-item.open { border-color: rgba(200,130,10,.35); box-shadow: none; }
+.faq-q { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.faq-q:hover { color: var(--clay); }
+.faq-arrow { color: var(--clay); }
+.faq-a-inner { color: var(--muted2); font-family: 'IBM Plex Serif', serif; line-height: 1.9; }
+
+/* ── CTA box ── */
+.cta-box {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.3);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(200,130,10,.08), 0 0 80px rgba(200,130,10,.06);
+  position: relative;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(200,130,10,.08);
+  pointer-events: none;
+}
+.cta-orb { display: none; }
+.cta-box p { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.tier-lite { background: transparent; border-radius: 0; border-color: rgba(90,136,64,.35); color: var(--sage2); }
+.tier-pro { background: transparent; border-radius: 0; border-color: rgba(200,130,10,.4); color: var(--clay); }
+.tier-xl { background: transparent; border-radius: 0; border-color: rgba(168,144,64,.35); color: var(--gold2); }
+.tier-lite:hover { background: rgba(90,136,64,.06); transform: none; }
+.tier-pro:hover { background: rgba(200,130,10,.06); transform: none; }
+.tier-xl:hover { background: rgba(168,144,64,.06); transform: none; }
+
+/* ── Sticky bar ── */
+#sticky-bar { background: rgba(7,6,10,.97); border-top: 1px solid rgba(200,130,10,.25); }
+.sticky-bar-txt { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 10px; }
+.sticky-bar-txt strong { color: var(--fg); }
+
+/* ── Newsletter ── */
+.nl-input { background: transparent; border: 1px solid rgba(200,130,10,.2); border-radius: 0; color: var(--fg); font-family: 'IBM Plex Serif', serif; }
+.nl-input:focus { border-color: var(--clay); }
+.nl-btn { background: var(--clay); border-radius: 0; color: #07060a; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; box-shadow: none; }
+.nl-btn:hover { background: var(--clay3); transform: none; box-shadow: none; }
+
+/* ── Footer ── */
+footer { background: #050404; border-top: 1px solid rgba(200,130,10,.12); }
+.footer-col h4 { background: none; -webkit-text-fill-color: var(--clay); color: var(--clay); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .2em; }
+.footer-col a { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-size: 12px; }
+.footer-col a:hover { color: var(--clay); }
+.footer-bottom { color: #2a2010; }
+.footer-desc { font-family: 'IBM Plex Serif', serif; color: var(--muted2); }
+
+/* ── Auth modal ── */
+#auth-box { background: #0a0806; border: 1px solid rgba(200,130,10,.2); border-radius: 0; }
+.auth-top-bar { background: linear-gradient(90deg, var(--clay), var(--gold), var(--sage2)); }
+.auth-logo-p { color: var(--fg); font-family: 'Space Mono', monospace; }
+.auth-logo-n { color: var(--clay); font-family: 'Space Mono', monospace; }
+.auth-title { color: var(--fg); font-family: 'Space Mono', monospace; }
+.auth-field label { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.auth-field input { background: rgba(200,130,10,.03); border: 1px solid rgba(200,130,10,.15); border-radius: 0; color: var(--fg); }
+.auth-field input:focus { border-color: var(--clay); }
+.auth-submit { background: var(--clay); border-radius: 0; color: #07060a; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; box-shadow: none; }
+.auth-tab { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 10px; }
+.auth-tab.active { background: rgba(200,130,10,.08); color: var(--clay); }
+
+/* ── Screenshot interactive mockups ── */
+.aw { border-radius: 0; background: #080604; box-shadow: 0 40px 100px rgba(0,0,0,.85), 0 0 0 1px rgba(200,130,10,.12); }
+.aw-bar { background: #040302; border-bottom-color: rgba(200,130,10,.1); }
+.aw-dot:nth-child(1) { background: #2a1806; }
+.aw-dot:nth-child(2) { background: #1e1604; }
+.aw-dot:nth-child(3) { background: rgba(200,130,10,.4); }
+.aw-title { color: rgba(200,130,10,.25); font-family: 'Space Mono', monospace; font-size: 9px; }
+.aw-side { background: #050402; border-right-color: rgba(200,130,10,.08); }
+.aw-logo-p { color: var(--fg); }
+.aw-logo-n { color: var(--clay); }
+.aw-logo-sub { color: rgba(200,130,10,.2); }
+.aw-grp { color: rgba(200,130,10,.2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.aw-ni { color: #2a2010; font-family: 'Space Mono', monospace; font-size: 9px; }
+.aw-ni.on { background: rgba(200,130,10,.08); color: var(--clay); border-left-color: var(--clay); }
+.aw-main { background: #080604; }
+.aw-pg-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 14px; }
+.aw-pg-sub { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 8px; }
+.kpi-c { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.kpi-label { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.kpi-value { font-family: 'Space Mono', monospace; }
+.pos { color: var(--sage2); }
+.neu { color: var(--clay); }
+.chart-wrap { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.chart-title { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 8px; }
+.chart-leg-item { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.bar-rev { background: linear-gradient(180deg, var(--clay), #8a5606); }
+.bar-exp { background: rgba(200,130,10,.1); }
+.bar-lbl { font-family: 'Space Mono', monospace; font-size: 7px; color: #2a2010; }
+.pipe-col { background: rgba(200,130,10,.025); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.pipe-num { font-family: 'Space Mono', monospace; }
+.pipe-lbl { font-family: 'Space Mono', monospace; }
+.ord-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.06); border-radius: 0; }
+.ord-row:hover { background: rgba(200,130,10,.05); }
+.ord-client { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-item { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-price { font-family: 'Space Mono', monospace; color: var(--clay); }
+.badge { border-radius: 0; font-family: 'Space Mono', monospace; }
+.b-pend { background: rgba(200,130,10,.08); color: var(--clay); }
+.b-prod { background: rgba(168,80,10,.1); color: #c87040; }
+.b-done { background: rgba(90,136,64,.08); color: var(--sage2); }
+.b-ship { background: rgba(64,120,168,.08); color: #6898c8; }
+.calc-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.c-sec-t { color: var(--clay); font-family: 'Space Mono', monospace; }
+.c-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.c-inp { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; color: var(--fg2); font-family: 'Space Mono', monospace; }
+.c-inp:focus { border-color: var(--clay); }
+.c-sel { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; color: var(--fg2); }
+.result-box { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.2); border-radius: 0; }
+.res-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.res-val { color: var(--fg); font-family: 'Space Mono', monospace; }
+.res-total-lbl { color: var(--fg); font-family: 'Space Mono', monospace; }
+.res-total-val { color: var(--clay); font-family: 'Space Mono', monospace; }
+.res-margin-txt { color: var(--sage2); font-family: 'Space Mono', monospace; }
+.monthly-banner { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.15); border-radius: 0; }
+.mb-lbl { font-family: 'Space Mono', monospace; color: var(--sage2); }
+.mb-val { font-family: 'Space Mono', monospace; color: var(--sage2); }
+.mb-sub { font-family: 'Space Mono', monospace; }
+.prod-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.07); border-radius: 0; }
+.prod-row:hover { background: rgba(200,130,10,.05); }
+.prod-name { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.prod-mat { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.prod-price { color: var(--clay); font-family: 'Space Mono', monospace; }
+.margin-bar { background: linear-gradient(90deg, var(--sage), var(--sage2)); }
+.prod-margin-val { color: var(--sage2); font-family: 'Space Mono', monospace; }
+.niche-tag { background: rgba(200,130,10,.08); color: var(--clay); border-radius: 0; font-family: 'Space Mono', monospace; }
+.fil-item-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.06); border-radius: 0; }
+.fil-item-row:hover { background: rgba(200,130,10,.05); }
+.fil-item-row.sel { border-color: rgba(200,130,10,.4); background: rgba(200,130,10,.06); }
+.fil-name-main { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.fil-name-sub { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.fil-price-tag { font-family: 'Space Mono', monospace; }
+.fil-list-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.fil-calc-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.fil-calc-result { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.fil-res-head { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.fil-res-l { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.fil-res-v { color: var(--fg); font-family: 'Space Mono', monospace; }
+.fil-best { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.15); border-radius: 0; color: var(--sage2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-filt { background: transparent; border-color: rgba(200,130,10,.15); color: var(--muted2); border-radius: 0; font-family: 'Space Mono', monospace; }
+.ord-filt.on, .ord-filt:hover { background: rgba(200,130,10,.08); color: var(--clay); border-color: rgba(200,130,10,.3); }
+.prod-th { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.sc-tab { border-radius: 0; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .06em; }
+.sc-tab.active { background: var(--clay); color: #07060a; border-color: transparent; box-shadow: 0 0 20px rgba(200,130,10,.3); }
+
+/* ── Mobile nav ── */
+.mobile-menu { background: rgba(7,6,10,.98); border-bottom-color: rgba(200,130,10,.15); }
+.mobile-menu a { color: var(--fg); border-bottom-color: rgba(200,130,10,.07); font-family: 'Space Mono', monospace; font-size: 12px; }
+
+/* ── Amber ambient glow on page ── */
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(200,130,10,.07), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Retro horizontal rule between sections ── */
+section::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,130,10,.12), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+}
+
+/* ── Guarantee badge ── */
+.guarantee-badge { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.2); border-radius: 0; color: var(--sage2); }
+
 </style>
 </head>
 <body>
@@ -407,10 +839,10 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <!-- AUTH BUTTONS — sempre visíveis -->
+  <!-- AUTH BUTTONS -->
   <div id="nav-auth-area" style="display:flex;align-items:center;gap:8px;position:relative">
 
-    <!-- Não logado -->
+    <!-- Logged out -->
     <div id="nav-guest" style="display:flex;align-items:center;gap:8px">
       <button onclick="openAuth('login')" style="padding:8px 16px;border-radius:99px;background:transparent;border:1px solid rgba(255,255,255,.15);color:#c8d4e0;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap">Sign in</button>
       <button onclick="openAuth('register')" style="padding:8px 18px;border-radius:99px;background:linear-gradient(135deg,#C8705A,#a85040);border:none;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;transition:all .2s;white-space:nowrap;box-shadow:0 3px 12px rgba(200,112,90,.4)">Create account</button>
@@ -511,7 +943,7 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
             <div class="mkcard"><div class="mkcard-val" style="color:var(--gold)">74%</div><div class="mkcard-lbl">Avg Margin</div></div>
           </div>
           <div class="mkbar"><div class="mkbar-fill"></div></div>
-          <div class="mkrow"><span class="mkrow-dot" style="background:var(--gold)"></span><span style="flex:1">João Silva — Desk Organizer × 3</span><span style="color:var(--clay);font-weight:700">€54</span></div>
+          <div class="mkrow"><span class="mkrow-dot" style="background:var(--gold)"></span><span style="flex:1">John Silva — Desk Organizer x3</span><span style="color:var(--clay);font-weight:700">€54</span></div>
           <div class="mkrow"><span class="mkrow-dot" style="background:var(--sage)"></span><span style="flex:1">Maria Santos — Cable Hub</span><span style="color:var(--sage);font-weight:700">€18</span></div>
           <div class="mkrow"><span class="mkrow-dot" style="background:var(--clay)"></span><span style="flex:1">Carlos Mendes — Vase Set</span><span style="color:var(--muted);font-weight:700">€32</span></div>
         </div>
@@ -676,7 +1108,439 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   <h2 class="text-center reveal reveal-delay-1">Before PrintNeat vs After</h2>
   <p class="section-sub text-center reveal reveal-delay-2">This is what running a 3D printing business looks like — before and after one app changes everything.</p>
 
-  <style>.bva-grid{grid-template-columns:1fr 1fr}@media(max-width:700px){.bva-grid{grid-template-columns:1fr!important}}</style>
+  <style>.bva-grid{grid-template-columns:1fr 1fr}@media(max-width:700px){.bva-grid{grid-template-columns:1fr!important}}
+/* ═══ RETRO OVERRIDE ═══ */
+/* ══════════════════════════════════════════════════
+   RETRO PROFESSIONAL THEME OVERRIDE
+   Palette: Amber on warm near-black — precision instrument / 1970s technical catalogue
+   Type: Space Mono (display) · IBM Plex Serif (body)
+   ══════════════════════════════════════════════════ */
+
+/* ── Google Fonts already linked above; this block injects retro overrides ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --clay:#c8820a;  --clay2:#8a5606;  --clay3:#e8a030;
+  --gold:#a89040;  --gold2:#c8b060;
+  --sage:#5a8840;  --sage2:#7ab060;
+  --bg:#07060a;    --bg2:#0b0a0e;    --bg3:#0f0e12;
+  --card:rgba(200,130,10,.035);  --card2:rgba(200,130,10,.07);
+  --border:rgba(200,130,10,.14);  --border2:rgba(200,130,10,.26);
+  --fg:#e0d4b8;    --fg2:#c0b090;
+  --muted:#4a3c20;  --muted2:#6a5830;
+  --r:4px; --r2:6px;
+  --shadow-clay:0 8px 32px rgba(200,130,10,.22);
+  --shadow-card:0 4px 24px rgba(0,0,0,.5);
+  --amber:#c8820a;
+}
+
+/* ── Dot-grid background texture ── */
+body {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  background: #07060a;
+  background-image:
+    radial-gradient(circle, rgba(200,130,10,.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--fg);
+}
+
+/* Remove old noise texture so dot-grid shows cleanly */
+body::before { display: none; }
+
+/* ── Headings → Space Mono ── */
+h1, h2, h3, h4, .hero-badge, .section-label,
+.price-tier, .feat-title, .why-title, .step-title,
+.testi-name, .nav-logo-p, .nav-logo-n,
+.auth-logo-p, .auth-logo-n,
+.aw-logo-p, .aw-logo-n,
+.mockup-sb-brand-p, .mockup-sb-brand-n {
+  font-family: 'Space Mono', 'Courier New', monospace;
+}
+
+h1 { letter-spacing: -.02em; }
+h2 { letter-spacing: -.015em; font-weight: 700; }
+
+/* ── Nav ── */
+nav {
+  background: rgba(7,6,10,.92);
+  border-bottom: 1px solid rgba(200,130,10,.2);
+  box-shadow: 0 1px 0 rgba(200,130,10,.06);
+}
+.nav-logo-p { color: var(--fg); letter-spacing: .06em; }
+.nav-logo-n { color: var(--clay); letter-spacing: .06em; }
+.nav-links a { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .05em; }
+.nav-links a:hover { color: var(--clay); }
+
+/* ── Buttons ── */
+.btn { border-radius: 2px; letter-spacing: .06em; font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; }
+.btn-ghost { background: transparent; border: 1px solid rgba(200,130,10,.3); color: var(--clay); }
+.btn-ghost:hover { background: rgba(200,130,10,.08); border-color: var(--clay); color: var(--clay3); }
+.btn-primary { background: var(--clay); color: #07060a; box-shadow: none; font-weight: 700; }
+.btn-primary:hover { background: var(--clay3); transform: none; box-shadow: 0 0 0 1px var(--clay3), 0 0 20px rgba(200,130,10,.3); filter: none; }
+.btn-gold { background: transparent; border: 1px solid var(--gold); color: var(--gold); box-shadow: none; }
+.btn-gold:hover { background: rgba(168,144,64,.12); box-shadow: none; transform: none; }
+.btn-lg { border-radius: 2px; }
+
+/* ── Launch banner ── */
+#launch-banner {
+  background: linear-gradient(90deg,#0c0a06,#100e08,#0c0a06);
+  border-bottom: 1px solid rgba(200,130,10,.25);
+}
+.lb-pulse { background: var(--clay); }
+.lb-text { color: var(--muted2); }
+.lb-text strong { color: var(--clay3); }
+.lb-cta { color: var(--clay); border-color: rgba(200,130,10,.3); border-radius: 1px; }
+
+/* ── Hero ── */
+#hero {
+  background: none;
+}
+.hero-orb1, .hero-orb2 { display: none; }
+
+/* Amber ruled-line under hero headline */
+.hero-badge {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.35);
+  border-radius: 0;
+  color: var(--clay);
+  letter-spacing: .2em;
+  font-family: 'Space Mono', monospace;
+}
+.hero-badge-dot { background: var(--clay); }
+
+h1 .accent {
+  background: linear-gradient(90deg, var(--clay), var(--clay3), var(--gold2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: none;
+}
+.hero-sub { font-family: 'IBM Plex Serif', Georgia, serif; font-style: italic; color: var(--muted2); }
+
+/* ── Stats ── */
+.stats-bar {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.2);
+  border-radius: 0;
+  box-shadow: none;
+}
+.stat { border-right-color: rgba(200,130,10,.12); }
+.stat-val {
+  background: none;
+  -webkit-text-fill-color: var(--clay);
+  color: var(--clay);
+  font-family: 'Space Mono', monospace;
+}
+.stat-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .15em; }
+
+/* ── Section labels ── */
+.section-label {
+  background: none;
+  -webkit-text-fill-color: var(--clay);
+  color: var(--clay);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .3em;
+  /* ruled-line treatment */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+.text-center .section-label { justify-content: center; }
+.section-label::before, .section-label::after {
+  content: '';
+  height: 1px;
+  width: 32px;
+  background: rgba(200,130,10,.4);
+}
+
+/* ── Feature cards ── */
+.feat-card {
+  background: rgba(200,130,10,.02);
+  border: 1px solid rgba(200,130,10,.15);
+  border-radius: 0;
+  box-shadow: none;
+}
+.feat-card::before { background: rgba(200,130,10,.04); }
+.feat-card:hover { border-color: rgba(200,130,10,.4); transform: none; box-shadow: inset 0 0 0 1px rgba(200,130,10,.15), 0 0 40px rgba(200,130,10,.06); }
+.feat-title { color: var(--fg); font-size: 13px; letter-spacing: .04em; }
+.feat-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.ft-pro { background: rgba(200,130,10,.08); color: var(--clay); border-color: rgba(200,130,10,.22); border-radius: 0; }
+.ft-xl { background: rgba(168,144,64,.08); color: var(--gold2); border-color: rgba(168,144,64,.22); border-radius: 0; }
+.ft-all { background: rgba(90,136,64,.08); color: var(--sage2); border-color: rgba(90,136,64,.22); border-radius: 0; }
+
+/* ── Why cards ── */
+.why-card {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.12);
+  border-radius: 0;
+}
+.why-card:hover { border-color: rgba(200,130,10,.35); transform: none; box-shadow: inset 0 0 0 1px rgba(200,130,10,.1), 0 0 30px rgba(200,130,10,.05); }
+.why-title { color: var(--fg); font-size: 16px; }
+.why-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.why-pill { background: transparent; color: var(--clay); border-color: rgba(200,130,10,.3); border-radius: 0; font-family: 'Space Mono', monospace; font-size: 8px; }
+
+/* ── Who it's for ── */
+.for-card { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; }
+.for-card:hover { border-color: rgba(200,130,10,.3); transform: none; }
+.for-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 12px; }
+.for-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+
+/* ── Comparison table ── */
+.cmp-table th { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .15em; border-bottom-color: rgba(200,130,10,.12); }
+.cmp-table th.cmp-hl { color: var(--clay); background: rgba(200,130,10,.04); border-radius: 0; }
+.cmp-table td { color: var(--muted2); border-bottom-color: rgba(200,130,10,.06); font-family: 'IBM Plex Serif', serif; }
+.cmp-table td:first-child { color: var(--fg2); }
+.cmp-table td.cmp-hl { background: rgba(200,130,10,.03); color: var(--fg); }
+.cmp-yes { color: var(--sage2); }
+.cmp-no { color: #2a2018; }
+.cmp-part { color: var(--clay); }
+
+/* ── Steps / How it works ── */
+.step-num {
+  background: transparent;
+  border: 1px solid var(--clay);
+  box-shadow: none;
+  color: var(--clay);
+  border-radius: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+}
+.steps::before { background: linear-gradient(90deg, var(--clay), var(--gold), var(--sage2)); opacity: .25; }
+.step-title { color: var(--fg); font-size: 14px; letter-spacing: .03em; }
+.step-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+
+/* ── App mockup shell ── */
+.mockup-frame { background: #0a0906; border: 1px solid rgba(200,130,10,.2); border-radius: 4px; box-shadow: 0 40px 100px rgba(0,0,0,.8), 0 0 0 1px rgba(200,130,10,.08), 0 0 60px rgba(200,130,10,.04); }
+.mockup-bar { background: #060504; border-bottom-color: rgba(200,130,10,.12); }
+.mockup-dot:nth-child(1) { background: #3a2810; }
+.mockup-dot:nth-child(2) { background: #2a2010; }
+.mockup-dot:nth-child(3) { background: rgba(200,130,10,.4); }
+.mockup-title { color: rgba(200,130,10,.3); font-family: 'Space Mono', monospace; font-size: 9px; }
+.mockup-sidebar { background: #050403; border-right-color: rgba(200,130,10,.08); }
+.mockup-sb-brand-p { color: var(--fg); font-size: 11px; }
+.mockup-sb-brand-n { color: var(--clay); font-size: 11px; }
+.mockup-sb-tag { color: rgba(200,130,10,.2); }
+.mkitem { color: #2a2010; border-left-color: transparent; font-family: 'Space Mono', monospace; font-size: 9px; }
+.mkitem.active { background: rgba(200,130,10,.08); color: var(--clay); border-left-color: var(--clay); }
+.mockup-main { background: #080706; }
+.mockup-ph-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 13px; }
+.mockup-ph-sub { color: var(--muted2); }
+.mkcard { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.mkcard-val { color: var(--clay); }
+.mkcard-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.mkbar { background: rgba(200,130,10,.06); }
+.mkbar-fill { background: linear-gradient(90deg, var(--clay), var(--gold)); }
+.mkrow { background: rgba(200,130,10,.025); border-radius: 0; color: var(--muted2); }
+
+/* ── Pricing ── */
+.price-card { background: transparent; border: 1px solid rgba(200,130,10,.12); border-radius: 0; box-shadow: none; }
+.price-card.featured { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.4); box-shadow: inset 0 0 0 1px rgba(200,130,10,.1), 0 0 50px rgba(200,130,10,.08); }
+.price-badge { background: var(--clay); color: #07060a; border-radius: 0; font-family: 'Space Mono', monospace; font-size: 8px; }
+.price-tier { color: var(--clay); font-family: 'Space Mono', monospace; font-size: 9px; }
+.price-tier.gold { color: var(--gold2); }
+.price-tier.purple { color: var(--clay3); }
+.price-name { color: var(--fg); font-family: 'Space Mono', monospace; }
+.price-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.price-val { background: none; -webkit-text-fill-color: var(--clay); color: var(--clay); font-family: 'Space Mono', monospace; }
+.price-val span { color: var(--muted2); }
+.price-period { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.price-divider { background: rgba(200,130,10,.1); }
+.price-features li { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-size: 12px; }
+.price-features li::before { color: var(--sage2); }
+.price-features li.no::before { color: #2a2010; }
+.price-features li.no { color: #2a2010; }
+
+/* ── Testimonials ── */
+.testi-card { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; box-shadow: none; }
+.testi-card:hover { border-color: rgba(200,130,10,.3); transform: none; box-shadow: 0 0 30px rgba(200,130,10,.04); }
+.testi-stars { color: var(--clay); }
+.testi-text { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-style: italic; }
+.testi-name { color: var(--fg); font-size: 11px; letter-spacing: .04em; }
+.testi-role { color: var(--muted2); font-size: 9px; font-family: 'Space Mono', monospace; }
+.testi-avatar { background: rgba(200,130,10,.12); border: 1px solid rgba(200,130,10,.25); border-radius: 0; }
+
+/* ── FAQ ── */
+.faq-item { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; }
+.faq-item.open { border-color: rgba(200,130,10,.35); box-shadow: none; }
+.faq-q { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.faq-q:hover { color: var(--clay); }
+.faq-arrow { color: var(--clay); }
+.faq-a-inner { color: var(--muted2); font-family: 'IBM Plex Serif', serif; line-height: 1.9; }
+
+/* ── CTA box ── */
+.cta-box {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.3);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(200,130,10,.08), 0 0 80px rgba(200,130,10,.06);
+  position: relative;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(200,130,10,.08);
+  pointer-events: none;
+}
+.cta-orb { display: none; }
+.cta-box p { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.tier-lite { background: transparent; border-radius: 0; border-color: rgba(90,136,64,.35); color: var(--sage2); }
+.tier-pro { background: transparent; border-radius: 0; border-color: rgba(200,130,10,.4); color: var(--clay); }
+.tier-xl { background: transparent; border-radius: 0; border-color: rgba(168,144,64,.35); color: var(--gold2); }
+.tier-lite:hover { background: rgba(90,136,64,.06); transform: none; }
+.tier-pro:hover { background: rgba(200,130,10,.06); transform: none; }
+.tier-xl:hover { background: rgba(168,144,64,.06); transform: none; }
+
+/* ── Sticky bar ── */
+#sticky-bar { background: rgba(7,6,10,.97); border-top: 1px solid rgba(200,130,10,.25); }
+.sticky-bar-txt { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 10px; }
+.sticky-bar-txt strong { color: var(--fg); }
+
+/* ── Newsletter ── */
+.nl-input { background: transparent; border: 1px solid rgba(200,130,10,.2); border-radius: 0; color: var(--fg); font-family: 'IBM Plex Serif', serif; }
+.nl-input:focus { border-color: var(--clay); }
+.nl-btn { background: var(--clay); border-radius: 0; color: #07060a; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; box-shadow: none; }
+.nl-btn:hover { background: var(--clay3); transform: none; box-shadow: none; }
+
+/* ── Footer ── */
+footer { background: #050404; border-top: 1px solid rgba(200,130,10,.12); }
+.footer-col h4 { background: none; -webkit-text-fill-color: var(--clay); color: var(--clay); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .2em; }
+.footer-col a { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-size: 12px; }
+.footer-col a:hover { color: var(--clay); }
+.footer-bottom { color: #2a2010; }
+.footer-desc { font-family: 'IBM Plex Serif', serif; color: var(--muted2); }
+
+/* ── Auth modal ── */
+#auth-box { background: #0a0806; border: 1px solid rgba(200,130,10,.2); border-radius: 0; }
+.auth-top-bar { background: linear-gradient(90deg, var(--clay), var(--gold), var(--sage2)); }
+.auth-logo-p { color: var(--fg); font-family: 'Space Mono', monospace; }
+.auth-logo-n { color: var(--clay); font-family: 'Space Mono', monospace; }
+.auth-title { color: var(--fg); font-family: 'Space Mono', monospace; }
+.auth-field label { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.auth-field input { background: rgba(200,130,10,.03); border: 1px solid rgba(200,130,10,.15); border-radius: 0; color: var(--fg); }
+.auth-field input:focus { border-color: var(--clay); }
+.auth-submit { background: var(--clay); border-radius: 0; color: #07060a; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; box-shadow: none; }
+.auth-tab { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 10px; }
+.auth-tab.active { background: rgba(200,130,10,.08); color: var(--clay); }
+
+/* ── Screenshot interactive mockups ── */
+.aw { border-radius: 0; background: #080604; box-shadow: 0 40px 100px rgba(0,0,0,.85), 0 0 0 1px rgba(200,130,10,.12); }
+.aw-bar { background: #040302; border-bottom-color: rgba(200,130,10,.1); }
+.aw-dot:nth-child(1) { background: #2a1806; }
+.aw-dot:nth-child(2) { background: #1e1604; }
+.aw-dot:nth-child(3) { background: rgba(200,130,10,.4); }
+.aw-title { color: rgba(200,130,10,.25); font-family: 'Space Mono', monospace; font-size: 9px; }
+.aw-side { background: #050402; border-right-color: rgba(200,130,10,.08); }
+.aw-logo-p { color: var(--fg); }
+.aw-logo-n { color: var(--clay); }
+.aw-logo-sub { color: rgba(200,130,10,.2); }
+.aw-grp { color: rgba(200,130,10,.2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.aw-ni { color: #2a2010; font-family: 'Space Mono', monospace; font-size: 9px; }
+.aw-ni.on { background: rgba(200,130,10,.08); color: var(--clay); border-left-color: var(--clay); }
+.aw-main { background: #080604; }
+.aw-pg-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 14px; }
+.aw-pg-sub { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 8px; }
+.kpi-c { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.kpi-label { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.kpi-value { font-family: 'Space Mono', monospace; }
+.pos { color: var(--sage2); }
+.neu { color: var(--clay); }
+.chart-wrap { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.chart-title { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 8px; }
+.chart-leg-item { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.bar-rev { background: linear-gradient(180deg, var(--clay), #8a5606); }
+.bar-exp { background: rgba(200,130,10,.1); }
+.bar-lbl { font-family: 'Space Mono', monospace; font-size: 7px; color: #2a2010; }
+.pipe-col { background: rgba(200,130,10,.025); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.pipe-num { font-family: 'Space Mono', monospace; }
+.pipe-lbl { font-family: 'Space Mono', monospace; }
+.ord-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.06); border-radius: 0; }
+.ord-row:hover { background: rgba(200,130,10,.05); }
+.ord-client { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-item { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-price { font-family: 'Space Mono', monospace; color: var(--clay); }
+.badge { border-radius: 0; font-family: 'Space Mono', monospace; }
+.b-pend { background: rgba(200,130,10,.08); color: var(--clay); }
+.b-prod { background: rgba(168,80,10,.1); color: #c87040; }
+.b-done { background: rgba(90,136,64,.08); color: var(--sage2); }
+.b-ship { background: rgba(64,120,168,.08); color: #6898c8; }
+.calc-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.c-sec-t { color: var(--clay); font-family: 'Space Mono', monospace; }
+.c-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.c-inp { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; color: var(--fg2); font-family: 'Space Mono', monospace; }
+.c-inp:focus { border-color: var(--clay); }
+.c-sel { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; color: var(--fg2); }
+.result-box { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.2); border-radius: 0; }
+.res-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.res-val { color: var(--fg); font-family: 'Space Mono', monospace; }
+.res-total-lbl { color: var(--fg); font-family: 'Space Mono', monospace; }
+.res-total-val { color: var(--clay); font-family: 'Space Mono', monospace; }
+.res-margin-txt { color: var(--sage2); font-family: 'Space Mono', monospace; }
+.monthly-banner { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.15); border-radius: 0; }
+.mb-lbl { font-family: 'Space Mono', monospace; color: var(--sage2); }
+.mb-val { font-family: 'Space Mono', monospace; color: var(--sage2); }
+.mb-sub { font-family: 'Space Mono', monospace; }
+.prod-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.07); border-radius: 0; }
+.prod-row:hover { background: rgba(200,130,10,.05); }
+.prod-name { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.prod-mat { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.prod-price { color: var(--clay); font-family: 'Space Mono', monospace; }
+.margin-bar { background: linear-gradient(90deg, var(--sage), var(--sage2)); }
+.prod-margin-val { color: var(--sage2); font-family: 'Space Mono', monospace; }
+.niche-tag { background: rgba(200,130,10,.08); color: var(--clay); border-radius: 0; font-family: 'Space Mono', monospace; }
+.fil-item-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.06); border-radius: 0; }
+.fil-item-row:hover { background: rgba(200,130,10,.05); }
+.fil-item-row.sel { border-color: rgba(200,130,10,.4); background: rgba(200,130,10,.06); }
+.fil-name-main { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.fil-name-sub { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.fil-price-tag { font-family: 'Space Mono', monospace; }
+.fil-list-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.fil-calc-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.fil-calc-result { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.fil-res-head { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.fil-res-l { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.fil-res-v { color: var(--fg); font-family: 'Space Mono', monospace; }
+.fil-best { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.15); border-radius: 0; color: var(--sage2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-filt { background: transparent; border-color: rgba(200,130,10,.15); color: var(--muted2); border-radius: 0; font-family: 'Space Mono', monospace; }
+.ord-filt.on, .ord-filt:hover { background: rgba(200,130,10,.08); color: var(--clay); border-color: rgba(200,130,10,.3); }
+.prod-th { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.sc-tab { border-radius: 0; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .06em; }
+.sc-tab.active { background: var(--clay); color: #07060a; border-color: transparent; box-shadow: 0 0 20px rgba(200,130,10,.3); }
+
+/* ── Mobile nav ── */
+.mobile-menu { background: rgba(7,6,10,.98); border-bottom-color: rgba(200,130,10,.15); }
+.mobile-menu a { color: var(--fg); border-bottom-color: rgba(200,130,10,.07); font-family: 'Space Mono', monospace; font-size: 12px; }
+
+/* ── Amber ambient glow on page ── */
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(200,130,10,.07), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Retro horizontal rule between sections ── */
+section::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,130,10,.12), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+}
+
+/* ── Guarantee badge ── */
+.guarantee-badge { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.2); border-radius: 0; color: var(--sage2); }
+
+</style>
   <div style="display:grid;gap:24px;margin-top:56px;max-width:900px;margin-left:auto;margin-right:auto" class="bva-grid">
 
     <!-- BEFORE -->
@@ -866,10 +1730,10 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   <!-- TAB SWITCHER -->
   <div style="display:flex;justify-content:center;margin-bottom:40px;flex-wrap:wrap;gap:8px" class="reveal">
     <button class="sc-tab active" onclick="showScreen('dashboard',this)">Dashboard</button>
-    <button class="sc-tab" onclick="showScreen('calc',this)">Calculadora</button>
-    <button class="sc-tab" onclick="showScreen('orders',this)">Encomendas</button>
-    <button class="sc-tab" onclick="showScreen('products',this)">Produtos</button>
-    <button class="sc-tab" onclick="showScreen('filament',this)">Filamentos</button>
+    <button class="sc-tab" onclick="showScreen('calc',this)">Calculator</button>
+    <button class="sc-tab" onclick="showScreen('orders',this)">Orders</button>
+    <button class="sc-tab" onclick="showScreen('products',this)">Products</button>
+    <button class="sc-tab" onclick="showScreen('filament',this)">Filaments</button>
   </div>
 
   <style>
@@ -990,7 +1854,439 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   .fil-res-v{color:#c8d4e0;font-weight:700;font-variant-numeric:tabular-nums}
   .fil-best{background:rgba(74,156,111,.08);border:1px solid rgba(74,156,111,.15);border-radius:8px;padding:10px;font-size:9px;color:#4a9c6f;font-weight:700;text-align:center}
   @media(max-width:660px){.aw-side{display:none}.kpi-row{grid-template-columns:repeat(2,1fr)}.calc-layout,.fil-layout{grid-template-columns:1fr}.prod-th,.prod-row{grid-template-columns:2fr 60px 60px 50px}.prod-th>:nth-child(3),.prod-row>:nth-child(3),.prod-th>:nth-child(6),.prod-row>:nth-child(6){display:none}.pipeline{grid-template-columns:repeat(2,1fr)}}
-  </style>
+  
+/* ═══ RETRO OVERRIDE ═══ */
+/* ══════════════════════════════════════════════════
+   RETRO PROFESSIONAL THEME OVERRIDE
+   Palette: Amber on warm near-black — precision instrument / 1970s technical catalogue
+   Type: Space Mono (display) · IBM Plex Serif (body)
+   ══════════════════════════════════════════════════ */
+
+/* ── Google Fonts already linked above; this block injects retro overrides ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  --clay:#c8820a;  --clay2:#8a5606;  --clay3:#e8a030;
+  --gold:#a89040;  --gold2:#c8b060;
+  --sage:#5a8840;  --sage2:#7ab060;
+  --bg:#07060a;    --bg2:#0b0a0e;    --bg3:#0f0e12;
+  --card:rgba(200,130,10,.035);  --card2:rgba(200,130,10,.07);
+  --border:rgba(200,130,10,.14);  --border2:rgba(200,130,10,.26);
+  --fg:#e0d4b8;    --fg2:#c0b090;
+  --muted:#4a3c20;  --muted2:#6a5830;
+  --r:4px; --r2:6px;
+  --shadow-clay:0 8px 32px rgba(200,130,10,.22);
+  --shadow-card:0 4px 24px rgba(0,0,0,.5);
+  --amber:#c8820a;
+}
+
+/* ── Dot-grid background texture ── */
+body {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  background: #07060a;
+  background-image:
+    radial-gradient(circle, rgba(200,130,10,.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--fg);
+}
+
+/* Remove old noise texture so dot-grid shows cleanly */
+body::before { display: none; }
+
+/* ── Headings → Space Mono ── */
+h1, h2, h3, h4, .hero-badge, .section-label,
+.price-tier, .feat-title, .why-title, .step-title,
+.testi-name, .nav-logo-p, .nav-logo-n,
+.auth-logo-p, .auth-logo-n,
+.aw-logo-p, .aw-logo-n,
+.mockup-sb-brand-p, .mockup-sb-brand-n {
+  font-family: 'Space Mono', 'Courier New', monospace;
+}
+
+h1 { letter-spacing: -.02em; }
+h2 { letter-spacing: -.015em; font-weight: 700; }
+
+/* ── Nav ── */
+nav {
+  background: rgba(7,6,10,.92);
+  border-bottom: 1px solid rgba(200,130,10,.2);
+  box-shadow: 0 1px 0 rgba(200,130,10,.06);
+}
+.nav-logo-p { color: var(--fg); letter-spacing: .06em; }
+.nav-logo-n { color: var(--clay); letter-spacing: .06em; }
+.nav-links a { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .05em; }
+.nav-links a:hover { color: var(--clay); }
+
+/* ── Buttons ── */
+.btn { border-radius: 2px; letter-spacing: .06em; font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; }
+.btn-ghost { background: transparent; border: 1px solid rgba(200,130,10,.3); color: var(--clay); }
+.btn-ghost:hover { background: rgba(200,130,10,.08); border-color: var(--clay); color: var(--clay3); }
+.btn-primary { background: var(--clay); color: #07060a; box-shadow: none; font-weight: 700; }
+.btn-primary:hover { background: var(--clay3); transform: none; box-shadow: 0 0 0 1px var(--clay3), 0 0 20px rgba(200,130,10,.3); filter: none; }
+.btn-gold { background: transparent; border: 1px solid var(--gold); color: var(--gold); box-shadow: none; }
+.btn-gold:hover { background: rgba(168,144,64,.12); box-shadow: none; transform: none; }
+.btn-lg { border-radius: 2px; }
+
+/* ── Launch banner ── */
+#launch-banner {
+  background: linear-gradient(90deg,#0c0a06,#100e08,#0c0a06);
+  border-bottom: 1px solid rgba(200,130,10,.25);
+}
+.lb-pulse { background: var(--clay); }
+.lb-text { color: var(--muted2); }
+.lb-text strong { color: var(--clay3); }
+.lb-cta { color: var(--clay); border-color: rgba(200,130,10,.3); border-radius: 1px; }
+
+/* ── Hero ── */
+#hero {
+  background: none;
+}
+.hero-orb1, .hero-orb2 { display: none; }
+
+/* Amber ruled-line under hero headline */
+.hero-badge {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.35);
+  border-radius: 0;
+  color: var(--clay);
+  letter-spacing: .2em;
+  font-family: 'Space Mono', monospace;
+}
+.hero-badge-dot { background: var(--clay); }
+
+h1 .accent {
+  background: linear-gradient(90deg, var(--clay), var(--clay3), var(--gold2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: none;
+}
+.hero-sub { font-family: 'IBM Plex Serif', Georgia, serif; font-style: italic; color: var(--muted2); }
+
+/* ── Stats ── */
+.stats-bar {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.2);
+  border-radius: 0;
+  box-shadow: none;
+}
+.stat { border-right-color: rgba(200,130,10,.12); }
+.stat-val {
+  background: none;
+  -webkit-text-fill-color: var(--clay);
+  color: var(--clay);
+  font-family: 'Space Mono', monospace;
+}
+.stat-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .15em; }
+
+/* ── Section labels ── */
+.section-label {
+  background: none;
+  -webkit-text-fill-color: var(--clay);
+  color: var(--clay);
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .3em;
+  /* ruled-line treatment */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+.text-center .section-label { justify-content: center; }
+.section-label::before, .section-label::after {
+  content: '';
+  height: 1px;
+  width: 32px;
+  background: rgba(200,130,10,.4);
+}
+
+/* ── Feature cards ── */
+.feat-card {
+  background: rgba(200,130,10,.02);
+  border: 1px solid rgba(200,130,10,.15);
+  border-radius: 0;
+  box-shadow: none;
+}
+.feat-card::before { background: rgba(200,130,10,.04); }
+.feat-card:hover { border-color: rgba(200,130,10,.4); transform: none; box-shadow: inset 0 0 0 1px rgba(200,130,10,.15), 0 0 40px rgba(200,130,10,.06); }
+.feat-title { color: var(--fg); font-size: 13px; letter-spacing: .04em; }
+.feat-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.ft-pro { background: rgba(200,130,10,.08); color: var(--clay); border-color: rgba(200,130,10,.22); border-radius: 0; }
+.ft-xl { background: rgba(168,144,64,.08); color: var(--gold2); border-color: rgba(168,144,64,.22); border-radius: 0; }
+.ft-all { background: rgba(90,136,64,.08); color: var(--sage2); border-color: rgba(90,136,64,.22); border-radius: 0; }
+
+/* ── Why cards ── */
+.why-card {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.12);
+  border-radius: 0;
+}
+.why-card:hover { border-color: rgba(200,130,10,.35); transform: none; box-shadow: inset 0 0 0 1px rgba(200,130,10,.1), 0 0 30px rgba(200,130,10,.05); }
+.why-title { color: var(--fg); font-size: 16px; }
+.why-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.why-pill { background: transparent; color: var(--clay); border-color: rgba(200,130,10,.3); border-radius: 0; font-family: 'Space Mono', monospace; font-size: 8px; }
+
+/* ── Who it's for ── */
+.for-card { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; }
+.for-card:hover { border-color: rgba(200,130,10,.3); transform: none; }
+.for-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 12px; }
+.for-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+
+/* ── Comparison table ── */
+.cmp-table th { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .15em; border-bottom-color: rgba(200,130,10,.12); }
+.cmp-table th.cmp-hl { color: var(--clay); background: rgba(200,130,10,.04); border-radius: 0; }
+.cmp-table td { color: var(--muted2); border-bottom-color: rgba(200,130,10,.06); font-family: 'IBM Plex Serif', serif; }
+.cmp-table td:first-child { color: var(--fg2); }
+.cmp-table td.cmp-hl { background: rgba(200,130,10,.03); color: var(--fg); }
+.cmp-yes { color: var(--sage2); }
+.cmp-no { color: #2a2018; }
+.cmp-part { color: var(--clay); }
+
+/* ── Steps / How it works ── */
+.step-num {
+  background: transparent;
+  border: 1px solid var(--clay);
+  box-shadow: none;
+  color: var(--clay);
+  border-radius: 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 18px;
+}
+.steps::before { background: linear-gradient(90deg, var(--clay), var(--gold), var(--sage2)); opacity: .25; }
+.step-title { color: var(--fg); font-size: 14px; letter-spacing: .03em; }
+.step-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+
+/* ── App mockup shell ── */
+.mockup-frame { background: #0a0906; border: 1px solid rgba(200,130,10,.2); border-radius: 4px; box-shadow: 0 40px 100px rgba(0,0,0,.8), 0 0 0 1px rgba(200,130,10,.08), 0 0 60px rgba(200,130,10,.04); }
+.mockup-bar { background: #060504; border-bottom-color: rgba(200,130,10,.12); }
+.mockup-dot:nth-child(1) { background: #3a2810; }
+.mockup-dot:nth-child(2) { background: #2a2010; }
+.mockup-dot:nth-child(3) { background: rgba(200,130,10,.4); }
+.mockup-title { color: rgba(200,130,10,.3); font-family: 'Space Mono', monospace; font-size: 9px; }
+.mockup-sidebar { background: #050403; border-right-color: rgba(200,130,10,.08); }
+.mockup-sb-brand-p { color: var(--fg); font-size: 11px; }
+.mockup-sb-brand-n { color: var(--clay); font-size: 11px; }
+.mockup-sb-tag { color: rgba(200,130,10,.2); }
+.mkitem { color: #2a2010; border-left-color: transparent; font-family: 'Space Mono', monospace; font-size: 9px; }
+.mkitem.active { background: rgba(200,130,10,.08); color: var(--clay); border-left-color: var(--clay); }
+.mockup-main { background: #080706; }
+.mockup-ph-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 13px; }
+.mockup-ph-sub { color: var(--muted2); }
+.mkcard { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.mkcard-val { color: var(--clay); }
+.mkcard-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.mkbar { background: rgba(200,130,10,.06); }
+.mkbar-fill { background: linear-gradient(90deg, var(--clay), var(--gold)); }
+.mkrow { background: rgba(200,130,10,.025); border-radius: 0; color: var(--muted2); }
+
+/* ── Pricing ── */
+.price-card { background: transparent; border: 1px solid rgba(200,130,10,.12); border-radius: 0; box-shadow: none; }
+.price-card.featured { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.4); box-shadow: inset 0 0 0 1px rgba(200,130,10,.1), 0 0 50px rgba(200,130,10,.08); }
+.price-badge { background: var(--clay); color: #07060a; border-radius: 0; font-family: 'Space Mono', monospace; font-size: 8px; }
+.price-tier { color: var(--clay); font-family: 'Space Mono', monospace; font-size: 9px; }
+.price-tier.gold { color: var(--gold2); }
+.price-tier.purple { color: var(--clay3); }
+.price-name { color: var(--fg); font-family: 'Space Mono', monospace; }
+.price-desc { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.price-val { background: none; -webkit-text-fill-color: var(--clay); color: var(--clay); font-family: 'Space Mono', monospace; }
+.price-val span { color: var(--muted2); }
+.price-period { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.price-divider { background: rgba(200,130,10,.1); }
+.price-features li { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-size: 12px; }
+.price-features li::before { color: var(--sage2); }
+.price-features li.no::before { color: #2a2010; }
+.price-features li.no { color: #2a2010; }
+
+/* ── Testimonials ── */
+.testi-card { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; box-shadow: none; }
+.testi-card:hover { border-color: rgba(200,130,10,.3); transform: none; box-shadow: 0 0 30px rgba(200,130,10,.04); }
+.testi-stars { color: var(--clay); }
+.testi-text { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-style: italic; }
+.testi-name { color: var(--fg); font-size: 11px; letter-spacing: .04em; }
+.testi-role { color: var(--muted2); font-size: 9px; font-family: 'Space Mono', monospace; }
+.testi-avatar { background: rgba(200,130,10,.12); border: 1px solid rgba(200,130,10,.25); border-radius: 0; }
+
+/* ── FAQ ── */
+.faq-item { background: transparent; border: 1px solid rgba(200,130,10,.1); border-radius: 0; }
+.faq-item.open { border-color: rgba(200,130,10,.35); box-shadow: none; }
+.faq-q { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: .02em; }
+.faq-q:hover { color: var(--clay); }
+.faq-arrow { color: var(--clay); }
+.faq-a-inner { color: var(--muted2); font-family: 'IBM Plex Serif', serif; line-height: 1.9; }
+
+/* ── CTA box ── */
+.cta-box {
+  background: transparent;
+  border: 1px solid rgba(200,130,10,.3);
+  border-radius: 0;
+  box-shadow: inset 0 0 0 1px rgba(200,130,10,.08), 0 0 80px rgba(200,130,10,.06);
+  position: relative;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(200,130,10,.08);
+  pointer-events: none;
+}
+.cta-orb { display: none; }
+.cta-box p { color: var(--muted2); font-family: 'IBM Plex Serif', serif; }
+.tier-lite { background: transparent; border-radius: 0; border-color: rgba(90,136,64,.35); color: var(--sage2); }
+.tier-pro { background: transparent; border-radius: 0; border-color: rgba(200,130,10,.4); color: var(--clay); }
+.tier-xl { background: transparent; border-radius: 0; border-color: rgba(168,144,64,.35); color: var(--gold2); }
+.tier-lite:hover { background: rgba(90,136,64,.06); transform: none; }
+.tier-pro:hover { background: rgba(200,130,10,.06); transform: none; }
+.tier-xl:hover { background: rgba(168,144,64,.06); transform: none; }
+
+/* ── Sticky bar ── */
+#sticky-bar { background: rgba(7,6,10,.97); border-top: 1px solid rgba(200,130,10,.25); }
+.sticky-bar-txt { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 10px; }
+.sticky-bar-txt strong { color: var(--fg); }
+
+/* ── Newsletter ── */
+.nl-input { background: transparent; border: 1px solid rgba(200,130,10,.2); border-radius: 0; color: var(--fg); font-family: 'IBM Plex Serif', serif; }
+.nl-input:focus { border-color: var(--clay); }
+.nl-btn { background: var(--clay); border-radius: 0; color: #07060a; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; box-shadow: none; }
+.nl-btn:hover { background: var(--clay3); transform: none; box-shadow: none; }
+
+/* ── Footer ── */
+footer { background: #050404; border-top: 1px solid rgba(200,130,10,.12); }
+.footer-col h4 { background: none; -webkit-text-fill-color: var(--clay); color: var(--clay); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .2em; }
+.footer-col a { color: var(--muted2); font-family: 'IBM Plex Serif', serif; font-size: 12px; }
+.footer-col a:hover { color: var(--clay); }
+.footer-bottom { color: #2a2010; }
+.footer-desc { font-family: 'IBM Plex Serif', serif; color: var(--muted2); }
+
+/* ── Auth modal ── */
+#auth-box { background: #0a0806; border: 1px solid rgba(200,130,10,.2); border-radius: 0; }
+.auth-top-bar { background: linear-gradient(90deg, var(--clay), var(--gold), var(--sage2)); }
+.auth-logo-p { color: var(--fg); font-family: 'Space Mono', monospace; }
+.auth-logo-n { color: var(--clay); font-family: 'Space Mono', monospace; }
+.auth-title { color: var(--fg); font-family: 'Space Mono', monospace; }
+.auth-field label { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.auth-field input { background: rgba(200,130,10,.03); border: 1px solid rgba(200,130,10,.15); border-radius: 0; color: var(--fg); }
+.auth-field input:focus { border-color: var(--clay); }
+.auth-submit { background: var(--clay); border-radius: 0; color: #07060a; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: .08em; box-shadow: none; }
+.auth-tab { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 10px; }
+.auth-tab.active { background: rgba(200,130,10,.08); color: var(--clay); }
+
+/* ── Screenshot interactive mockups ── */
+.aw { border-radius: 0; background: #080604; box-shadow: 0 40px 100px rgba(0,0,0,.85), 0 0 0 1px rgba(200,130,10,.12); }
+.aw-bar { background: #040302; border-bottom-color: rgba(200,130,10,.1); }
+.aw-dot:nth-child(1) { background: #2a1806; }
+.aw-dot:nth-child(2) { background: #1e1604; }
+.aw-dot:nth-child(3) { background: rgba(200,130,10,.4); }
+.aw-title { color: rgba(200,130,10,.25); font-family: 'Space Mono', monospace; font-size: 9px; }
+.aw-side { background: #050402; border-right-color: rgba(200,130,10,.08); }
+.aw-logo-p { color: var(--fg); }
+.aw-logo-n { color: var(--clay); }
+.aw-logo-sub { color: rgba(200,130,10,.2); }
+.aw-grp { color: rgba(200,130,10,.2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.aw-ni { color: #2a2010; font-family: 'Space Mono', monospace; font-size: 9px; }
+.aw-ni.on { background: rgba(200,130,10,.08); color: var(--clay); border-left-color: var(--clay); }
+.aw-main { background: #080604; }
+.aw-pg-title { color: var(--fg); font-family: 'Space Mono', monospace; font-size: 14px; }
+.aw-pg-sub { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 8px; }
+.kpi-c { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.kpi-label { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.kpi-value { font-family: 'Space Mono', monospace; }
+.pos { color: var(--sage2); }
+.neu { color: var(--clay); }
+.chart-wrap { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.chart-title { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 8px; }
+.chart-leg-item { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.bar-rev { background: linear-gradient(180deg, var(--clay), #8a5606); }
+.bar-exp { background: rgba(200,130,10,.1); }
+.bar-lbl { font-family: 'Space Mono', monospace; font-size: 7px; color: #2a2010; }
+.pipe-col { background: rgba(200,130,10,.025); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.pipe-num { font-family: 'Space Mono', monospace; }
+.pipe-lbl { font-family: 'Space Mono', monospace; }
+.ord-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.06); border-radius: 0; }
+.ord-row:hover { background: rgba(200,130,10,.05); }
+.ord-client { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-item { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-price { font-family: 'Space Mono', monospace; color: var(--clay); }
+.badge { border-radius: 0; font-family: 'Space Mono', monospace; }
+.b-pend { background: rgba(200,130,10,.08); color: var(--clay); }
+.b-prod { background: rgba(168,80,10,.1); color: #c87040; }
+.b-done { background: rgba(90,136,64,.08); color: var(--sage2); }
+.b-ship { background: rgba(64,120,168,.08); color: #6898c8; }
+.calc-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.c-sec-t { color: var(--clay); font-family: 'Space Mono', monospace; }
+.c-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.c-inp { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; color: var(--fg2); font-family: 'Space Mono', monospace; }
+.c-inp:focus { border-color: var(--clay); }
+.c-sel { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; color: var(--fg2); }
+.result-box { background: rgba(200,130,10,.04); border-color: rgba(200,130,10,.2); border-radius: 0; }
+.res-lbl { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.res-val { color: var(--fg); font-family: 'Space Mono', monospace; }
+.res-total-lbl { color: var(--fg); font-family: 'Space Mono', monospace; }
+.res-total-val { color: var(--clay); font-family: 'Space Mono', monospace; }
+.res-margin-txt { color: var(--sage2); font-family: 'Space Mono', monospace; }
+.monthly-banner { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.15); border-radius: 0; }
+.mb-lbl { font-family: 'Space Mono', monospace; color: var(--sage2); }
+.mb-val { font-family: 'Space Mono', monospace; color: var(--sage2); }
+.mb-sub { font-family: 'Space Mono', monospace; }
+.prod-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.07); border-radius: 0; }
+.prod-row:hover { background: rgba(200,130,10,.05); }
+.prod-name { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.prod-mat { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.prod-price { color: var(--clay); font-family: 'Space Mono', monospace; }
+.margin-bar { background: linear-gradient(90deg, var(--sage), var(--sage2)); }
+.prod-margin-val { color: var(--sage2); font-family: 'Space Mono', monospace; }
+.niche-tag { background: rgba(200,130,10,.08); color: var(--clay); border-radius: 0; font-family: 'Space Mono', monospace; }
+.fil-item-row { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.06); border-radius: 0; }
+.fil-item-row:hover { background: rgba(200,130,10,.05); }
+.fil-item-row.sel { border-color: rgba(200,130,10,.4); background: rgba(200,130,10,.06); }
+.fil-name-main { color: var(--fg2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.fil-name-sub { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.fil-price-tag { font-family: 'Space Mono', monospace; }
+.fil-list-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.fil-calc-panel { background: rgba(200,130,10,.02); border-color: rgba(200,130,10,.08); border-radius: 0; }
+.fil-calc-result { background: rgba(200,130,10,.03); border-color: rgba(200,130,10,.1); border-radius: 0; }
+.fil-res-head { color: var(--muted2); font-family: 'Space Mono', monospace; }
+.fil-res-l { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.fil-res-v { color: var(--fg); font-family: 'Space Mono', monospace; }
+.fil-best { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.15); border-radius: 0; color: var(--sage2); font-family: 'Space Mono', monospace; font-size: 9px; }
+.ord-filt { background: transparent; border-color: rgba(200,130,10,.15); color: var(--muted2); border-radius: 0; font-family: 'Space Mono', monospace; }
+.ord-filt.on, .ord-filt:hover { background: rgba(200,130,10,.08); color: var(--clay); border-color: rgba(200,130,10,.3); }
+.prod-th { color: var(--muted2); font-family: 'Space Mono', monospace; font-size: 7px; }
+.sc-tab { border-radius: 0; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: .06em; }
+.sc-tab.active { background: var(--clay); color: #07060a; border-color: transparent; box-shadow: 0 0 20px rgba(200,130,10,.3); }
+
+/* ── Mobile nav ── */
+.mobile-menu { background: rgba(7,6,10,.98); border-bottom-color: rgba(200,130,10,.15); }
+.mobile-menu a { color: var(--fg); border-bottom-color: rgba(200,130,10,.07); font-family: 'Space Mono', monospace; font-size: 12px; }
+
+/* ── Amber ambient glow on page ── */
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(200,130,10,.07), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Retro horizontal rule between sections ── */
+section::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,130,10,.12), transparent);
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+}
+
+/* ── Guarantee badge ── */
+.guarantee-badge { background: rgba(90,136,64,.06); border-color: rgba(90,136,64,.2); border-radius: 0; color: var(--sage2); }
+
+</style>
 
   <!-- DASHBOARD -->
   <div class="sc-screen active" id="sc-dashboard">
@@ -1002,30 +2298,30 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
         <div class="aw-nav">
           <div class="aw-grp">Main</div>
           <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Dashboard</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Produtos</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Encomendas</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finanças</div>
-          <div class="aw-grp">Produção</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculator</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Products</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Orders</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finances</div>
+          <div class="aw-grp">Production</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Stock</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Filamentos</div>
-          <div class="aw-grp">Vendas</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Filaments</div>
+          <div class="aw-grp">Sales</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Clientes CRM</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Simulador</div>
         </div>
       </div>
       <div class="aw-main">
         <div class="aw-pg">
-          <div class="aw-pg-title">Bom dia, PRINTNEAT!</div>
+          <div class="aw-pg-title">Good morning, PRINTNEAT!</div>
           <div class="aw-pg-sub">Resumo de hoje · Quinta, 9 Jul 2026</div>
           <div class="kpi-row">
-            <div class="kpi-c"><div class="kpi-label">Receita</div><div class="kpi-value neu">€28.50</div><div class="kpi-delta pos">↑ 12% este mês</div></div>
-            <div class="kpi-c"><div class="kpi-label">Despesas</div><div class="kpi-value" style="color:#8090a8">€15.00</div><div class="kpi-delta" style="color:#3a4a5c">acumulado</div></div>
-            <div class="kpi-c"><div class="kpi-label">Lucro Líquido</div><div class="kpi-value pos">€13.50</div><div class="kpi-delta pos">margem 47.4%</div></div>
+            <div class="kpi-c"><div class="kpi-label">Revenue</div><div class="kpi-value neu">€28.50</div><div class="kpi-delta pos">↑ 12% this month</div></div>
+            <div class="kpi-c"><div class="kpi-label">Expenses</div><div class="kpi-value" style="color:#8090a8">€15.00</div><div class="kpi-delta" style="color:#3a4a5c">acumulado</div></div>
+            <div class="kpi-c"><div class="kpi-label">Net Profit</div><div class="kpi-value pos">€13.50</div><div class="kpi-delta pos">margin 47.4%</div></div>
             <div class="kpi-c"><div class="kpi-label">ROI</div><div class="kpi-value neu">90.0%</div><div class="kpi-delta pos">↑ resultado</div></div>
           </div>
           <div class="chart-wrap">
-            <div class="chart-head"><span class="chart-title">Receita vs Despesas — Últimos 6 meses</span><div class="chart-legend"><div class="chart-leg-item"><div class="chart-leg-dot" style="background:#c8705a"></div>Receita</div><div class="chart-leg-item"><div class="chart-leg-dot" style="background:rgba(255,255,255,.15)"></div>Despesas</div></div></div>
+            <div class="chart-head"><span class="chart-title">Revenue vs Expenses — Last 6 months</span><div class="chart-legend"><div class="chart-leg-item"><div class="chart-leg-dot" style="background:#c8705a"></div>Revenue</div><div class="chart-leg-item"><div class="chart-leg-dot" style="background:rgba(255,255,255,.15)"></div>Expenses</div></div></div>
             <div class="bars-area">
               <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:34px;width:11px"></div><div class="bar bar-exp" style="height:22px;width:11px"></div></div><div class="bar-lbl">Fev</div></div>
               <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:28px;width:11px"></div><div class="bar bar-exp" style="height:18px;width:11px"></div></div><div class="bar-lbl">Mar</div></div>
@@ -1036,14 +2332,14 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
             </div>
           </div>
           <div class="pipeline">
-            <div class="pipe-col"><div class="pipe-num" style="color:#d4a843">3</div><div class="pipe-lbl" style="color:#d4a843">Pendente</div></div>
-            <div class="pipe-col"><div class="pipe-num" style="color:#c8705a">1</div><div class="pipe-lbl" style="color:#c8705a">Produção</div></div>
-            <div class="pipe-col"><div class="pipe-num" style="color:#6ab0c8">2</div><div class="pipe-lbl" style="color:#6ab0c8">Envio</div></div>
-            <div class="pipe-col"><div class="pipe-num" style="color:#4a9c6f">4</div><div class="pipe-lbl" style="color:#4a9c6f">Concluído</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#d4a843">3</div><div class="pipe-lbl" style="color:#d4a843">Pending</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#c8705a">1</div><div class="pipe-lbl" style="color:#c8705a">Production</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#6ab0c8">2</div><div class="pipe-lbl" style="color:#6ab0c8">Shipped</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#4a9c6f">4</div><div class="pipe-lbl" style="color:#4a9c6f">Completed</div></div>
           </div>
-          <div class="ord-row"><div class="ord-dot" style="background:#d4a843"></div><div class="ord-client">Ana Gomes</div><div class="ord-item">Caixa cosmos Printneat</div><div class="ord-price">€5.00</div><div class="badge b-pend">Pendente</div></div>
-          <div class="ord-row"><div class="ord-dot" style="background:#c8705a"></div><div class="ord-client">Glória Borges</div><div class="ord-item">Dispensador de ovos</div><div class="ord-price">€9.00</div><div class="badge b-prod">Produção</div></div>
-          <div class="ord-row"><div class="ord-dot" style="background:#4a9c6f"></div><div class="ord-client">Oscar Rocha</div><div class="ord-item">Águia Benfica</div><div class="ord-price">€7.50</div><div class="badge b-done">Concluído</div></div>
+          <div class="ord-row"><div class="ord-dot" style="background:#d4a843"></div><div class="ord-client">Ana Gomes</div><div class="ord-item">Printneat Cosmos Box</div><div class="ord-price">€5.00</div><div class="badge b-pend">Pending</div></div>
+          <div class="ord-row"><div class="ord-dot" style="background:#c8705a"></div><div class="ord-client">Gloria Borges</div><div class="ord-item">Egg Dispenser</div><div class="ord-price">€9.00</div><div class="badge b-prod">Production</div></div>
+          <div class="ord-row"><div class="ord-dot" style="background:#4a9c6f"></div><div class="ord-client">Oscar Rocha</div><div class="ord-item">SL Benfica Eagle</div><div class="ord-price">€7.50</div><div class="badge b-done">Completed</div></div>
         </div>
       </div>
     </div>
@@ -1053,30 +2349,30 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   <!-- CALCULADORA -->
   <div class="sc-screen" id="sc-calc">
   <div class="aw">
-    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Calculadora de Preço</span></div>
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Price Calculator</span></div>
     <div class="aw-body">
       <div class="aw-side">
         <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
         <div class="aw-nav">
           <div class="aw-grp">Main</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
-          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Calculadora</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Produtos</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Encomendas</div>
-          <div class="aw-grp">Produção</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Filamentos</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Calculator</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Products</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Orders</div>
+          <div class="aw-grp">Production</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Filaments</div>
         </div>
       </div>
       <div class="aw-main">
         <div class="aw-pg">
-          <div class="aw-pg-title">Calculadora de Preço</div>
-          <div class="aw-pg-sub">Descobre o preço ideal e o teu potencial de negócio</div>
+          <div class="aw-pg-title">Price Calculator</div>
+          <div class="aw-pg-sub">Find the optimal price and unlock your business potential</div>
           <div class="calc-layout">
             <div class="calc-panel">
               <div class="c-sec">
-                <div class="c-sec-t">Produto</div>
-                <div class="c-field"><div class="c-lbl">Nome</div><input class="c-inp" id="ci-name" value="Águia Benfica" oninput="calcUpdate()"></div>
-                <div class="c-field"><div class="c-lbl">Unidades / mês</div><input class="c-inp" id="ci-units" type="number" value="1" min="1" oninput="calcUpdate()"></div>
+                <div class="c-sec-t">Product</div>
+                <div class="c-field"><div class="c-lbl">Name</div><input class="c-inp" id="ci-name" value="SL Benfica Eagle" oninput="calcUpdate()"></div>
+                <div class="c-field"><div class="c-lbl">Units / month</div><input class="c-inp" id="ci-units" type="number" value="1" min="1" oninput="calcUpdate()"></div>
               </div>
               <div class="c-sec">
                 <div class="c-sec-t">Filamento</div>
@@ -1084,19 +2380,19 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
                 <div class="c-field"><div class="c-lbl">Gramas usadas</div><input class="c-inp" id="ci-grams" type="number" value="56" min="1" oninput="calcUpdate()"></div>
               </div>
               <div class="c-sec">
-                <div class="c-sec-t">Impressão</div>
+                <div class="c-sec-t">Print</div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
                   <div class="c-field"><div class="c-lbl">Horas</div><input class="c-inp" id="ci-hours" type="number" value="5" min="0" oninput="calcUpdate()"></div>
                   <div class="c-field"><div class="c-lbl">Minutos</div><input class="c-inp" id="ci-mins" type="number" value="30" min="0" max="59" oninput="calcUpdate()"></div>
                 </div>
-                <div class="c-field"><div class="c-lbl">Potência (W)</div><input class="c-inp" id="ci-watts" type="number" value="260" min="1" oninput="calcUpdate()"></div>
-                <div class="c-field"><div class="c-lbl">Energia (cênt/kWh)</div><input class="c-inp" id="ci-energy" type="number" value="22" min="1" oninput="calcUpdate()"></div>
+                <div class="c-field"><div class="c-lbl">Power (W)</div><input class="c-inp" id="ci-watts" type="number" value="260" min="1" oninput="calcUpdate()"></div>
+                <div class="c-field"><div class="c-lbl">Energy (cent/kWh)</div><input class="c-inp" id="ci-energy" type="number" value="22" min="1" oninput="calcUpdate()"></div>
               </div>
               <div class="c-sec">
-                <div class="c-sec-t">Embalagem &amp; Envio</div>
+                <div class="c-sec-t">Embalagem &amp; Shipped</div>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
                   <div class="c-field"><div class="c-lbl">Embalagem (€)</div><input class="c-inp" id="ci-pack" type="number" value="0.50" step="0.1" min="0" oninput="calcUpdate()"></div>
-                  <div class="c-field"><div class="c-lbl">Envio (€)</div><input class="c-inp" id="ci-ship" type="number" value="3.50" step="0.1" min="0" oninput="calcUpdate()"></div>
+                  <div class="c-field"><div class="c-lbl">Shipped (€)</div><input class="c-inp" id="ci-ship" type="number" value="3.50" step="0.1" min="0" oninput="calcUpdate()"></div>
                 </div>
               </div>
             </div>
@@ -1110,12 +2406,12 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
                 <div class="res-row"><span class="res-lbl">Custo total</span><span class="res-val" id="co-cost">€5.43</span></div>
                 <div class="res-row"><span class="res-lbl">Lucro</span><span class="res-val pos" id="co-profit">€8.32</span></div>
                 <div class="res-divider"></div>
-                <div class="res-total-row"><span class="res-total-lbl">Preço ideal</span><span class="res-total-val" id="co-price">€13.75</span></div>
-                <div class="res-margin-txt" id="co-margin">Margem 60% · Saudável ✓</div>
+                <div class="res-total-row"><span class="res-total-lbl">Ideal price</span><span class="res-total-val" id="co-price">€13.75</span></div>
+                <div class="res-margin-txt" id="co-margin">Margin 60% · Healthy ✓</div>
               </div>
               <div class="monthly-banner">
                 <div class="mb-lbl">Potencial mensal</div>
-                <div class="mb-val" id="co-monthly">€13.75 / mês</div>
+                <div class="mb-val" id="co-monthly">€13.75 / month</div>
                 <div class="mb-sub" id="co-monthly-sub">1 unidade × €13.75</div>
               </div>
             </div>
@@ -1129,31 +2425,31 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   <!-- ENCOMENDAS -->
   <div class="sc-screen" id="sc-orders">
   <div class="aw">
-    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Encomendas</span></div>
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Orders</span></div>
     <div class="aw-body">
       <div class="aw-side">
         <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
         <div class="aw-nav">
           <div class="aw-grp">Main</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Produtos</div>
-          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Encomendas</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finanças</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculator</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Products</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Orders</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finances</div>
         </div>
       </div>
       <div class="aw-main">
         <div class="aw-pg">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
-            <div><div class="aw-pg-title">Encomendas</div><div class="aw-pg-sub">8 total · Ordenadas por data</div></div>
+            <div><div class="aw-pg-title">Orders</div><div class="aw-pg-sub">8 total · Ordenadas por data</div></div>
             <button style="padding:6px 14px;background:linear-gradient(135deg,#c8705a,#a85848);border:none;border-radius:7px;font-size:9px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit">+ Nova</button>
           </div>
           <div class="ord-filters" id="ord-filter-bar">
             <div class="ord-filt on" onclick="filterOrders('all',this)">Todas</div>
-            <div class="ord-filt" onclick="filterOrders('Pendente',this)">Pendente</div>
-            <div class="ord-filt" onclick="filterOrders('Produção',this)">Produção</div>
-            <div class="ord-filt" onclick="filterOrders('Envio',this)">Envio</div>
-            <div class="ord-filt" onclick="filterOrders('Concluído',this)">Concluído</div>
+            <div class="ord-filt" onclick="filterOrders('Pending',this)">Pending</div>
+            <div class="ord-filt" onclick="filterOrders('Production',this)">Production</div>
+            <div class="ord-filt" onclick="filterOrders('Shipped',this)">Shipped</div>
+            <div class="ord-filt" onclick="filterOrders('Completed',this)">Completed</div>
           </div>
           <div id="ord-list"></div>
         </div>
@@ -1172,19 +2468,19 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
         <div class="aw-nav">
           <div class="aw-grp">Main</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
-          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Produtos</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Encomendas</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finanças</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculator</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Products</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Orders</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finances</div>
         </div>
       </div>
       <div class="aw-main">
         <div class="aw-pg">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-            <div><div class="aw-pg-title">Produtos &amp; Margens</div><div class="aw-pg-sub">Catálogo com rentabilidade por produto</div></div>
+            <div><div class="aw-pg-title">Produtos &amp; Margens</div><div class="aw-pg-sub">Catalogue with profit margin per product</div></div>
             <button style="padding:6px 14px;background:linear-gradient(135deg,#c8705a,#a85848);border:none;border-radius:7px;font-size:9px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit">+ Produto</button>
           </div>
-          <div class="prod-th"><div>Produto</div><div>Material</div><div>Custo</div><div>Preço</div><div>Margem</div><div>Nicho</div></div>
+          <div class="prod-th"><div>Product</div><div>Material</div><div>Cost</div><div>Price</div><div>Margin</div><div>Niche</div></div>
           <div id="prod-list"></div>
         </div>
       </div>
@@ -1195,28 +2491,28 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
   <!-- FILAMENTOS -->
   <div class="sc-screen" id="sc-filament">
   <div class="aw">
-    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Filamentos</span></div>
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Filaments</span></div>
     <div class="aw-body">
       <div class="aw-side">
         <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
         <div class="aw-nav">
           <div class="aw-grp">Main</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
-          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
-          <div class="aw-grp">Produção</div>
-          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Filamentos</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculator</div>
+          <div class="aw-grp">Production</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Filaments</div>
           <div class="aw-ni"><span class="aw-ni-ic">◦</span> Stock</div>
         </div>
       </div>
       <div class="aw-main">
         <div class="aw-pg">
-          <div class="aw-pg-title">Comparador de Filamentos</div>
-          <div class="aw-pg-sub">Compara custo por 100g e escolhe o mais rentável</div>
+          <div class="aw-pg-title">Comparador de Filaments</div>
+          <div class="aw-pg-sub">Compare cost per 100g and pick the most profitable</div>
           <div class="fil-layout">
             <div class="fil-list-panel" id="fil-list"></div>
             <div class="fil-calc-panel">
-              <div class="c-sec-t">Calculadora por impressão</div>
-              <div class="c-field"><div class="c-lbl">Peso de impressão (g)</div><input class="c-inp" id="fi-weight" type="number" value="100" min="1" oninput="filCalc()"></div>
+              <div class="c-sec-t">Per-print calculator</div>
+              <div class="c-field"><div class="c-lbl">Print weight (g)</div><input class="c-inp" id="fi-weight" type="number" value="100" min="1" oninput="filCalc()"></div>
               <div class="fil-calc-result" id="fi-result"></div>
               <div class="fil-best" id="fi-best"></div>
             </div>
@@ -1229,19 +2525,19 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 
   <script>
   function showScreen(id,btn){document.querySelectorAll('.sc-screen').forEach(function(e){e.classList.remove('active')});document.querySelectorAll('.sc-tab').forEach(function(e){e.classList.remove('active')});document.getElementById('sc-'+id).classList.add('active');btn.classList.add('active')}
-  function calcUpdate(){var mat=parseFloat(document.getElementById('ci-mat').value)||20,grams=parseFloat(document.getElementById('ci-grams').value)||0,hours=parseFloat(document.getElementById('ci-hours').value)||0,mins=parseFloat(document.getElementById('ci-mins').value)||0,watts=parseFloat(document.getElementById('ci-watts').value)||0,energy=parseFloat(document.getElementById('ci-energy').value)||0,pack=parseFloat(document.getElementById('ci-pack').value)||0,ship=parseFloat(document.getElementById('ci-ship').value)||0,units=parseInt(document.getElementById('ci-units').value)||1;var filCost=(grams/1000)*mat,timeH=hours+mins/60,energyCost=(watts/1000)*timeH*(energy/100),packCost=pack+ship,total=filCost+energyCost+packCost,price=total/(1-0.6),profit=price-total,monthly=price*units;document.getElementById('co-fil').textContent='€'+filCost.toFixed(2);document.getElementById('co-energy').textContent='€'+energyCost.toFixed(2);document.getElementById('co-pack').textContent='€'+packCost.toFixed(2);document.getElementById('co-cost').textContent='€'+total.toFixed(2);document.getElementById('co-profit').textContent='€'+profit.toFixed(2);document.getElementById('co-price').textContent='€'+price.toFixed(2);document.getElementById('co-margin').textContent='Margem 60% · '+(profit>0?'Saudável ✓':'Rever ⚠');document.getElementById('co-monthly').textContent='€'+monthly.toFixed(2)+' / mês';document.getElementById('co-monthly-sub').textContent=units+' unidade'+(units!==1?'s':'')+' × €'+price.toFixed(2)}
+  function calcUpdate(){var mat=parseFloat(document.getElementById('ci-mat').value)||20,grams=parseFloat(document.getElementById('ci-grams').value)||0,hours=parseFloat(document.getElementById('ci-hours').value)||0,mins=parseFloat(document.getElementById('ci-mins').value)||0,watts=parseFloat(document.getElementById('ci-watts').value)||0,energy=parseFloat(document.getElementById('ci-energy').value)||0,pack=parseFloat(document.getElementById('ci-pack').value)||0,ship=parseFloat(document.getElementById('ci-ship').value)||0,units=parseInt(document.getElementById('ci-units').value)||1;var filCost=(grams/1000)*mat,timeH=hours+mins/60,energyCost=(watts/1000)*timeH*(energy/100),packCost=pack+ship,total=filCost+energyCost+packCost,price=total/(1-0.6),profit=price-total,monthly=price*units;document.getElementById('co-fil').textContent='€'+filCost.toFixed(2);document.getElementById('co-energy').textContent='€'+energyCost.toFixed(2);document.getElementById('co-pack').textContent='€'+packCost.toFixed(2);document.getElementById('co-cost').textContent='€'+total.toFixed(2);document.getElementById('co-profit').textContent='€'+profit.toFixed(2);document.getElementById('co-price').textContent='€'+price.toFixed(2);document.getElementById('co-margin').textContent='Margin 60% · '+(profit>0?'Healthy ✓':'Review ⚠');document.getElementById('co-monthly').textContent='€'+monthly.toFixed(2)+' / month';document.getElementById('co-monthly-sub').textContent=units+' unit'+(units!==1?'s':'')+' × €'+price.toFixed(2)}
   calcUpdate();
-  var ORDERS=[{client:'Oscar Rocha',item:'Águia Benfica',price:7.50,status:'Envio',color:'#6ab0c8'},{client:'Ana Gomes',item:'Caixa cosmos Printneat',price:5.00,status:'Pendente',color:'#d4a843'},{client:'Ana Gomes',item:'Draco FC Porto',price:6.50,status:'Pendente',color:'#d4a843'},{client:'Glória Borges',item:'Chaveiro suporte telemóvel',price:0.00,status:'Concluído',color:'#4a9c6f'},{client:'Glória Borges',item:'Dispensador de ovos 10un',price:9.00,status:'Produção',color:'#c8705a'},{client:'Glória Borges',item:'Suporte modelar bananas',price:6.50,status:'Produção',color:'#c8705a'},{client:'Glória Borges',item:'Estátua do CRT',price:10.00,status:'Pendente',color:'#d4a843'},{client:'Glória Borges',item:'Caixa organização modular',price:3.38,status:'Concluído',color:'#4a9c6f'}];
-  var sClass={Pendente:'b-pend',Produção:'b-prod',Envio:'b-ship',Concluído:'b-done'};
+  var ORDERS=[{client:'Oscar Rocha',item:'SL Benfica Eagle',price:7.50,status:'Shipped',color:'#6ab0c8'},{client:'Ana Gomes',item:'Printneat Cosmos Box',price:5.00,status:'Pending',color:'#d4a843'},{client:'Ana Gomes',item:'Draco FC Porto',price:6.50,status:'Pending',color:'#d4a843'},{client:'Gloria Borges',item:'Phone Stand Keychain',price:0.00,status:'Completed',color:'#4a9c6f'},{client:'Gloria Borges',item:'Egg Dispenser 10un',price:9.00,status:'Production',color:'#c8705a'},{client:'Gloria Borges',item:'Banana Holder Stand',price:6.50,status:'Production',color:'#c8705a'},{client:'Gloria Borges',item:'CRT Statue',price:10.00,status:'Pending',color:'#d4a843'},{client:'Gloria Borges',item:'Modular Storage Box',price:3.38,status:'Completed',color:'#4a9c6f'}];
+  var sClass={Pending:'b-pend',Production:'b-prod',Shipped:'b-ship',Completed:'b-done'};
   function renderOrders(f){var l=document.getElementById('ord-list');l.innerHTML='';ORDERS.filter(function(o){return f==='all'||o.status===f}).forEach(function(o){var r=document.createElement('div');r.className='ord-row';r.innerHTML='<div class="ord-dot" style="background:'+o.color+'"></div><div class="ord-client">'+o.client+'</div><div class="ord-item">'+o.item+'</div><div class="ord-price">€'+o.price.toFixed(2)+'</div><div class="badge '+sClass[o.status]+'">'+o.status+'</div>';l.appendChild(r)})}
   function filterOrders(f,btn){document.querySelectorAll('#ord-filter-bar .ord-filt').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');renderOrders(f)}
   renderOrders('all');
-  var PRODS=[{name:'Organizador modular desk',mat:'PLA+',cost:2.50,price:22.00,margin:89,niche:'Home office'},{name:'Suporte cabos & hub',mat:'PETG',cost:1.00,price:14.00,margin:93,niche:'Tech'},{name:'Organiz. cosméticos',mat:'PLA+',cost:3.00,price:24.00,margin:88,niche:'Beleza'},{name:'Vasos modulares',mat:'PETG',cost:2.50,price:20.00,margin:88,niche:'Plantas'},{name:'Organiz. cozinha',mat:'PETG',cost:3.00,price:18.00,margin:83,niche:'Cozinha'},{name:'Suporte home office',mat:'PLA+',cost:4.00,price:32.00,margin:88,niche:'WiFi'}];
+  var PRODS=[{name:'Modular Desk Organiser',mat:'PLA+',cost:2.50,price:22.00,margin:89,niche:'Home Office'},{name:'Cable Hub Stand',mat:'PETG',cost:1.00,price:14.00,margin:93,niche:'Tech'},{name:'Cosmetic Organiser',mat:'PLA+',cost:3.00,price:24.00,margin:88,niche:'Beauty'},{name:'Modular Vases',mat:'PETG',cost:2.50,price:20.00,margin:88,niche:'Plants'},{name:'Kitchen Organiser',mat:'PETG',cost:3.00,price:18.00,margin:83,niche:'Kitchen'},{name:'Home Office Stand',mat:'PLA+',cost:4.00,price:32.00,margin:88,niche:'WiFi'}];
   (function(){var l=document.getElementById('prod-list');PRODS.forEach(function(p){var r=document.createElement('div');r.className='prod-row';r.innerHTML='<div class="prod-name">'+p.name+'</div><div class="prod-mat">'+p.mat+'</div><div class="prod-mat" style="font-variant-numeric:tabular-nums">€'+p.cost.toFixed(2)+'</div><div class="prod-price">€'+p.price.toFixed(2)+'</div><div><div class="margin-bar-wrap"><div class="margin-bar" style="width:'+p.margin+'%"></div></div><div class="prod-margin-val">'+p.margin+'%</div></div><div class="niche-tag">'+p.niche+'</div>';l.appendChild(r)})})();
-  var FILS=[{name:'Bambu PLA+ Branco',brand:'PLA+ · Excelente qualidade',price:2.20,color:'#d8d8d8',bg:'rgba(220,220,220,.08)'},{name:'eSUN PLA+ Preto',brand:'PLA+ · Bom custo-benefício',price:1.80,color:'#888',bg:'rgba(100,100,100,.12)'},{name:'Bambu PETG Transparente',brand:'PETG · Para peças funcionais',price:2.60,color:'#88c8e8',bg:'rgba(100,180,220,.1)'},{name:'Generic PLA Terracota',brand:'PLA · Económico',price:1.40,color:'#c8705a',bg:'rgba(200,112,90,.1)',best:true}];
+  var FILS=[{name:'Bambu PLA+ White',brand:'PLA+ · Excellent quality',price:2.20,color:'#d8d8d8',bg:'rgba(220,220,220,.08)'},{name:'eSUN PLA+ Black',brand:'PLA+ · Great value',price:1.80,color:'#888',bg:'rgba(100,100,100,.12)'},{name:'Bambu PETG Clear',brand:'PETG · For functional parts',price:2.60,color:'#88c8e8',bg:'rgba(100,180,220,.1)'},{name:'Generic PLA Terracotta',brand:'PLA · Budget',price:1.40,color:'#c8705a',bg:'rgba(200,112,90,.1)',best:true}];
   var selFil=0;
-  function renderFils(){var l=document.getElementById('fil-list');l.innerHTML='<div class="c-sec-t">Os meus filamentos</div>';FILS.forEach(function(f,i){var r=document.createElement('div');r.className='fil-item-row'+(i===selFil?' sel':'');r.onclick=function(){selFil=i;renderFils();filCalc()};var pct=Math.round((f.price/2.60)*100);r.innerHTML='<div class="fil-spool-ic" style="background:'+f.bg+'"><div style="width:14px;height:14px;border-radius:50%;border:2.5px solid '+f.color+'"></div></div><div style="flex:1"><div class="fil-name-main">'+f.name+(f.best?' <span style="font-size:7px;color:#4a9c6f;font-weight:800">★ melhor</span>':'')+'</div><div class="fil-name-sub">'+f.brand+'</div><div class="fil-bar-stack"><div class="fil-bar-fill" style="width:'+pct+'%;background:'+f.color+'"></div></div></div><div class="fil-price-tag" style="color:'+f.color+'">€'+f.price.toFixed(2)+'<span style="font-size:7px;color:#3a4a5c;font-weight:400">/100g</span></div>';l.appendChild(r)})}
-  function filCalc(){var w=parseFloat(document.getElementById('fi-weight').value)||100,f=FILS[selFil],cost=(w/100)*f.price,prints=Math.floor(1000/w);document.getElementById('fi-result').innerHTML='<div class="fil-res-head">'+f.name+'</div><div class="fil-res-row"><span class="fil-res-l">Custo por 100g</span><span class="fil-res-v">€'+f.price.toFixed(2)+'</span></div><div class="fil-res-row"><span class="fil-res-l">Custo por '+w+'g</span><span class="fil-res-v">€'+cost.toFixed(3)+'</span></div><div class="fil-res-row"><span class="fil-res-l">Impressões / bobine 1kg</span><span class="fil-res-v">'+prints+'</span></div>';var best=FILS.reduce(function(a,b){return a.price<b.price?a:b});document.getElementById('fi-best').textContent='★ Mais económico: '+best.name+' (€'+best.price.toFixed(2)+'/100g)'}
+  function renderFils(){var l=document.getElementById('fil-list');l.innerHTML='<div class="c-sec-t">My Filaments</div>';FILS.forEach(function(f,i){var r=document.createElement('div');r.className='fil-item-row'+(i===selFil?' sel':'');r.onclick=function(){selFil=i;renderFils();filCalc()};var pct=Math.round((f.price/2.60)*100);r.innerHTML='<div class="fil-spool-ic" style="background:'+f.bg+'"><div style="width:14px;height:14px;border-radius:50%;border:2.5px solid '+f.color+'"></div></div><div style="flex:1"><div class="fil-name-main">'+f.name+(f.best?' <span style="font-size:7px;color:#4a9c6f;font-weight:800">★ best</span>':'')+'</div><div class="fil-name-sub">'+f.brand+'</div><div class="fil-bar-stack"><div class="fil-bar-fill" style="width:'+pct+'%;background:'+f.color+'"></div></div></div><div class="fil-price-tag" style="color:'+f.color+'">€'+f.price.toFixed(2)+'<span style="font-size:7px;color:#3a4a5c;font-weight:400">/100g</span></div>';l.appendChild(r)})}
+  function filCalc(){var w=parseFloat(document.getElementById('fi-weight').value)||100,f=FILS[selFil],cost=(w/100)*f.price,prints=Math.floor(1000/w);document.getElementById('fi-result').innerHTML='<div class="fil-res-head">'+f.name+'</div><div class="fil-res-row"><span class="fil-res-l">Cost per 100g</span><span class="fil-res-v">€'+f.price.toFixed(2)+'</span></div><div class="fil-res-row"><span class="fil-res-l">Cost per '+w+'g</span><span class="fil-res-v">€'+cost.toFixed(3)+'</span></div><div class="fil-res-row"><span class="fil-res-l">Prints / 1kg spool</span><span class="fil-res-v">'+prints+'</span></div>';var best=FILS.reduce(function(a,b){return a.price<b.price?a:b});document.getElementById('fi-best').textContent='★ Most economical: '+best.name+' (€'+best.price.toFixed(2)+'/100g)'}
   renderFils();filCalc();
   </script>
 </section>
@@ -1253,26 +2549,26 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center">
       <!-- LEFT: copy -->
       <div>
-        <div class="section-label reveal" style="text-align:left">Onde vender</div>
-        <h2 class="reveal reveal-delay-1" style="text-align:left;margin-bottom:16px">Etsy é a plataforma<br><span style="background:linear-gradient(135deg,#f58220,#e8a44a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">nº 1 para impressão 3D</span></h2>
-        <p class="reveal reveal-delay-2" style="color:var(--muted2);font-size:16px;line-height:1.7;margin-bottom:32px">Mais de 96 milhões de compradores ativos procuram produtos únicos e personalizados — exatamente o que produzes. O Etsy é o mercado onde os makers vendem mais, mais depressa e com mais margem do que em qualquer outra plataforma.</p>
+        <div class="section-label reveal" style="text-align:left">Where to sell</div>
+        <h2 class="reveal reveal-delay-1" style="text-align:left;margin-bottom:16px">Etsy is the #1 platform<br><span style="background:linear-gradient(135deg,#f58220,#e8a44a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">for 3D printing sellers</span></h2>
+        <p class="reveal reveal-delay-2" style="color:var(--muted2);font-size:16px;line-height:1.7;margin-bottom:32px">Over 96 million active buyers search for unique, personalised products — exactly what you make. Etsy is the marketplace where makers sell more, faster, and with higher margins than anywhere else.</p>
 
         <div class="reveal reveal-delay-3" style="display:flex;flex-direction:column;gap:16px;margin-bottom:36px">
           <div style="display:flex;align-items:flex-start;gap:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,130,32,.12);border:1px solid rgba(245,130,32,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">🛍️</div>
-            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">96M+ compradores ativos</div><div style="font-size:13px;color:var(--muted);line-height:1.5">A maior audiência qualificada do mundo para produtos artesanais e personalizados. Eles já estão à procura do que fazes.</div></div>
+            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">96M+ active buyers</div><div style="font-size:13px;color:var(--muted);line-height:1.5">The world's largest qualified audience for handmade and custom products — they're already searching for what you make.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,130,32,.12);border:1px solid rgba(245,130,32,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">📈</div>
-            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">SEO orgânico integrado</div><div style="font-size:13px;color:var(--muted);line-height:1.5">A Etsy posiciona as tuas listagens no Google automaticamente. Vendas sem gastar em publicidade paga.</div></div>
+            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">Built-in organic SEO</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Etsy positions your listings on Google automatically. Sales without paid advertising.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,130,32,.12);border:1px solid rgba(245,130,32,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">💶</div>
-            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">Margens reais de 60–90%</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Os clientes pagam pelo valor criativo, não pela matéria-prima. Uma peça que custa €2 de filamento vende por €20–40 no Etsy.</div></div>
+            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">Real margins of 60–90%</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Buyers pay for creative value, not raw material. A piece costing €2 in filament sells for €20–40 on Etsy.</div></div>
           </div>
           <div style="display:flex;align-items:flex-start;gap:14px">
             <div style="width:36px;height:36px;border-radius:10px;background:rgba(245,130,32,.12);border:1px solid rgba(245,130,32,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px">⚡</div>
-            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">PRINTNEAT integra diretamente</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Analisa o SEO das tuas listagens, simula o lucro real por venda e acompanha as encomendas do Etsy — tudo num só lugar.</div></div>
+            <div><div style="font-size:14px;font-weight:800;color:#e8d4c0;margin-bottom:3px">PRINTNEAT integrates directly</div><div style="font-size:13px;color:var(--muted);line-height:1.5">Analyse your listing SEO, simulate real profit per sale, and track Etsy orders — all in one place.</div></div>
           </div>
         </div>
 
@@ -1299,7 +2595,7 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
           <!-- header -->
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.05)">
             <div style="width:36px;height:36px;background:#f58220;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:#fff;font-family:serif">e</div>
-            <div><div style="font-size:13px;font-weight:800;color:#e8d4c0">A minha loja Etsy</div><div style="font-size:10px;color:#5a4030">PrintNeat3D · 127 vendas</div></div>
+            <div><div style="font-size:13px;font-weight:800;color:#e8d4c0">My Etsy Store</div><div style="font-size:10px;color:#5a4030">PrintNeat3D · 127 sales</div></div>
             <div style="margin-left:auto;font-size:10px;font-weight:700;padding:4px 10px;background:rgba(74,156,111,.12);color:#4a9c6f;border-radius:99px;border:1px solid rgba(74,156,111,.2)">Ativa</div>
           </div>
 
@@ -1307,12 +2603,12 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
             <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:rgba(255,255,255,.025);border-radius:10px;border:1px solid rgba(255,255,255,.04)">
               <div style="width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,rgba(245,130,32,.15),rgba(245,130,32,.05));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🦅</div>
-              <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#d8c4b0;margin-bottom:2px">Águia Benfica personalizada</div><div style="font-size:9px;color:#5a4030">PLA+ · 56g · 5h30</div></div>
+              <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#d8c4b0;margin-bottom:2px">SL Benfica Eagle — Custom</div><div style="font-size:9px;color:#5a4030">PLA+ · 56g · 5h30</div></div>
               <div style="text-align:right"><div style="font-size:13px;font-weight:900;color:#f58220">€22.00</div><div style="font-size:8px;color:#4a9c6f;font-weight:700">lucro €16.80</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:rgba(255,255,255,.025);border-radius:10px;border:1px solid rgba(255,255,255,.04)">
               <div style="width:38px;height:38px;border-radius:8px;background:linear-gradient(135deg,rgba(245,130,32,.15),rgba(245,130,32,.05));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🗂️</div>
-              <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#d8c4b0;margin-bottom:2px">Organizador modular desk</div><div style="font-size:9px;color:#5a4030">PETG · 120g · 8h</div></div>
+              <div style="flex:1"><div style="font-size:11px;font-weight:700;color:#d8c4b0;margin-bottom:2px">Modular Desk Organiser</div><div style="font-size:9px;color:#5a4030">PETG · 120g · 8h</div></div>
               <div style="text-align:right"><div style="font-size:13px;font-weight:900;color:#f58220">€24.00</div><div style="font-size:8px;color:#4a9c6f;font-weight:700">lucro €20.50</div></div>
             </div>
             <div style="display:flex;align-items:center;gap:12px;padding:10px 12px;background:rgba(255,255,255,.025);border-radius:10px;border:1px solid rgba(255,255,255,.04)">
@@ -1324,14 +2620,14 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 
           <!-- summary bar -->
           <div style="background:rgba(245,130,32,.07);border:1px solid rgba(245,130,32,.14);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center">
-            <div><div style="font-size:9px;color:#7a6050;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px">Este mês via Etsy</div><div style="font-size:20px;font-weight:900;color:#f58220;font-variant-numeric:tabular-nums">€284.00</div></div>
-            <div style="text-align:right"><div style="font-size:9px;color:#7a6050;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px">Margem média</div><div style="font-size:20px;font-weight:900;color:#4a9c6f;font-variant-numeric:tabular-nums">78%</div></div>
+            <div><div style="font-size:9px;color:#7a6050;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px">This month via Etsy</div><div style="font-size:20px;font-weight:900;color:#f58220;font-variant-numeric:tabular-nums">€284.00</div></div>
+            <div style="text-align:right"><div style="font-size:9px;color:#7a6050;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px">Avg. Margin</div><div style="font-size:20px;font-weight:900;color:#4a9c6f;font-variant-numeric:tabular-nums">78%</div></div>
           </div>
         </div>
 
         <!-- floating badge -->
         <div style="position:absolute;top:-18px;right:-12px;background:linear-gradient(135deg,#f58220,#d06010);border-radius:14px;padding:10px 16px;box-shadow:0 8px 30px rgba(245,130,32,.4);transform:rotate(3deg)">
-          <div style="font-size:10px;font-weight:900;color:#fff;letter-spacing:.04em">Melhor plataforma</div>
+          <div style="font-size:10px;font-weight:900;color:#fff;letter-spacing:.04em">Best Platform</div>
           <div style="font-size:8px;color:rgba(255,255,255,.7);margin-top:1px">para makers 3D ★★★★★</div>
         </div>
       </div>
@@ -1344,19 +2640,19 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
         <div style="background:linear-gradient(135deg,rgba(245,130,32,.1),rgba(245,130,32,.04));border:1px solid rgba(245,130,32,.25);border-radius:14px;padding:18px;text-align:center;position:relative">
           <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#f58220;color:#fff;font-size:8px;font-weight:900;padding:3px 10px;border-radius:99px;letter-spacing:.06em;white-space:nowrap">RECOMENDADO</div>
           <div style="font-size:15px;font-weight:900;color:#f58220;margin-bottom:6px;margin-top:6px">Etsy</div>
-          <div style="font-size:11px;color:#9a7060;line-height:1.6">96M compradores<br>SEO orgânico<br>Comunidade maker<br>Fácil de começar</div>
+          <div style="font-size:11px;color:#9a7060;line-height:1.6">96M buyers<br>Organic SEO<br>Maker community<br>Easy to start</div>
         </div>
         <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px;text-align:center">
-          <div style="font-size:15px;font-weight:900;color:#6a7a8a;margin-bottom:6px">Loja própria</div>
-          <div style="font-size:11px;color:#3a4a5a;line-height:1.6">Tráfego zero inicial<br>Alto custo de setup<br>Marketing necessário<br>Demora a crescer</div>
+          <div style="font-size:15px;font-weight:900;color:#6a7a8a;margin-bottom:6px">Own Store</div>
+          <div style="font-size:11px;color:#3a4a5a;line-height:1.6">Zero initial traffic<br>High setup cost<br>Marketing required<br>Slow to grow</div>
         </div>
         <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px;text-align:center">
           <div style="font-size:15px;font-weight:900;color:#6a7a8a;margin-bottom:6px">Amazon</div>
-          <div style="font-size:11px;color:#3a4a5a;line-height:1.6">Concorrência massiva<br>Margens esmagadas<br>Produtos únicos perdem<br>Taxas altas</div>
+          <div style="font-size:11px;color:#3a4a5a;line-height:1.6">Massive competition<br>Squeezed margins<br>Unique products lose<br>High fees</div>
         </div>
         <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:18px;text-align:center">
           <div style="font-size:15px;font-weight:900;color:#6a7a8a;margin-bottom:6px">Redes sociais</div>
-          <div style="font-size:11px;color:#3a4a5a;line-height:1.6">Algoritmo imprevisível<br>Sem compra integrada<br>Esforço diário alto<br>Difícil de escalar</div>
+          <div style="font-size:11px;color:#3a4a5a;line-height:1.6">Unpredictable algorithm<br>No integrated checkout<br>High daily effort<br>Hard to scale</div>
         </div>
       </div>
     </div>
@@ -1683,3 +2979,10 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 <script src="app.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
