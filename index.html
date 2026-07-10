@@ -865,147 +865,384 @@ footer{background:linear-gradient(180deg,#040608,#030406);border-top:1px solid r
 
   <!-- TAB SWITCHER -->
   <div style="display:flex;justify-content:center;margin-bottom:40px;flex-wrap:wrap;gap:8px" class="reveal">
-    <button class="sc-tab active" onclick="showScreen('dashboard',this)">📊 Dashboard</button>
-    <button class="sc-tab" onclick="showScreen('calc',this)">🧮 Calculator</button>
-    <button class="sc-tab" onclick="showScreen('orders',this)">📦 Orders</button>
-    <button class="sc-tab" onclick="showScreen('invoice',this)">🧾 Invoicing</button>
-    <button class="sc-tab" onclick="showScreen('filament',this)">🧵 Filaments</button>
+    <button class="sc-tab active" onclick="showScreen('dashboard',this)">Dashboard</button>
+    <button class="sc-tab" onclick="showScreen('calc',this)">Calculadora</button>
+    <button class="sc-tab" onclick="showScreen('orders',this)">Encomendas</button>
+    <button class="sc-tab" onclick="showScreen('products',this)">Produtos</button>
+    <button class="sc-tab" onclick="showScreen('filament',this)">Filamentos</button>
   </div>
 
   <style>
-  .sc-tab{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--muted2);font-size:12px;font-weight:700;padding:9px 18px;border-radius:99px;cursor:pointer;transition:all .2s;font-family:inherit}
+  .sc-tab{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--muted2);font-size:11px;font-weight:700;padding:8px 18px;border-radius:99px;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.04em}
   .sc-tab:hover{background:rgba(255,255,255,.09);color:var(--fg)}
   .sc-tab.active{background:linear-gradient(135deg,var(--clay),var(--clay2));color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(200,112,90,.35)}
-  .sc-screen{display:none;animation:fadeUp .35s ease both}
+  .sc-screen{display:none;animation:scFadeUp .3s ease both}
   .sc-screen.active{display:block}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .app-shot-wrap{max-width:960px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.07)}
-  .app-shot-wrap img{width:100%;display:block}
-  .app-window{background:linear-gradient(135deg,#1a1f30,#0f1220);border-radius:20px;border:1px solid rgba(255,255,255,.09);overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.05),0 0 60px rgba(200,112,90,.07);max-width:900px;margin:0 auto;position:relative}
-  .app-titlebar{background:#0c0f1a;padding:13px 18px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
-  .app-dot{width:10px;height:10px;border-radius:50%}
-  .app-title-txt{font-size:11px;color:var(--muted2);margin-left:8px;font-weight:600;letter-spacing:.06em}
-  .app-body{display:flex;min-height:420px}
-  .app-sidebar{width:176px;background:#080b14;border-right:1px solid rgba(255,255,255,.05);padding:18px 0;flex-shrink:0}
-  .app-sb-logo{padding:0 14px 16px;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:10px}
-  .app-sb-lp{font-size:12px;font-weight:900;color:#fff}
-  .app-sb-ln{font-size:12px;font-weight:200;color:var(--clay)}
-  .app-sb-tag{font-size:7px;color:rgba(255,255,255,.18);letter-spacing:.2em;text-transform:uppercase;margin-top:1px}
-  .si{display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:11px;color:#3a4a62;border-left:3px solid transparent;cursor:default}
-  .si.a{background:rgba(200,112,90,.1);color:#e8cfc8;border-left-color:var(--clay);font-weight:700}
-  .si:not(.a):hover{background:rgba(255,255,255,.03);color:#5a6a82}
-  .si-ic{font-size:13px;width:16px;text-align:center}
-  .app-main{flex:1;padding:22px;background:linear-gradient(160deg,#0d1020,#090c14);overflow:hidden}
-  /* cards */
-  .mk-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-  .kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:12px;text-align:center}
-  .kpi-val{font-size:19px;font-weight:900;line-height:1}
-  .kpi-lbl{font-size:8px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.1em}
-  .mkbar{height:3px;background:rgba(255,255,255,.06);border-radius:99px;margin-bottom:14px;overflow:hidden}
-  .mkbar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--clay),var(--gold));width:68%;animation:barAnim 2.5s ease-in-out infinite alternate}
-  .mk-row{display:flex;align-items:center;gap:8px;padding:7px 10px;background:rgba(255,255,255,.03);border-radius:7px;margin-bottom:6px;font-size:10px;color:#5a6a82}
-  .mk-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-  /* calc screen */
-  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .calc-section{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:12px;padding:14px}
-  .calc-sec-title{font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:10px}
-  .calc-field{margin-bottom:8px}
-  .calc-label{font-size:8px;color:var(--muted);margin-bottom:3px;text-transform:uppercase;letter-spacing:.08em}
-  .calc-input{width:100%;padding:6px 9px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:6px;font-size:10px;color:#8a9ab8;font-family:inherit}
-  .calc-result{background:linear-gradient(135deg,rgba(200,112,90,.12),rgba(200,112,90,.04));border:1px solid rgba(200,112,90,.25);border-radius:12px;padding:14px;margin-top:12px}
-  .calc-res-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:10px}
-  .calc-res-label{color:var(--muted2)}
-  .calc-res-val{color:var(--fg2);font-weight:700}
-  .calc-res-total{display:flex;justify-content:space-between;font-size:14px;font-weight:900;padding-top:8px;border-top:1px solid rgba(200,112,90,.2)}
-  .calc-res-total-val{color:var(--clay)}
-  /* orders */
-  .orders-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-  .orders-title{font-size:14px;font-weight:800;color:#e0e8f8}
-  .orders-new-btn{padding:5px 12px;background:linear-gradient(135deg,var(--clay),var(--clay2));border:none;border-radius:6px;font-size:9px;font-weight:800;color:#fff;cursor:default;font-family:inherit}
-  .order-row{display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,.03);border-radius:8px;margin-bottom:6px;font-size:10px}
-  .order-id{font-weight:800;color:var(--clay);min-width:36px}
-  .order-client{flex:1;color:#8a9ab8}
-  .order-item{flex:2;color:#6a7a92}
-  .order-price{color:var(--fg2);font-weight:800;min-width:40px;text-align:right}
-  .order-status{font-size:8px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:99px;white-space:nowrap}
-  .st-done{background:rgba(74,124,111,.15);color:var(--sage2)}
-  .st-print{background:rgba(200,112,90,.15);color:var(--clay3)}
-  .st-wait{background:rgba(212,168,67,.12);color:var(--gold)}
-  /* invoice */
-  .inv-doc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:16px;max-width:420px}
-  .inv-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.05)}
-  .inv-brand-p{font-size:13px;font-weight:900;color:#fff}
-  .inv-brand-n{font-size:13px;font-weight:200;color:var(--clay)}
-  .inv-num{font-size:9px;color:var(--muted2)}
-  .inv-num strong{display:block;font-size:14px;font-weight:900;color:#e0e8f8}
-  .inv-parties{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
-  .inv-party-lbl{font-size:8px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-  .inv-party-name{font-size:10px;font-weight:700;color:#c8d4e0}
-  .inv-party-sub{font-size:9px;color:var(--muted)}
-  .inv-items{margin-bottom:10px}
-  .inv-item-head{display:flex;gap:6px;font-size:8px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 6px;margin-bottom:4px}
-  .inv-item-row{display:flex;gap:6px;padding:6px;background:rgba(255,255,255,.03);border-radius:6px;margin-bottom:3px;font-size:9px;color:#8a9ab8}
-  .inv-item-desc{flex:3}
-  .inv-item-qty{flex:1;text-align:center}
-  .inv-item-price{flex:1.5;text-align:right;color:#c8d4e0;font-weight:700}
-  .inv-total-row{display:flex;justify-content:space-between;font-size:11px;padding:8px 6px 0;border-top:1px solid rgba(255,255,255,.05)}
-  .inv-total-lbl{font-weight:800;color:#e0e8f8}
-  .inv-total-val{font-weight:900;color:var(--clay);font-size:14px}
-  .inv-status-badge{display:inline-block;font-size:8px;font-weight:800;padding:3px 10px;border-radius:99px;background:rgba(74,124,111,.15);color:var(--sage2);border:1px solid rgba(74,124,111,.2);margin-top:8px}
-  /* filament */
-  .fil-item{display:flex;align-items:center;gap:10px;padding:8px 10px;background:rgba(255,255,255,.03);border-radius:8px;margin-bottom:6px}
-  .fil-spool{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-  .fil-name{flex:1;font-size:10px;font-weight:700;color:#c8d4e0}
-  .fil-brand{font-size:8px;color:var(--muted)}
-  .fil-bar-wrap{flex:2;background:rgba(255,255,255,.06);border-radius:99px;height:4px;overflow:hidden}
-  .fil-bar{height:100%;border-radius:99px}
-  .fil-pct{font-size:9px;font-weight:800;min-width:30px;text-align:right}
-  .fil-weight{font-size:8px;color:var(--muted);min-width:50px;text-align:right}
-  @media(max-width:700px){.app-sidebar{display:none}.calc-grid{grid-template-columns:1fr}}
+  @keyframes scFadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .aw{max-width:980px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 48px 130px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.07),0 0 80px rgba(200,112,90,.06);background:#0a0d17}
+  .aw-bar{background:#060810;padding:11px 16px;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,.05)}
+  .aw-dot{width:10px;height:10px;border-radius:50%}
+  .aw-title{font-size:10px;font-weight:700;color:rgba(255,255,255,.22);margin-left:6px;letter-spacing:.06em}
+  .aw-body{display:flex;height:480px}
+  .aw-side{width:162px;background:#070a13;border-right:1px solid rgba(255,255,255,.04);display:flex;flex-direction:column;flex-shrink:0;overflow:hidden}
+  .aw-logo{padding:14px 14px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+  .aw-logo-p{font-size:11px;font-weight:900;color:#fff}
+  .aw-logo-n{font-size:11px;font-weight:200;color:#c8705a}
+  .aw-logo-sub{font-size:7px;color:rgba(255,255,255,.15);letter-spacing:.22em;text-transform:uppercase;margin-top:1px}
+  .aw-nav{flex:1;overflow:hidden;padding:8px 0}
+  .aw-grp{font-size:7px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.15);padding:10px 14px 4px}
+  .aw-ni{display:flex;align-items:center;gap:7px;padding:6px 14px;font-size:10px;color:#364050;border-left:2.5px solid transparent}
+  .aw-ni.on{background:rgba(200,112,90,.09);color:#dcc8c3;border-left-color:#c8705a;font-weight:700}
+  .aw-ni-ic{width:14px;text-align:center;font-size:11px;flex-shrink:0}
+  .aw-main{flex:1;overflow-y:auto;overflow-x:hidden;background:linear-gradient(160deg,#0c0f1e,#080b14);scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent}
+  .aw-main::-webkit-scrollbar{width:4px}
+  .aw-main::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:99px}
+  .aw-pg{padding:20px 22px}
+  .aw-pg-title{font-size:17px;font-weight:900;color:#e0e8f8;margin-bottom:3px}
+  .aw-pg-sub{font-size:10px;color:#3a4a5c;margin-bottom:16px}
+  .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+  .kpi-c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:11px 13px}
+  .kpi-label{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:#3a4a5c;margin-bottom:4px;font-weight:700}
+  .kpi-value{font-size:18px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+  .kpi-delta{font-size:8px;margin-top:3px;font-weight:700}
+  .pos{color:#4a9c6f}.neg{color:#c85a5a}.neu{color:#c8705a}
+  .chart-wrap{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:14px;margin-bottom:12px}
+  .chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+  .chart-title{font-size:9px;font-weight:800;color:#4a5a70;letter-spacing:.08em;text-transform:uppercase}
+  .chart-legend{display:flex;gap:10px}
+  .chart-leg-item{display:flex;align-items:center;gap:4px;font-size:8px;color:#3a4a5c}
+  .chart-leg-dot{width:6px;height:6px;border-radius:50%}
+  .bars-area{display:flex;align-items:flex-end;gap:6px;height:80px}
+  .bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+  .bar-pair{display:flex;gap:2px;align-items:flex-end;width:100%;justify-content:center}
+  .bar{border-radius:3px 3px 0 0;min-width:9px}
+  .bar-rev{background:linear-gradient(180deg,#c8705a,#a05848)}
+  .bar-exp{background:rgba(255,255,255,.09)}
+  .bar-lbl{font-size:7px;color:#2a3a4c;text-align:center;width:100%}
+  .pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px}
+  .pipe-col{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:9px;padding:10px;text-align:center}
+  .pipe-num{font-size:22px;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+  .pipe-lbl{font-size:7px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
+  .ord-filters{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+  .ord-filt{font-size:9px;font-weight:700;padding:4px 11px;border-radius:99px;border:1px solid rgba(255,255,255,.07);color:#4a5a70;cursor:pointer;transition:all .15s;background:rgba(255,255,255,.03)}
+  .ord-filt.on,.ord-filt:hover{background:rgba(200,112,90,.12);color:#c8705a;border-color:rgba(200,112,90,.25)}
+  .ord-row{display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(255,255,255,.025);border-radius:8px;margin-bottom:5px;font-size:10px;border:1px solid rgba(255,255,255,.04);transition:background .15s;cursor:default}
+  .ord-row:hover{background:rgba(255,255,255,.04)}
+  .ord-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+  .ord-client{flex:1.5;color:#c8d4e0;font-weight:700}
+  .ord-item{flex:2;color:#4a5a70;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ord-price{color:#e0e8f8;font-weight:800;min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+  .badge{font-size:7px;font-weight:800;letter-spacing:.06em;padding:2px 8px;border-radius:99px;white-space:nowrap}
+  .b-pend{background:rgba(212,168,67,.12);color:#d4a843}
+  .b-prod{background:rgba(200,112,90,.12);color:#c8705a}
+  .b-done{background:rgba(74,156,111,.12);color:#4a9c6f}
+  .b-ship{background:rgba(106,176,200,.12);color:#6ab0c8}
+  .calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .calc-panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:16px;overflow-y:auto;height:400px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.06) transparent}
+  .calc-panel::-webkit-scrollbar{width:3px}
+  .calc-panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08)}
+  .c-sec{margin-bottom:14px}
+  .c-sec-t{font-size:8px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c8705a;margin-bottom:8px}
+  .c-field{margin-bottom:7px}
+  .c-lbl{font-size:8px;color:#3a4a5c;margin-bottom:3px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .c-inp{width:100%;padding:6px 9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;font-size:11px;color:#8a9ab8;font-family:inherit;box-sizing:border-box;transition:border .15s}
+  .c-inp:focus{outline:none;border-color:rgba(200,112,90,.4);background:rgba(255,255,255,.06)}
+  .c-sel{width:100%;padding:6px 9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:6px;font-size:11px;color:#8a9ab8;font-family:inherit}
+  .result-box{background:linear-gradient(135deg,rgba(200,112,90,.1),rgba(200,112,90,.03));border:1px solid rgba(200,112,90,.2);border-radius:11px;padding:14px;margin-bottom:10px}
+  .res-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:10px}
+  .res-lbl{color:#4a5a70}
+  .res-val{color:#c8d4e0;font-weight:700;font-variant-numeric:tabular-nums}
+  .res-divider{height:1px;background:rgba(200,112,90,.15);margin:8px 0}
+  .res-total-row{display:flex;justify-content:space-between;align-items:baseline}
+  .res-total-lbl{font-size:11px;font-weight:800;color:#e0e8f8}
+  .res-total-val{font-size:22px;font-weight:900;color:#c8705a;font-variant-numeric:tabular-nums}
+  .res-margin-txt{font-size:9px;color:#4a9c6f;font-weight:700;text-align:center;margin-top:6px}
+  .monthly-banner{background:rgba(74,156,111,.08);border:1px solid rgba(74,156,111,.15);border-radius:8px;padding:10px;text-align:center}
+  .mb-lbl{font-size:8px;color:#4a9c6f;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+  .mb-val{font-size:16px;font-weight:900;color:#4a9c6f;font-variant-numeric:tabular-nums}
+  .mb-sub{font-size:8px;color:#2a4a38;margin-top:1px}
+  .prod-th{display:grid;grid-template-columns:2.5fr 70px 70px 80px 90px 70px;gap:8px;padding:5px 10px;font-size:7px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#2a3a4c;margin-bottom:4px}
+  .prod-row{display:grid;grid-template-columns:2.5fr 70px 70px 80px 90px 70px;gap:8px;align-items:center;padding:8px 10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.04);border-radius:8px;margin-bottom:4px;font-size:10px;transition:background .15s;cursor:default}
+  .prod-row:hover{background:rgba(255,255,255,.045)}
+  .prod-name{color:#c8d4e0;font-weight:700}
+  .prod-mat{color:#4a5a70}
+  .prod-price{color:#e0e8f8;font-weight:800;font-variant-numeric:tabular-nums}
+  .margin-bar-wrap{background:rgba(255,255,255,.06);border-radius:99px;height:4px;overflow:hidden;margin-bottom:2px}
+  .margin-bar{height:100%;border-radius:99px;background:linear-gradient(90deg,#4a9c6f,#6ac87f)}
+  .prod-margin-val{font-size:9px;font-weight:800;color:#4a9c6f}
+  .niche-tag{font-size:7px;font-weight:800;padding:2px 7px;border-radius:99px;background:rgba(200,112,90,.1);color:#c8705a;white-space:nowrap;display:inline-block}
+  .fil-layout{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .fil-list-panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:14px;height:400px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.06) transparent}
+  .fil-calc-panel{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:11px;padding:14px}
+  .fil-item-row{display:flex;align-items:center;gap:10px;padding:9px 10px;background:rgba(255,255,255,.025);border-radius:8px;margin-bottom:5px;cursor:pointer;border:1.5px solid transparent;transition:all .15s}
+  .fil-item-row:hover{background:rgba(255,255,255,.04)}
+  .fil-item-row.sel{border-color:rgba(200,112,90,.35);background:rgba(200,112,90,.06)}
+  .fil-spool-ic{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .fil-name-main{font-size:10px;font-weight:700;color:#c8d4e0}
+  .fil-name-sub{font-size:8px;color:#3a4a5c}
+  .fil-bar-stack{background:rgba(255,255,255,.05);border-radius:99px;height:3px;overflow:hidden;margin-top:4px}
+  .fil-bar-fill{height:100%;border-radius:99px}
+  .fil-price-tag{font-size:11px;font-weight:900;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .fil-calc-result{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:12px;margin-bottom:8px}
+  .fil-res-head{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#4a5a70;margin-bottom:8px}
+  .fil-res-row{display:flex;justify-content:space-between;font-size:10px;margin-bottom:5px}
+  .fil-res-l{color:#3a4a5c}
+  .fil-res-v{color:#c8d4e0;font-weight:700;font-variant-numeric:tabular-nums}
+  .fil-best{background:rgba(74,156,111,.08);border:1px solid rgba(74,156,111,.15);border-radius:8px;padding:10px;font-size:9px;color:#4a9c6f;font-weight:700;text-align:center}
+  @media(max-width:660px){.aw-side{display:none}.kpi-row{grid-template-columns:repeat(2,1fr)}.calc-layout,.fil-layout{grid-template-columns:1fr}.prod-th,.prod-row{grid-template-columns:2fr 60px 60px 50px}.prod-th>:nth-child(3),.prod-row>:nth-child(3),.prod-th>:nth-child(6),.prod-row>:nth-child(6){display:none}.pipeline{grid-template-columns:repeat(2,1fr)}}
   </style>
 
   <!-- DASHBOARD -->
   <div class="sc-screen active" id="sc-dashboard">
-    <div class="app-shot-wrap">
-      <img src="screenshots/dashboard.png" alt="PRINTNEAT Dashboard — visão geral das finanças, encomendas e alertas" loading="lazy">
+  <div class="aw">
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Dashboard</span></div>
+    <div class="aw-body">
+      <div class="aw-side">
+        <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
+        <div class="aw-nav">
+          <div class="aw-grp">Main</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Dashboard</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Produtos</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Encomendas</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finanças</div>
+          <div class="aw-grp">Produção</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Stock</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Filamentos</div>
+          <div class="aw-grp">Vendas</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Clientes CRM</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Simulador</div>
+        </div>
+      </div>
+      <div class="aw-main">
+        <div class="aw-pg">
+          <div class="aw-pg-title">Bom dia, PRINTNEAT!</div>
+          <div class="aw-pg-sub">Resumo de hoje · Quinta, 9 Jul 2026</div>
+          <div class="kpi-row">
+            <div class="kpi-c"><div class="kpi-label">Receita</div><div class="kpi-value neu">€28.50</div><div class="kpi-delta pos">↑ 12% este mês</div></div>
+            <div class="kpi-c"><div class="kpi-label">Despesas</div><div class="kpi-value" style="color:#8090a8">€15.00</div><div class="kpi-delta" style="color:#3a4a5c">acumulado</div></div>
+            <div class="kpi-c"><div class="kpi-label">Lucro Líquido</div><div class="kpi-value pos">€13.50</div><div class="kpi-delta pos">margem 47.4%</div></div>
+            <div class="kpi-c"><div class="kpi-label">ROI</div><div class="kpi-value neu">90.0%</div><div class="kpi-delta pos">↑ resultado</div></div>
+          </div>
+          <div class="chart-wrap">
+            <div class="chart-head"><span class="chart-title">Receita vs Despesas — Últimos 6 meses</span><div class="chart-legend"><div class="chart-leg-item"><div class="chart-leg-dot" style="background:#c8705a"></div>Receita</div><div class="chart-leg-item"><div class="chart-leg-dot" style="background:rgba(255,255,255,.15)"></div>Despesas</div></div></div>
+            <div class="bars-area">
+              <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:34px;width:11px"></div><div class="bar bar-exp" style="height:22px;width:11px"></div></div><div class="bar-lbl">Fev</div></div>
+              <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:28px;width:11px"></div><div class="bar bar-exp" style="height:18px;width:11px"></div></div><div class="bar-lbl">Mar</div></div>
+              <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:45px;width:11px"></div><div class="bar bar-exp" style="height:25px;width:11px"></div></div><div class="bar-lbl">Abr</div></div>
+              <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:38px;width:11px"></div><div class="bar bar-exp" style="height:28px;width:11px"></div></div><div class="bar-lbl">Mai</div></div>
+              <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:52px;width:11px"></div><div class="bar bar-exp" style="height:30px;width:11px"></div></div><div class="bar-lbl">Jun</div></div>
+              <div class="bar-col"><div class="bar-pair"><div class="bar bar-rev" style="height:62px;width:11px;background:linear-gradient(180deg,#e8906a,#c8705a)"></div><div class="bar bar-exp" style="height:32px;width:11px"></div></div><div class="bar-lbl" style="color:#c8705a;font-weight:800">Jul</div></div>
+            </div>
+          </div>
+          <div class="pipeline">
+            <div class="pipe-col"><div class="pipe-num" style="color:#d4a843">3</div><div class="pipe-lbl" style="color:#d4a843">Pendente</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#c8705a">1</div><div class="pipe-lbl" style="color:#c8705a">Produção</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#6ab0c8">2</div><div class="pipe-lbl" style="color:#6ab0c8">Envio</div></div>
+            <div class="pipe-col"><div class="pipe-num" style="color:#4a9c6f">4</div><div class="pipe-lbl" style="color:#4a9c6f">Concluído</div></div>
+          </div>
+          <div class="ord-row"><div class="ord-dot" style="background:#d4a843"></div><div class="ord-client">Ana Gomes</div><div class="ord-item">Caixa cosmos Printneat</div><div class="ord-price">€5.00</div><div class="badge b-pend">Pendente</div></div>
+          <div class="ord-row"><div class="ord-dot" style="background:#c8705a"></div><div class="ord-client">Glória Borges</div><div class="ord-item">Dispensador de ovos</div><div class="ord-price">€9.00</div><div class="badge b-prod">Produção</div></div>
+          <div class="ord-row"><div class="ord-dot" style="background:#4a9c6f"></div><div class="ord-client">Oscar Rocha</div><div class="ord-item">Águia Benfica</div><div class="ord-price">€7.50</div><div class="badge b-done">Concluído</div></div>
+        </div>
+      </div>
     </div>
   </div>
+  </div>
 
-  <!-- CALCULATOR -->
+  <!-- CALCULADORA -->
   <div class="sc-screen" id="sc-calc">
-    <div class="app-shot-wrap">
-      <img src="screenshots/calculator.png" alt="PRINTNEAT Price Calculator — calcula o preço ideal com margem e lucro" loading="lazy">
+  <div class="aw">
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Calculadora de Preço</span></div>
+    <div class="aw-body">
+      <div class="aw-side">
+        <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
+        <div class="aw-nav">
+          <div class="aw-grp">Main</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Calculadora</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Produtos</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Encomendas</div>
+          <div class="aw-grp">Produção</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Filamentos</div>
+        </div>
+      </div>
+      <div class="aw-main">
+        <div class="aw-pg">
+          <div class="aw-pg-title">Calculadora de Preço</div>
+          <div class="aw-pg-sub">Descobre o preço ideal e o teu potencial de negócio</div>
+          <div class="calc-layout">
+            <div class="calc-panel">
+              <div class="c-sec">
+                <div class="c-sec-t">Produto</div>
+                <div class="c-field"><div class="c-lbl">Nome</div><input class="c-inp" id="ci-name" value="Águia Benfica" oninput="calcUpdate()"></div>
+                <div class="c-field"><div class="c-lbl">Unidades / mês</div><input class="c-inp" id="ci-units" type="number" value="1" min="1" oninput="calcUpdate()"></div>
+              </div>
+              <div class="c-sec">
+                <div class="c-sec-t">Filamento</div>
+                <div class="c-field"><div class="c-lbl">Material</div><select class="c-sel" id="ci-mat" onchange="calcUpdate()"><option value="20">PLA+ — €20/kg</option><option value="18">PLA Basic — €18/kg</option><option value="26">PETG — €26/kg</option><option value="35">ABS — €35/kg</option></select></div>
+                <div class="c-field"><div class="c-lbl">Gramas usadas</div><input class="c-inp" id="ci-grams" type="number" value="56" min="1" oninput="calcUpdate()"></div>
+              </div>
+              <div class="c-sec">
+                <div class="c-sec-t">Impressão</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+                  <div class="c-field"><div class="c-lbl">Horas</div><input class="c-inp" id="ci-hours" type="number" value="5" min="0" oninput="calcUpdate()"></div>
+                  <div class="c-field"><div class="c-lbl">Minutos</div><input class="c-inp" id="ci-mins" type="number" value="30" min="0" max="59" oninput="calcUpdate()"></div>
+                </div>
+                <div class="c-field"><div class="c-lbl">Potência (W)</div><input class="c-inp" id="ci-watts" type="number" value="260" min="1" oninput="calcUpdate()"></div>
+                <div class="c-field"><div class="c-lbl">Energia (cênt/kWh)</div><input class="c-inp" id="ci-energy" type="number" value="22" min="1" oninput="calcUpdate()"></div>
+              </div>
+              <div class="c-sec">
+                <div class="c-sec-t">Embalagem &amp; Envio</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+                  <div class="c-field"><div class="c-lbl">Embalagem (€)</div><input class="c-inp" id="ci-pack" type="number" value="0.50" step="0.1" min="0" oninput="calcUpdate()"></div>
+                  <div class="c-field"><div class="c-lbl">Envio (€)</div><input class="c-inp" id="ci-ship" type="number" value="3.50" step="0.1" min="0" oninput="calcUpdate()"></div>
+                </div>
+              </div>
+            </div>
+            <div class="calc-panel">
+              <div class="c-sec-t">Resultado</div>
+              <div class="result-box">
+                <div class="res-row"><span class="res-lbl">Custo filamento</span><span class="res-val" id="co-fil">€1.12</span></div>
+                <div class="res-row"><span class="res-lbl">Energia</span><span class="res-val" id="co-energy">€0.31</span></div>
+                <div class="res-row"><span class="res-lbl">Embalagem + envio</span><span class="res-val" id="co-pack">€4.00</span></div>
+                <div class="res-divider"></div>
+                <div class="res-row"><span class="res-lbl">Custo total</span><span class="res-val" id="co-cost">€5.43</span></div>
+                <div class="res-row"><span class="res-lbl">Lucro</span><span class="res-val pos" id="co-profit">€8.32</span></div>
+                <div class="res-divider"></div>
+                <div class="res-total-row"><span class="res-total-lbl">Preço ideal</span><span class="res-total-val" id="co-price">€13.75</span></div>
+                <div class="res-margin-txt" id="co-margin">Margem 60% · Saudável ✓</div>
+              </div>
+              <div class="monthly-banner">
+                <div class="mb-lbl">Potencial mensal</div>
+                <div class="mb-val" id="co-monthly">€13.75 / mês</div>
+                <div class="mb-sub" id="co-monthly-sub">1 unidade × €13.75</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  </div>
 
-  <!-- ORDERS -->
+  <!-- ENCOMENDAS -->
   <div class="sc-screen" id="sc-orders">
-    <div class="app-shot-wrap">
-      <img src="screenshots/orders.png" alt="PRINTNEAT Orders — gestão de encomendas de clientes" loading="lazy">
+  <div class="aw">
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Encomendas</span></div>
+    <div class="aw-body">
+      <div class="aw-side">
+        <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
+        <div class="aw-nav">
+          <div class="aw-grp">Main</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Produtos</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Encomendas</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finanças</div>
+        </div>
+      </div>
+      <div class="aw-main">
+        <div class="aw-pg">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+            <div><div class="aw-pg-title">Encomendas</div><div class="aw-pg-sub">8 total · Ordenadas por data</div></div>
+            <button style="padding:6px 14px;background:linear-gradient(135deg,#c8705a,#a85848);border:none;border-radius:7px;font-size:9px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit">+ Nova</button>
+          </div>
+          <div class="ord-filters" id="ord-filter-bar">
+            <div class="ord-filt on" onclick="filterOrders('all',this)">Todas</div>
+            <div class="ord-filt" onclick="filterOrders('Pendente',this)">Pendente</div>
+            <div class="ord-filt" onclick="filterOrders('Produção',this)">Produção</div>
+            <div class="ord-filt" onclick="filterOrders('Envio',this)">Envio</div>
+            <div class="ord-filt" onclick="filterOrders('Concluído',this)">Concluído</div>
+          </div>
+          <div id="ord-list"></div>
+        </div>
+      </div>
     </div>
   </div>
-
-  <!-- INVOICE -->
-  <div class="sc-screen" id="sc-invoice">
-    <div class="app-shot-wrap">
-      <img src="screenshots/products.png" alt="PRINTNEAT Products & Margins — catálogo com margens de lucro" loading="lazy">
-    </div>
   </div>
 
-  <!-- FILAMENTS -->
+  <!-- PRODUTOS -->
+  <div class="sc-screen" id="sc-products">
+  <div class="aw">
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Produtos &amp; Margens</span></div>
+    <div class="aw-body">
+      <div class="aw-side">
+        <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
+        <div class="aw-nav">
+          <div class="aw-grp">Main</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Produtos</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Encomendas</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Finanças</div>
+        </div>
+      </div>
+      <div class="aw-main">
+        <div class="aw-pg">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+            <div><div class="aw-pg-title">Produtos &amp; Margens</div><div class="aw-pg-sub">Catálogo com rentabilidade por produto</div></div>
+            <button style="padding:6px 14px;background:linear-gradient(135deg,#c8705a,#a85848);border:none;border-radius:7px;font-size:9px;font-weight:800;color:#fff;cursor:pointer;font-family:inherit">+ Produto</button>
+          </div>
+          <div class="prod-th"><div>Produto</div><div>Material</div><div>Custo</div><div>Preço</div><div>Margem</div><div>Nicho</div></div>
+          <div id="prod-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- FILAMENTOS -->
   <div class="sc-screen" id="sc-filament">
-    <div class="app-shot-wrap">
-      <img src="screenshots/filaments.png" alt="PRINTNEAT Filament Cost Comparator — compara custo de filamentos" loading="lazy">
+  <div class="aw">
+    <div class="aw-bar"><div class="aw-dot" style="background:#FF5F56"></div><div class="aw-dot" style="background:#FFBD2E"></div><div class="aw-dot" style="background:#27C93F"></div><span class="aw-title">PRINTNEAT Workspace Pro — Filamentos</span></div>
+    <div class="aw-body">
+      <div class="aw-side">
+        <div class="aw-logo"><div><span class="aw-logo-p">PRINT</span><span class="aw-logo-n">NEAT</span></div><div class="aw-logo-sub">Workspace</div></div>
+        <div class="aw-nav">
+          <div class="aw-grp">Main</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Dashboard</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Calculadora</div>
+          <div class="aw-grp">Produção</div>
+          <div class="aw-ni on"><span class="aw-ni-ic">▪</span> Filamentos</div>
+          <div class="aw-ni"><span class="aw-ni-ic">◦</span> Stock</div>
+        </div>
+      </div>
+      <div class="aw-main">
+        <div class="aw-pg">
+          <div class="aw-pg-title">Comparador de Filamentos</div>
+          <div class="aw-pg-sub">Compara custo por 100g e escolhe o mais rentável</div>
+          <div class="fil-layout">
+            <div class="fil-list-panel" id="fil-list"></div>
+            <div class="fil-calc-panel">
+              <div class="c-sec-t">Calculadora por impressão</div>
+              <div class="c-field"><div class="c-lbl">Peso de impressão (g)</div><input class="c-inp" id="fi-weight" type="number" value="100" min="1" oninput="filCalc()"></div>
+              <div class="fil-calc-result" id="fi-result"></div>
+              <div class="fil-best" id="fi-best"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
   </div>
 
   <script>
-  function showScreen(id, btn) {
-    document.querySelectorAll('.sc-screen').forEach(function(el){ el.classList.remove('active'); });
-    document.querySelectorAll('.sc-tab').forEach(function(el){ el.classList.remove('active'); });
-    document.getElementById('sc-' + id).classList.add('active');
-    btn.classList.add('active');
-  }
+  function showScreen(id,btn){document.querySelectorAll('.sc-screen').forEach(function(e){e.classList.remove('active')});document.querySelectorAll('.sc-tab').forEach(function(e){e.classList.remove('active')});document.getElementById('sc-'+id).classList.add('active');btn.classList.add('active')}
+  function calcUpdate(){var mat=parseFloat(document.getElementById('ci-mat').value)||20,grams=parseFloat(document.getElementById('ci-grams').value)||0,hours=parseFloat(document.getElementById('ci-hours').value)||0,mins=parseFloat(document.getElementById('ci-mins').value)||0,watts=parseFloat(document.getElementById('ci-watts').value)||0,energy=parseFloat(document.getElementById('ci-energy').value)||0,pack=parseFloat(document.getElementById('ci-pack').value)||0,ship=parseFloat(document.getElementById('ci-ship').value)||0,units=parseInt(document.getElementById('ci-units').value)||1;var filCost=(grams/1000)*mat,timeH=hours+mins/60,energyCost=(watts/1000)*timeH*(energy/100),packCost=pack+ship,total=filCost+energyCost+packCost,price=total/(1-0.6),profit=price-total,monthly=price*units;document.getElementById('co-fil').textContent='€'+filCost.toFixed(2);document.getElementById('co-energy').textContent='€'+energyCost.toFixed(2);document.getElementById('co-pack').textContent='€'+packCost.toFixed(2);document.getElementById('co-cost').textContent='€'+total.toFixed(2);document.getElementById('co-profit').textContent='€'+profit.toFixed(2);document.getElementById('co-price').textContent='€'+price.toFixed(2);document.getElementById('co-margin').textContent='Margem 60% · '+(profit>0?'Saudável ✓':'Rever ⚠');document.getElementById('co-monthly').textContent='€'+monthly.toFixed(2)+' / mês';document.getElementById('co-monthly-sub').textContent=units+' unidade'+(units!==1?'s':'')+' × €'+price.toFixed(2)}
+  calcUpdate();
+  var ORDERS=[{client:'Oscar Rocha',item:'Águia Benfica',price:7.50,status:'Envio',color:'#6ab0c8'},{client:'Ana Gomes',item:'Caixa cosmos Printneat',price:5.00,status:'Pendente',color:'#d4a843'},{client:'Ana Gomes',item:'Draco FC Porto',price:6.50,status:'Pendente',color:'#d4a843'},{client:'Glória Borges',item:'Chaveiro suporte telemóvel',price:0.00,status:'Concluído',color:'#4a9c6f'},{client:'Glória Borges',item:'Dispensador de ovos 10un',price:9.00,status:'Produção',color:'#c8705a'},{client:'Glória Borges',item:'Suporte modelar bananas',price:6.50,status:'Produção',color:'#c8705a'},{client:'Glória Borges',item:'Estátua do CRT',price:10.00,status:'Pendente',color:'#d4a843'},{client:'Glória Borges',item:'Caixa organização modular',price:3.38,status:'Concluído',color:'#4a9c6f'}];
+  var sClass={Pendente:'b-pend',Produção:'b-prod',Envio:'b-ship',Concluído:'b-done'};
+  function renderOrders(f){var l=document.getElementById('ord-list');l.innerHTML='';ORDERS.filter(function(o){return f==='all'||o.status===f}).forEach(function(o){var r=document.createElement('div');r.className='ord-row';r.innerHTML='<div class="ord-dot" style="background:'+o.color+'"></div><div class="ord-client">'+o.client+'</div><div class="ord-item">'+o.item+'</div><div class="ord-price">€'+o.price.toFixed(2)+'</div><div class="badge '+sClass[o.status]+'">'+o.status+'</div>';l.appendChild(r)})}
+  function filterOrders(f,btn){document.querySelectorAll('#ord-filter-bar .ord-filt').forEach(function(b){b.classList.remove('on')});btn.classList.add('on');renderOrders(f)}
+  renderOrders('all');
+  var PRODS=[{name:'Organizador modular desk',mat:'PLA+',cost:2.50,price:22.00,margin:89,niche:'Home office'},{name:'Suporte cabos & hub',mat:'PETG',cost:1.00,price:14.00,margin:93,niche:'Tech'},{name:'Organiz. cosméticos',mat:'PLA+',cost:3.00,price:24.00,margin:88,niche:'Beleza'},{name:'Vasos modulares',mat:'PETG',cost:2.50,price:20.00,margin:88,niche:'Plantas'},{name:'Organiz. cozinha',mat:'PETG',cost:3.00,price:18.00,margin:83,niche:'Cozinha'},{name:'Suporte home office',mat:'PLA+',cost:4.00,price:32.00,margin:88,niche:'WiFi'}];
+  (function(){var l=document.getElementById('prod-list');PRODS.forEach(function(p){var r=document.createElement('div');r.className='prod-row';r.innerHTML='<div class="prod-name">'+p.name+'</div><div class="prod-mat">'+p.mat+'</div><div class="prod-mat" style="font-variant-numeric:tabular-nums">€'+p.cost.toFixed(2)+'</div><div class="prod-price">€'+p.price.toFixed(2)+'</div><div><div class="margin-bar-wrap"><div class="margin-bar" style="width:'+p.margin+'%"></div></div><div class="prod-margin-val">'+p.margin+'%</div></div><div class="niche-tag">'+p.niche+'</div>';l.appendChild(r)})})();
+  var FILS=[{name:'Bambu PLA+ Branco',brand:'PLA+ · Excelente qualidade',price:2.20,color:'#d8d8d8',bg:'rgba(220,220,220,.08)'},{name:'eSUN PLA+ Preto',brand:'PLA+ · Bom custo-benefício',price:1.80,color:'#888',bg:'rgba(100,100,100,.12)'},{name:'Bambu PETG Transparente',brand:'PETG · Para peças funcionais',price:2.60,color:'#88c8e8',bg:'rgba(100,180,220,.1)'},{name:'Generic PLA Terracota',brand:'PLA · Económico',price:1.40,color:'#c8705a',bg:'rgba(200,112,90,.1)',best:true}];
+  var selFil=0;
+  function renderFils(){var l=document.getElementById('fil-list');l.innerHTML='<div class="c-sec-t">Os meus filamentos</div>';FILS.forEach(function(f,i){var r=document.createElement('div');r.className='fil-item-row'+(i===selFil?' sel':'');r.onclick=function(){selFil=i;renderFils();filCalc()};var pct=Math.round((f.price/2.60)*100);r.innerHTML='<div class="fil-spool-ic" style="background:'+f.bg+'"><div style="width:14px;height:14px;border-radius:50%;border:2.5px solid '+f.color+'"></div></div><div style="flex:1"><div class="fil-name-main">'+f.name+(f.best?' <span style="font-size:7px;color:#4a9c6f;font-weight:800">★ melhor</span>':'')+'</div><div class="fil-name-sub">'+f.brand+'</div><div class="fil-bar-stack"><div class="fil-bar-fill" style="width:'+pct+'%;background:'+f.color+'"></div></div></div><div class="fil-price-tag" style="color:'+f.color+'">€'+f.price.toFixed(2)+'<span style="font-size:7px;color:#3a4a5c;font-weight:400">/100g</span></div>';l.appendChild(r)})}
+  function filCalc(){var w=parseFloat(document.getElementById('fi-weight').value)||100,f=FILS[selFil],cost=(w/100)*f.price,prints=Math.floor(1000/w);document.getElementById('fi-result').innerHTML='<div class="fil-res-head">'+f.name+'</div><div class="fil-res-row"><span class="fil-res-l">Custo por 100g</span><span class="fil-res-v">€'+f.price.toFixed(2)+'</span></div><div class="fil-res-row"><span class="fil-res-l">Custo por '+w+'g</span><span class="fil-res-v">€'+cost.toFixed(3)+'</span></div><div class="fil-res-row"><span class="fil-res-l">Impressões / bobine 1kg</span><span class="fil-res-v">'+prints+'</span></div>';var best=FILS.reduce(function(a,b){return a.price<b.price?a:b});document.getElementById('fi-best').textContent='★ Mais económico: '+best.name+' (€'+best.price.toFixed(2)+'/100g)'}
+  renderFils();filCalc();
   </script>
 </section>
 
