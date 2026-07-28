@@ -6,63 +6,70 @@
 <title>PrintNeat Workspace — PRINTNEAT STORE</title>
 <meta name="description" content="O workspace all-in-one com todos os programas essenciais para o teu PC. Grátis para começar.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
-   PRINTNEAT STORE · Mac App Store layout
+   PRINTNEAT STORE · Cosmos Edition
    Nav → App header → Tab bar → Tab content
 ═══════════════════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#000;
-  --surface:#1c1c1e;
-  --surface2:#2c2c2e;
-  --surface3:#3a3a3c;
-  --fg:#f5f5f7;
-  --fg2:#aeaeb2;
-  --muted:#636366;
-  --muted2:#48484a;
-  --sep:rgba(255,255,255,.1);
+  --bg:#05060e;
+  --surface:#0c0e1c;
+  --surface2:#141627;
+  --surface3:#1b1d2e;
+  --fg:#edf2ff;
+  --fg2:#8898bb;
+  --muted:#465070;
+  --muted2:#2c3456;
+  --sep:rgba(99,179,237,.1);
   --sep2:rgba(255,255,255,.06);
-  --amber:#c8820a;
-  --amber2:#e8a030;
-  --green:#30d158;
-  --blue:#0a84ff;
-  --red:#ff453a;
-  --r:14px;
-  --nav-h:52px;
-  --cat-h:44px;
+  --amber:#00d4aa;
+  --amber2:#00b896;
+  --green:#22d3a5;
+  --blue:#7b5ea7;
+  --red:#f43f5e;
+  --r:16px;
+  --nav-h:56px;
+  --cat-h:48px;
   --app-h:110px;
   --tab-h:46px;
+  --teal:#00d4aa;
+  --teal2:#00b896;
+  --violet:#7b5ea7;
 }
 
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:var(--bg);color:var(--fg);font-size:16px;line-height:1.6;font-feature-settings:'cv11','ss01';letter-spacing:-.015em;overflow-x:hidden;padding-top:calc(var(--nav-h) + var(--cat-h))}
+body::before{content:'';position:fixed;width:900px;height:900px;top:-300px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(0,212,170,.06) 0%,rgba(123,94,167,.04) 45%,transparent 70%);pointer-events:none;z-index:0;animation:nebula 18s ease-in-out infinite alternate}
+@keyframes nebula{from{transform:translateX(-55%) scale(1)}to{transform:translateX(-45%) scale(1.2)}}
 
 /* ── CATEGORY STRIP ── */
 #cat-strip{
   position:fixed;top:var(--nav-h);left:0;right:0;z-index:290;
   height:var(--cat-h);
-  background:rgba(0,0,0,.92);
+  background:rgba(5,6,14,.94);
   backdrop-filter:blur(24px) saturate(160%);
   -webkit-backdrop-filter:blur(24px) saturate(160%);
   border-bottom:1px solid var(--sep2);
 }
 .cat-strip-inner{
-  max-width:1200px;margin:0 auto;padding:0 24px;
-  height:100%;display:flex;align-items:center;gap:0;
+  max-width:1200px;margin:0 auto;padding:0 18px;
+  height:100%;display:flex;align-items:center;gap:6px;
   overflow-x:auto;scrollbar-width:none;
 }
 .cat-strip-inner::-webkit-scrollbar{display:none}
 .cat-btn{
-  padding:0 18px;height:100%;
-  background:none;border:none;border-bottom:2px solid transparent;
-  color:var(--muted);font-size:13px;font-weight:500;
+  padding:5px 14px;height:30px;
+  background:transparent;border:1px solid transparent;border-radius:99px;
+  color:var(--muted);font-size:12.5px;font-weight:500;
   cursor:pointer;font-family:inherit;letter-spacing:-.01em;
-  white-space:nowrap;transition:color .15s;flex-shrink:0;
+  white-space:nowrap;transition:all .18s;flex-shrink:0;
+  line-height:1;display:flex;align-items:center;
 }
-.cat-btn:hover{color:var(--fg2)}
-.cat-btn.active{color:var(--fg);border-bottom-color:var(--amber);font-weight:600}
+.cat-btn:hover{color:var(--fg2);background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.1)}
+.cat-btn.active{color:var(--bg);background:var(--teal);border-color:var(--teal);font-weight:700;box-shadow:0 0 18px rgba(0,212,170,.28)}
 
 /* ── STORE PAGES ── */
 .store-page{display:none;min-height:80vh;padding-bottom:80px}
@@ -78,7 +85,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-
 #top-nav{
   position:fixed;top:0;left:0;right:0;z-index:300;
   height:var(--nav-h);
-  background:rgba(0,0,0,.82);
+  background:rgba(5,6,14,.88);
   backdrop-filter:blur(28px) saturate(180%);
   -webkit-backdrop-filter:blur(28px) saturate(180%);
   border-bottom:1px solid var(--sep2);
@@ -87,9 +94,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-
   max-width:1200px;margin:0 auto;padding:0 24px;
   height:100%;display:flex;align-items:center;gap:24px;
 }
-.store-logo{font-size:15px;font-weight:900;letter-spacing:.05em;color:var(--fg);text-decoration:none;white-space:nowrap;flex-shrink:0}
-.store-logo span{font-weight:200;color:var(--amber)}
-.store-logo sub{font-size:9px;font-weight:700;letter-spacing:.12em;color:var(--muted);vertical-align:super;margin-left:3px;text-transform:uppercase}
+.store-logo{font-family:'Syne',sans-serif;font-size:16px;font-weight:900;letter-spacing:.06em;color:var(--fg);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.store-logo span{font-weight:700;color:var(--teal)}
+.store-logo sub{font-size:8px;font-weight:700;letter-spacing:.14em;color:var(--muted);vertical-align:super;margin-left:3px;text-transform:uppercase}
 
 .top-nav-search{
   flex:1;max-width:320px;
@@ -132,7 +139,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-
 }
 .mobile-drawer{
   display:none;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;
-  background:rgba(0,0,0,.96);z-index:250;flex-direction:column;
+  background:rgba(5,6,14,.97);z-index:250;flex-direction:column;
   padding:20px 24px;gap:4px;overflow-y:auto;
 }
 .mobile-drawer.open{display:flex}
@@ -145,7 +152,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-
 #app-header{
   display:none;
   position:sticky;top:calc(var(--nav-h) + var(--cat-h));z-index:200;
-  background:rgba(0,0,0,.9);
+  background:rgba(5,6,14,.92);
   backdrop-filter:blur(24px) saturate(160%);
   -webkit-backdrop-filter:blur(24px) saturate(160%);
   border-bottom:1px solid var(--sep2);
@@ -158,14 +165,14 @@ body.on-workspace #app-header{display:block}
 }
 .app-icon-sm{
   width:64px;height:64px;border-radius:14px;flex-shrink:0;
-  background:linear-gradient(145deg,#180f00,#0d0900);
-  border:1px solid rgba(200,130,10,.2);
+  background:linear-gradient(145deg,#001a14,#000d08);
+  border:1px solid rgba(0,212,170,.2);
   display:flex;align-items:center;justify-content:center;
   font-size:30px;
-  box-shadow:0 4px 16px rgba(0,0,0,.5);
+  box-shadow:0 4px 20px rgba(0,212,170,.12);
 }
 .app-header-info{flex:1;min-width:0}
-.app-header-name{font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.app-header-name{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .app-header-dev{font-size:13px;color:var(--muted);margin-top:1px}
 .app-header-rating{display:flex;align-items:center;gap:6px;margin-top:4px}
 .stars{color:var(--amber);font-size:12px;letter-spacing:1px}
@@ -196,7 +203,7 @@ body.on-workspace #app-header{display:block}
 #tab-bar{
   display:none;
   position:sticky;top:calc(var(--nav-h) + var(--cat-h) + var(--app-h));z-index:190;
-  background:rgba(0,0,0,.9);
+  background:rgba(5,6,14,.92);
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--sep2);
@@ -243,8 +250,8 @@ body.on-workspace #tab-bar{display:block}
 .sc-sidebar{width:150px;background:#090d14;border-right:1px solid rgba(255,255,255,.04);padding:12px 0;flex-shrink:0;overflow:hidden}
 .sc-main{flex:1;background:#090d18;padding:16px;overflow:hidden}
 .sc-item{padding:7px 12px;font-size:9px;color:#2a3850;display:flex;align-items:center;gap:6px}
-.sc-item.on{background:rgba(200,130,10,.1);border-left:2px solid #c8820a;color:#c8d0a0}
-.sc-logo{padding:0 12px 10px;font-size:10px;font-weight:900;color:#c8820a;letter-spacing:.1em;border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:6px}
+.sc-item.on{background:rgba(0,212,170,.1);border-left:2px solid #00d4aa;color:#a0e8d0}
+.sc-logo{padding:0 12px 10px;font-size:10px;font-weight:900;color:#00d4aa;letter-spacing:.1em;border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:6px}
 @media(max-width:760px){.sc-frame{width:calc(100vw - 52px)}.sc-mock{height:300px}}
 
 /* Desc section */
@@ -253,7 +260,7 @@ body.on-workspace #tab-bar{display:block}
 .desc-body{font-size:15px;color:var(--fg2);line-height:1.75}
 .desc-body p+p{margin-top:12px}
 .desc-body.clipped{max-height:140px;overflow:hidden;position:relative}
-.desc-body.clipped::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(to bottom,transparent,#000)}
+.desc-body.clipped::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50px;background:linear-gradient(to bottom,transparent,var(--bg))}
 .desc-more{margin-top:10px;background:none;border:none;color:var(--amber);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;padding:0}
 .desc-more:hover{color:var(--amber2)}
 
@@ -261,7 +268,7 @@ body.on-workspace #tab-bar{display:block}
 .wn-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--sep2);padding:24px 28px;margin-top:40px;max-width:640px}
 .wn-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
 .wn-title{font-size:17px;font-weight:700;letter-spacing:-.02em}
-.version-pill{font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;background:rgba(200,130,10,.1);color:var(--amber);border:1px solid rgba(200,130,10,.2);letter-spacing:.06em}
+.version-pill{font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;background:rgba(0,212,170,.1);color:var(--teal);border:1px solid rgba(0,212,170,.2);letter-spacing:.06em}
 .wn-date{font-size:12px;color:var(--muted);margin-bottom:18px}
 .wn-list{display:flex;flex-direction:column;gap:9px}
 .wn-row{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--fg2);line-height:1.55}
@@ -280,7 +287,7 @@ body.on-workspace #tab-bar{display:block}
 
 /* ── PAGE: PROGRAMAS ── */
 .programs-intro{margin-bottom:36px}
-.programs-intro h2{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.programs-intro h2{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .programs-intro p{font-size:16px;color:var(--muted);max-width:560px;line-height:1.65}
 .programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--sep2);border-radius:var(--r);overflow:hidden}
 @media(max-width:680px){.programs-grid{grid-template-columns:1fr}}
@@ -292,13 +299,13 @@ body.on-workspace #tab-bar{display:block}
 .prog-desc{font-size:13px;color:var(--muted);line-height:1.55}
 .prog-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:5px;margin-top:6px}
 .tag-free{background:rgba(48,209,88,.1);color:var(--green);border:1px solid rgba(48,209,88,.15)}
-.tag-pro{background:rgba(200,130,10,.1);color:var(--amber);border:1px solid rgba(200,130,10,.2)}
+.tag-pro{background:rgba(0,212,170,.1);color:var(--amber);border:1px solid rgba(0,212,170,.2)}
 .tag-standalone{background:rgba(6,182,212,.1);color:#06b6d4;border:1px solid rgba(6,182,212,.18)}
 
 /* ── PAGE: AVALIAÇÕES ── */
 .ratings-page-layout{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;margin-bottom:48px}
 @media(max-width:620px){.ratings-page-layout{grid-template-columns:1fr}}
-.rating-score{font-size:80px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.rating-score{font-family:'Syne',sans-serif;font-size:80px;font-weight:900;letter-spacing:-.04em;line-height:1}
 .rating-stars-lg{color:var(--amber);font-size:20px;letter-spacing:2px;margin:8px 0}
 .rating-of{font-size:13px;color:var(--muted)}
 .bar-rows{margin-top:16px;display:flex;flex-direction:column;gap:7px}
@@ -320,15 +327,15 @@ body.on-workspace #tab-bar{display:block}
 
 /* ── PAGE: PREÇOS ── */
 .pricing-intro{margin-bottom:36px}
-.pricing-intro h2{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.pricing-intro h2{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .pricing-intro p{font-size:16px;color:var(--muted);line-height:1.65}
 .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:720px){.plans-grid{grid-template-columns:1fr}}
 .plan-card{background:var(--surface);border-radius:16px;border:1px solid var(--sep2);padding:26px;display:flex;flex-direction:column;position:relative}
-.plan-card.popular{border-color:rgba(200,130,10,.4);background:linear-gradient(160deg,#1a1000,#1c1c1e)}
-.popular-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--amber);color:#000;font-size:9px;font-weight:800;padding:3px 14px;border-radius:0 0 10px 10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.plan-card.popular{border-color:rgba(0,212,170,.35);background:linear-gradient(160deg,#001a14,#0c0e1c)}
+.popular-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--teal);color:#000;font-size:9px;font-weight:800;padding:3px 14px;border-radius:0 0 10px 10px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;box-shadow:0 4px 16px rgba(0,212,170,.3)}
 .plan-name{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;margin-top:4px}
-.plan-price{font-size:46px;font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--fg)}
+.plan-price{font-family:'Syne',sans-serif;font-size:46px;font-weight:900;letter-spacing:-.04em;line-height:1;color:var(--fg)}
 .plan-price.free{color:var(--green)}
 .plan-suffix{font-size:14px;color:var(--muted);font-weight:400}
 .plan-desc{font-size:14px;color:var(--muted);margin:10px 0 20px;line-height:1.6;min-height:56px}
@@ -359,7 +366,7 @@ body.on-workspace #tab-bar{display:block}
 
 /* ── PAGE: PRIVACIDADE ── */
 .privacy-intro{margin-bottom:32px}
-.privacy-intro h2{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.privacy-intro h2{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .privacy-intro p{font-size:16px;color:var(--muted);line-height:1.65;max-width:580px}
 .priv-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:620px){.priv-grid{grid-template-columns:1fr}}
@@ -374,7 +381,7 @@ body.on-workspace #tab-bar{display:block}
 .badge-local{background:rgba(10,132,255,.1);color:var(--blue)}
 
 /* ── PAGE: FAQ ── */
-.faq-intro h2{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.faq-intro h2{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
 .faq-intro p{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.65}
 .faq-list{max-width:680px;display:flex;flex-direction:column;gap:0;border:1px solid var(--sep2);border-radius:var(--r);overflow:hidden}
 .faq-item{}
@@ -397,33 +404,33 @@ body.on-workspace #tab-bar{display:block}
 .faq-item:last-child .faq-a-inner{border-bottom:none}
 
 /* ── FEATURED HERO (descobrir) ── */
-.featured-hero{background:linear-gradient(160deg,#0d0700,#1a1000 55%,#000);border-bottom:1px solid var(--sep2);padding:64px 0 52px}
+.featured-hero{background:linear-gradient(160deg,#020c0a,#050f18 55%,var(--bg));border-bottom:1px solid var(--sep2);padding:72px 0 56px;position:relative}
 .fh-inner{max-width:980px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:center}
 @media(max-width:760px){.fh-inner{grid-template-columns:1fr}}
 .fh-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
 .fh-dot{width:6px;height:6px;border-radius:50%;background:var(--amber);display:inline-block}
-.fh-title{font-size:54px;font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:18px}
-@media(max-width:600px){.fh-title{font-size:36px}}
+.fh-title{font-family:'Syne',sans-serif;font-size:58px;font-weight:900;letter-spacing:-.03em;line-height:1.02;margin-bottom:18px;background:linear-gradient(135deg,#edf2ff 30%,#00d4aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@media(max-width:600px){.fh-title{font-size:38px}}
 .fh-sub{font-size:17px;color:var(--fg2);line-height:1.7;margin-bottom:28px;max-width:420px}
 .fh-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
 .btn-get-ghost{padding:9px 24px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:var(--fg2);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;text-decoration:none;display:inline-block}
 .btn-get-ghost:hover{background:rgba(255,255,255,.15);color:var(--fg)}
 .fh-meta{display:flex;gap:16px;flex-wrap:wrap}
 .fh-meta-item{font-size:13px;color:var(--muted)}
-.fh-preview{background:linear-gradient(145deg,#0a0d16,#060a10);border:1px solid rgba(200,130,10,.15);border-radius:16px;overflow:hidden;box-shadow:0 28px 64px rgba(0,0,0,.7)}
+.fh-preview{background:linear-gradient(145deg,#060a14,#030710);border:1px solid rgba(0,212,170,.15);border-radius:16px;overflow:hidden;box-shadow:0 28px 64px rgba(0,0,0,.7),0 0 40px rgba(0,212,170,.08)}
 @media(max-width:760px){.fh-preview{display:none}}
 .fhp-bar{height:26px;background:#080b12;display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid rgba(255,255,255,.06)}
 .fhp-body{display:flex;height:210px}
 .fhp-side{width:120px;background:#060910;border-right:1px solid rgba(255,255,255,.04);padding:10px 0;flex-shrink:0}
 .fhp-main{flex:1;background:#060a14;padding:12px}
-.fhp-logo{padding:0 10px 8px;font-size:8px;font-weight:900;color:#c8820a;letter-spacing:.1em;border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:4px}
+.fhp-logo{padding:0 10px 8px;font-size:8px;font-weight:900;color:#00d4aa;letter-spacing:.1em;border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:4px}
 .fhp-item{padding:6px 10px;font-size:7.5px;color:#243040;display:flex;align-items:center;gap:5px}
-.fhp-item.on{background:rgba(200,130,10,.1);border-left:2px solid #c8820a;color:#b8c090}
+.fhp-item.on{background:rgba(0,212,170,.1);border-left:2px solid #00d4aa;color:#a0e8d0}
 
 /* ── STORE SECTIONS (descobrir) ── */
 .sf-section{padding:44px 0 0}
 .sf-section-hdr{max-width:980px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.sf-section-title{font-size:22px;font-weight:800;letter-spacing:-.03em}
+.sf-section-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em}
 .sf-see-all{font-size:14px;font-weight:600;color:var(--amber);background:none;border:none;cursor:pointer;font-family:inherit;padding:0;transition:color .15s}
 .sf-see-all:hover{color:var(--amber2)}
 .sf-row{max-width:980px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -435,15 +442,15 @@ body.on-workspace #tab-bar{display:block}
 .sf-card-name{font-size:14px;font-weight:700;letter-spacing:-.01em}
 .sf-card-desc{font-size:12px;color:var(--muted);line-height:1.5;flex:1}
 .cta-banner{max-width:980px;margin:44px auto 0;padding:0 24px}
-.cta-inner{background:linear-gradient(135deg,#1a1000,#0f0f0f);border:1px solid rgba(200,130,10,.2);border-radius:18px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cta-inner{background:linear-gradient(135deg,#001a14,#0c0e1c);border:1px solid rgba(0,212,170,.18);border-radius:18px;padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 0 60px rgba(0,212,170,.06)}
 .cta-title{font-size:22px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px}
 .cta-sub{font-size:15px;color:var(--muted);line-height:1.6}
 
 /* ── CATEGORY PAGES ── */
 .cat-pg-hdr{padding:52px 0 36px;border-bottom:1px solid var(--sep2)}
 .cat-pg-eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
-.cat-pg-title{font-size:44px;font-weight:800;letter-spacing:-.04em;line-height:1.1;margin-bottom:10px}
-@media(max-width:600px){.cat-pg-title{font-size:30px}}
+.cat-pg-title{font-family:'Syne',sans-serif;font-size:46px;font-weight:900;letter-spacing:-.03em;line-height:1.08;margin-bottom:10px}
+@media(max-width:600px){.cat-pg-title{font-size:32px}}
 .cat-pg-desc{font-size:17px;color:var(--fg2);max-width:560px;line-height:1.7}
 .cat-pg-body{padding:36px 0}
 .back-btn{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--amber);background:none;border:none;cursor:pointer;font-family:inherit;padding:0 0 20px;transition:color .15s}
@@ -471,7 +478,7 @@ body.on-workspace #tab-bar{display:block}
 .auth-field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
 .auth-field label{font-size:12px;font-weight:600;color:var(--muted)}
 .auth-field input{background:rgba(255,255,255,.06);border:1px solid var(--sep);border-radius:9px;padding:11px 13px;color:var(--fg);font-size:15px;font-family:inherit;outline:none;transition:border-color .15s}
-.auth-field input:focus{border-color:rgba(200,130,10,.5)}
+.auth-field input:focus{border-color:rgba(0,212,170,.5)}
 .auth-forgot{display:block;font-size:12px;color:var(--muted);cursor:pointer;margin-bottom:16px}
 .auth-forgot:hover{color:var(--amber)}
 .auth-submit{width:100%;padding:12px;border-radius:11px;background:var(--amber);border:none;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;margin-bottom:14px;transition:background .15s}
@@ -493,8 +500,8 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:24px;margin-bottom:36px}
 @media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:400px){.footer-grid{grid-template-columns:1fr}}
-.footer-brand{font-size:16px;font-weight:900;letter-spacing:.04em;margin-bottom:8px}
-.footer-brand span{font-weight:200;color:var(--amber)}
+.footer-brand{font-family:'Syne',sans-serif;font-size:16px;font-weight:900;letter-spacing:.06em;margin-bottom:8px}
+.footer-brand span{font-weight:700;color:var(--teal)}
 .footer-tagline{font-size:13px;color:var(--muted);line-height:1.6}
 .footer-col h4{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .footer-col a{display:block;font-size:13px;color:var(--fg2);text-decoration:none;margin-bottom:8px;transition:color .15s}
@@ -644,16 +651,16 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
           <div class="fhp-main">
             <div style="font-size:9px;font-weight:800;color:#eef2fc;margin-bottom:10px">Bom dia, PRINTNEAT</div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">
-              <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:7px"><div style="font-size:6px;color:#3a5070;margin-bottom:2px">RECEITA</div><div style="font-size:13px;font-weight:800;color:#c8820a">€2.840</div></div>
-              <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:7px"><div style="font-size:6px;color:#3a5070;margin-bottom:2px">LUCRO</div><div style="font-size:13px;font-weight:800;color:#4A7C6F">€1.190</div></div>
-              <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:7px"><div style="font-size:6px;color:#3a5070;margin-bottom:2px">ENCOMEN.</div><div style="font-size:13px;font-weight:800;color:#eef2fc">24</div></div>
+              <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:6px;padding:7px"><div style="font-size:6px;color:#3a5070;margin-bottom:2px">RECEITA</div><div style="font-size:13px;font-weight:800;color:#00d4aa">€2.840</div></div>
+              <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:6px;padding:7px"><div style="font-size:6px;color:#3a5070;margin-bottom:2px">LUCRO</div><div style="font-size:13px;font-weight:800;color:#22d3a5">€1.190</div></div>
+              <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:6px;padding:7px"><div style="font-size:6px;color:#3a5070;margin-bottom:2px">ENCOMEN.</div><div style="font-size:13px;font-weight:800;color:#eef2fc">24</div></div>
             </div>
-            <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:8px;height:66px;display:flex;align-items:flex-end;gap:4px">
-              <div style="flex:1;background:rgba(200,130,10,.2);border-radius:2px 2px 0 0;height:30%"></div>
-              <div style="flex:1;background:rgba(200,130,10,.3);border-radius:2px 2px 0 0;height:50%"></div>
-              <div style="flex:1;background:rgba(200,130,10,.5);border-radius:2px 2px 0 0;height:65%"></div>
-              <div style="flex:1;background:rgba(200,130,10,.7);border-radius:2px 2px 0 0;height:55%"></div>
-              <div style="flex:1;background:#c8820a;border-radius:2px 2px 0 0;height:100%"></div>
+            <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:6px;padding:8px;height:66px;display:flex;align-items:flex-end;gap:4px">
+              <div style="flex:1;background:rgba(0,212,170,.15);border-radius:2px 2px 0 0;height:30%"></div>
+              <div style="flex:1;background:rgba(0,212,170,.25);border-radius:2px 2px 0 0;height:50%"></div>
+              <div style="flex:1;background:rgba(0,212,170,.45);border-radius:2px 2px 0 0;height:65%"></div>
+              <div style="flex:1;background:rgba(0,212,170,.65);border-radius:2px 2px 0 0;height:55%"></div>
+              <div style="flex:1;background:#00d4aa;border-radius:2px 2px 0 0;height:100%"></div>
             </div>
           </div>
         </div>
@@ -762,18 +769,18 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
                 <div class="sc-main">
                   <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:12px">Bom dia, PRINTNEAT</div>
                   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
-                    <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">RECEITA</div><div style="font-size:18px;font-weight:800;color:#c8820a">€2.840</div></div>
-                    <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">LUCRO</div><div style="font-size:18px;font-weight:800;color:#4A7C6F">€1.190</div></div>
-                    <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">ENCOMENDAS</div><div style="font-size:18px;font-weight:800;color:#eef2fc">24</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:8px;padding:10px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">RECEITA</div><div style="font-size:18px;font-weight:800;color:#00d4aa">€2.840</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:8px;padding:10px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">LUCRO</div><div style="font-size:18px;font-weight:800;color:#22d3a5">€1.190</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:8px;padding:10px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">ENCOMENDAS</div><div style="font-size:18px;font-weight:800;color:#eef2fc">24</div></div>
                   </div>
-                  <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:10px;height:80px;display:flex;align-items:flex-end;gap:5px">
-                    <div style="flex:1;background:rgba(200,130,10,.25);border-radius:2px 2px 0 0;height:30%"></div>
-                    <div style="flex:1;background:rgba(200,130,10,.35);border-radius:2px 2px 0 0;height:50%"></div>
-                    <div style="flex:1;background:rgba(200,130,10,.45);border-radius:2px 2px 0 0;height:40%"></div>
-                    <div style="flex:1;background:rgba(200,130,10,.55);border-radius:2px 2px 0 0;height:65%"></div>
-                    <div style="flex:1;background:rgba(200,130,10,.7);border-radius:2px 2px 0 0;height:55%"></div>
-                    <div style="flex:1;background:rgba(200,130,10,.85);border-radius:2px 2px 0 0;height:80%"></div>
-                    <div style="flex:1;background:#c8820a;border-radius:2px 2px 0 0;height:100%"></div>
+                  <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:8px;padding:10px;height:80px;display:flex;align-items:flex-end;gap:5px">
+                    <div style="flex:1;background:rgba(0,212,170,.15);border-radius:2px 2px 0 0;height:30%"></div>
+                    <div style="flex:1;background:rgba(0,212,170,.25);border-radius:2px 2px 0 0;height:50%"></div>
+                    <div style="flex:1;background:rgba(0,212,170,.35);border-radius:2px 2px 0 0;height:40%"></div>
+                    <div style="flex:1;background:rgba(0,212,170,.5);border-radius:2px 2px 0 0;height:65%"></div>
+                    <div style="flex:1;background:rgba(0,212,170,.65);border-radius:2px 2px 0 0;height:55%"></div>
+                    <div style="flex:1;background:rgba(0,212,170,.82);border-radius:2px 2px 0 0;height:80%"></div>
+                    <div style="flex:1;background:#00d4aa;border-radius:2px 2px 0 0;height:100%"></div>
                   </div>
                 </div>
               </div>
@@ -805,7 +812,7 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
                     <div style="font-size:9px;font-weight:800;color:#3a5070;letter-spacing:.08em">NOVO ORÇAMENTO</div>
                     <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:9px"><div style="font-size:8px;color:#3a5070;margin-bottom:3px">CLIENTE</div><div style="font-size:10px;color:#c8d4e0">Tech Solutions Lda</div></div>
                     <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:9px"><div style="font-size:8px;color:#3a5070;margin-bottom:5px">ITENS</div><div style="font-size:9px;color:#5a7090">Website Design · €800</div><div style="font-size:9px;color:#5a7090;margin-top:2px">Manutenção · €150</div><div style="font-size:9px;color:#5a7090;margin-top:2px">Hosting · €120</div></div>
-                    <div style="background:rgba(200,130,10,.08);border:1px solid rgba(200,130,10,.2);border-radius:7px;padding:9px"><div style="font-size:8px;color:#a06820;margin-bottom:2px">TOTAL</div><div style="font-size:16px;font-weight:800;color:#c8820a">€1.070</div></div>
+                    <div style="background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.2);border-radius:7px;padding:9px"><div style="font-size:8px;color:#00a07a;margin-bottom:2px">TOTAL</div><div style="font-size:16px;font-weight:800;color:#00d4aa">€1.070</div></div>
                   </div>
                   <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px">
                     <div style="font-size:8px;font-weight:800;color:#3a5070">PRÉ-VISUALIZAÇÃO</div>
@@ -819,7 +826,7 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
                       <div style="height:1px;background:#eee;margin:3px 0"></div>
                       <div style="font-size:7px;font-weight:900;color:#000">Total: €1.070</div>
                     </div>
-                    <button style="background:#c8820a;border:none;border-radius:5px;color:#fff;font-size:8px;font-weight:800;padding:5px;cursor:pointer">⬇ Exportar PDF</button>
+                    <button style="background:#00d4aa;border:none;border-radius:5px;color:#000;font-size:8px;font-weight:800;padding:5px;cursor:pointer">⬇ Exportar PDF</button>
                   </div>
                 </div>
               </div>
@@ -846,7 +853,7 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
                 </div>
                 <div class="sc-main">
                   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px">
-                    <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070">RECEITA</div><div style="font-size:12px;font-weight:800;color:#c8820a">€5.2k</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070">RECEITA</div><div style="font-size:12px;font-weight:800;color:#00d4aa">€5.2k</div></div>
                     <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070">DESPESAS</div><div style="font-size:12px;font-weight:800;color:#f87171">€1.8k</div></div>
                     <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070">LUCRO</div><div style="font-size:12px;font-weight:800;color:#4A7C6F">€3.4k</div></div>
                     <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070">MARGEM</div><div style="font-size:12px;font-weight:800;color:#eef2fc">65%</div></div>
@@ -858,7 +865,7 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
                     <div style="display:flex;justify-content:space-between;padding:5px 0"><span style="font-size:9px;color:#c8d4e0">Encomenda #48</span><span style="font-size:9px;font-weight:700;color:#4A7C6F">+€560</span></div>
                   </div>
                   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-                    <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:9px"><div style="font-size:7px;color:#3a5070;margin-bottom:6px">META MENSAL</div><div style="background:rgba(255,255,255,.06);border-radius:3px;height:5px;overflow:hidden"><div style="width:72%;height:100%;background:#c8820a;border-radius:3px"></div></div><div style="font-size:8px;color:#a06820;margin-top:4px">72% da meta</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(0,212,170,.08);border-radius:7px;padding:9px"><div style="font-size:7px;color:#3a5070;margin-bottom:6px">META MENSAL</div><div style="background:rgba(255,255,255,.06);border-radius:3px;height:5px;overflow:hidden"><div style="width:72%;height:100%;background:#00d4aa;border-radius:3px"></div></div><div style="font-size:8px;color:#00a07a;margin-top:4px">72% da meta</div></div>
                     <div style="background:#0f1421;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:9px"><div style="font-size:7px;color:#3a5070;margin-bottom:4px">ROI</div><div style="font-size:18px;font-weight:800;color:#eef2fc">192%</div></div>
                   </div>
                 </div>
@@ -1403,15 +1410,15 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
         </div>
         <div style="display:flex;height:130px">
           <div style="width:70px;background:#0d1117;padding:8px 6px;border-right:1px solid rgba(255,255,255,.05)">
-            <div style="font-size:7px;color:#c8820a;font-weight:800;margin-bottom:6px;font-family:-apple-system,sans-serif">🧹 PN AUTO</div>
-            <div style="font-size:7px;color:#e8edf5;background:rgba(200,130,10,.15);padding:3px 5px;border-radius:4px;margin-bottom:3px;font-family:-apple-system,sans-serif">🏠 Início</div>
+            <div style="font-size:7px;color:#00d4aa;font-weight:800;margin-bottom:6px;font-family:-apple-system,sans-serif">🧹 PN AUTO</div>
+            <div style="font-size:7px;color:#e8edf5;background:rgba(0,212,170,.15);padding:3px 5px;border-radius:4px;margin-bottom:3px;font-family:-apple-system,sans-serif">🏠 Início</div>
             <div style="font-size:7px;color:#4a5a78;padding:3px 5px;margin-bottom:3px;font-family:-apple-system,sans-serif">📊 Monitor</div>
             <div style="font-size:7px;color:#4a5a78;padding:3px 5px;margin-bottom:3px;font-family:-apple-system,sans-serif">🧹 Limpeza</div>
             <div style="font-size:7px;color:#4a5a78;padding:3px 5px;margin-bottom:3px;font-family:-apple-system,sans-serif">📋 Duplicados</div>
             <div style="font-size:7px;color:#4a5a78;padding:3px 5px;font-family:-apple-system,sans-serif">⏰ Agendador</div>
           </div>
           <div style="flex:1;padding:8px 7px">
-            <div style="font-size:7px;color:#c8820a;font-weight:800;margin-bottom:6px;font-family:-apple-system,sans-serif">Painel de Controlo</div>
+            <div style="font-size:7px;color:#00d4aa;font-weight:800;margin-bottom:6px;font-family:-apple-system,sans-serif">Painel de Controlo</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px">
               <div style="background:#111827;border-radius:5px;padding:5px"><div style="font-size:6px;color:#4a5a78;font-family:-apple-system,sans-serif">Disco Livre</div><div style="font-size:10px;font-weight:800;color:#e8edf5;font-family:-apple-system,sans-serif">42 GB</div></div>
               <div style="background:#111827;border-radius:5px;padding:5px"><div style="font-size:6px;color:#4a5a78;font-family:-apple-system,sans-serif">RAM</div><div style="font-size:10px;font-weight:800;color:#a855f7;font-family:-apple-system,sans-serif">62%</div></div>
@@ -1530,7 +1537,7 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
         <div class="auth-footer"><span style="color:var(--amber);cursor:pointer" onclick="switchAuthTab('login')">← Voltar</span></div>
       </div>
       <div id="auth-form-profile" style="display:none">
-        <div style="background:rgba(200,130,10,.07);border:1px solid rgba(200,130,10,.15);border-radius:11px;padding:14px;margin-bottom:18px">
+        <div style="background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.15);border-radius:11px;padding:14px;margin-bottom:18px">
           <div style="font-size:11px;color:var(--muted);margin-bottom:3px">Sessão iniciada como</div>
           <div style="font-size:14px;font-weight:700;color:var(--fg2)" id="profile-email-display"></div>
           <div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:5px" id="profile-tier-display">LITE</div>
