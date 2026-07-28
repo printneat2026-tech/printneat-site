@@ -2,9 +2,10 @@
 
 // ── CONFIG — update with real hosted download URLs when ready ──
 const DOWNLOADS = {
-  lite: { url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-LITE-v1.2.0.exe', file: 'PRINTNEAT-Workspace-LITE-v1.2.0.exe', size: '75 MB', price: 'Free',   label: 'LITE', color: '#4A7C6F', bg: 'rgba(74,124,111,.18)'   },
-  pro:  { url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-PRO-v1.2.0.exe',  file: 'PRINTNEAT-Workspace-PRO-v1.2.0.exe',  size: '75 MB', price: '€29.90', label: 'PRO',  color: '#C8705A', bg: 'rgba(200,112,90,.18)'  },
-  xl:   { url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-XL-v1.2.0.exe',   file: 'PRINTNEAT-Workspace-XL-v1.2.0.exe',   size: '75 MB', price: '€49.90', label: 'XL',   color: '#a78bfa', bg: 'rgba(138,100,200,.18)' }
+  lite:        { url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-LITE-v1.2.0.exe',   file: 'PRINTNEAT-Workspace-LITE-v1.2.0.exe',   size: '75 MB', price: 'Free',   label: 'LITE',       color: '#4A7C6F', bg: 'rgba(74,124,111,.18)'   },
+  pro:         { url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-PRO-v1.2.0.exe',    file: 'PRINTNEAT-Workspace-PRO-v1.2.0.exe',    size: '75 MB', price: '€29.90', label: 'PRO',        color: '#C8705A', bg: 'rgba(200,112,90,.18)'  },
+  xl:          { url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PRINTNEAT-Workspace-XL-v1.2.0.exe',     file: 'PRINTNEAT-Workspace-XL-v1.2.0.exe',     size: '75 MB', price: '€49.90', label: 'XL',         color: '#a78bfa', bg: 'rgba(138,100,200,.18)' },
+  'auto-clean':{ url: 'https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PN.Auto.Clean.PC.Setup.1.0.0.exe',      file: 'PN.Auto.Clean.PC.Setup.1.0.0.exe',      size: '75 MB', price: 'Free',   label: 'Auto Clean', color: '#06b6d4', bg: 'rgba(6,182,212,.18)'   }
 };
 
 // ── PAYMENT CONFIG — add Gumroad URLs after publishing products ──
@@ -417,8 +418,8 @@ document.addEventListener('click', function (e) {
   // Botões com data-dl
   if (tier) {
     e.preventDefault();
-    if (tier === 'lite') {
-      openModal('lite'); // download direto grátis
+    if (tier === 'lite' || tier === 'auto-clean') {
+      openModal(tier); // download direto grátis
     } else {
       window.location.href = 'checkout.html?plan=' + tier; // página de pagamento
     }
