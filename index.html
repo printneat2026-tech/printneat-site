@@ -514,6 +514,32 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
 .r1{transition-delay:.07s}
 .r2{transition-delay:.14s}
 .r3{transition-delay:.21s}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--surface);border-bottom:1px solid var(--sep2);padding:16px 0}
+.trust-inner{max-width:980px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--fg2);white-space:nowrap}
+.trust-ic{font-size:16px}
+@media(max-width:600px){.trust-inner{gap:16px}.trust-item{font-size:12px}}
+
+/* ── PROBLEM / SOLUTION ── */
+.ps-section{padding:64px 0;background:var(--bg)}
+.ps-header{margin-bottom:40px}
+.ps-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.ps-title{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-.03em;line-height:1.1;margin-bottom:12px}
+.ps-sub{font-size:16px;color:var(--fg2);line-height:1.7;max-width:540px}
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+@media(max-width:640px){.ps-grid{grid-template-columns:1fr}}
+.ps-col{background:var(--surface);border-radius:var(--r);border:1px solid var(--sep2);padding:28px;position:relative;overflow:hidden}
+.ps-col.after{border-color:rgba(0,212,170,.25);background:linear-gradient(160deg,#001a14,#0c0e1c)}
+.ps-col::before{position:absolute;top:16px;right:16px;font-size:9px;font-weight:800;letter-spacing:.1em;padding:3px 10px;border-radius:6px}
+.ps-col.before::before{content:'ANTES';color:var(--red);background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.2)}
+.ps-col.after::before{content:'DEPOIS';color:var(--teal);background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.2)}
+.ps-col-title{font-size:16px;font-weight:700;letter-spacing:-.01em;margin-bottom:18px;margin-top:4px}
+.ps-list{display:flex;flex-direction:column;gap:10px}
+.ps-item{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--fg2);line-height:1.55}
+.ps-x{color:var(--red);flex-shrink:0;font-size:14px;margin-top:2px;font-weight:700}
+.ps-check{color:var(--teal);flex-shrink:0;font-size:14px;margin-top:2px;font-weight:700}
 </style>
 </head>
 <body>
@@ -662,6 +688,53 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
               <div style="flex:1;background:rgba(0,212,170,.65);border-radius:2px 2px 0 0;height:55%"></div>
               <div style="flex:1;background:#00d4aa;border-radius:2px 2px 0 0;height:100%"></div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TRUST BAR ── -->
+  <div class="trust-bar">
+    <div class="trust-inner">
+      <div class="trust-item"><span class="trust-ic">🎨</span>Filamentos &amp; Impressoras</div>
+      <div class="trust-item"><span class="trust-ic">🔌</span>100% Offline</div>
+      <div class="trust-item"><span class="trust-ic">💳</span>Pagamento único</div>
+      <div class="trust-item"><span class="trust-ic">📦</span>15+ ferramentas integradas</div>
+      <div class="trust-item"><span class="trust-ic">🛡️</span>Dados sempre no teu PC</div>
+      <div class="trust-item"><span class="trust-ic">♾️</span>Licença vitalícia</div>
+    </div>
+  </div>
+
+  <!-- ── ANTES vs DEPOIS ── -->
+  <div class="ps-section">
+    <div class="wrap">
+      <div class="ps-header r">
+        <div class="ps-eyebrow">O problema</div>
+        <div class="ps-title">Impressão 3D como trabalho<br>merece ferramentas a sério.</div>
+        <p class="ps-sub">A maioria dos impressores 3D perde horas por semana a calcular custos de filamento no Excel, a fazer orçamentos no Word e a gerir encomendas no WhatsApp. Há uma forma melhor.</p>
+      </div>
+      <div class="ps-grid">
+        <div class="ps-col before r">
+          <div class="ps-col-title">Antes do PrintNeat</div>
+          <div class="ps-list">
+            <div class="ps-item"><span class="ps-x">✕</span>Custos de filamento calculados à mão ou no Excel</div>
+            <div class="ps-item"><span class="ps-x">✕</span>Orçamentos feitos no Word, um a um</div>
+            <div class="ps-item"><span class="ps-x">✕</span>Encomendas geridas pelo WhatsApp</div>
+            <div class="ps-item"><span class="ps-x">✕</span>Stock de filamentos controlado em papel</div>
+            <div class="ps-item"><span class="ps-x">✕</span>Sem registo de falhas de impressão</div>
+            <div class="ps-item"><span class="ps-x">✕</span>Sem visão do que o negócio realmente lucra</div>
+          </div>
+        </div>
+        <div class="ps-col after r r1">
+          <div class="ps-col-title">Com o PrintNeat Workspace</div>
+          <div class="ps-list">
+            <div class="ps-item"><span class="ps-check">✓</span>Custo de cada peça calculado automaticamente (filamento + energia + tempo)</div>
+            <div class="ps-item"><span class="ps-check">✓</span>Orçamentos PDF profissionais em 30 segundos</div>
+            <div class="ps-item"><span class="ps-check">✓</span>Pipeline de encomendas do pedido à entrega</div>
+            <div class="ps-item"><span class="ps-check">✓</span>Stock de filamentos por cor e marca com alertas</div>
+            <div class="ps-item"><span class="ps-check">✓</span>Registo de falhas com causa e custo de desperdício</div>
+            <div class="ps-item"><span class="ps-check">✓</span>Dashboard com receita, lucro e ROI em tempo real</div>
           </div>
         </div>
       </div>
