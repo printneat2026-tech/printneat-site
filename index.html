@@ -76,7 +76,8 @@ body::before{content:'';position:fixed;width:900px;height:900px;top:-300px;left:
 .store-page.active{display:block}
 
 /* ── UTILITY ── */
-.wrap{max-width:980px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+@media(max-width:900px){.wrap{padding:0 24px}}
 @media(max-width:600px){.wrap{padding:0 16px}}
 
 /* ══════════════════════════════
@@ -159,10 +160,12 @@ body::before{content:'';position:fixed;width:900px;height:900px;top:-300px;left:
 }
 body.on-workspace #app-header{display:block}
 .app-header-inner{
-  max-width:980px;margin:0 auto;padding:0 24px;
+  max-width:1200px;margin:0 auto;padding:0 40px;
   height:var(--app-h);
   display:flex;align-items:center;gap:18px;
 }
+@media(max-width:900px){.app-header-inner{padding:0 24px}}
+@media(max-width:600px){.app-header-inner{padding:0 16px}}
 .app-icon-sm{
   width:64px;height:64px;border-radius:14px;flex-shrink:0;
   background:linear-gradient(145deg,#001a14,#000d08);
@@ -210,7 +213,7 @@ body.on-workspace #app-header{display:block}
 }
 body.on-workspace #tab-bar{display:block}
 .tab-bar-inner{
-  max-width:980px;margin:0 auto;padding:0 24px;
+  max-width:1200px;margin:0 auto;padding:0 40px;
   display:flex;gap:0;overflow-x:auto;scrollbar-width:none;
 }
 .tab-bar-inner::-webkit-scrollbar{display:none}
@@ -718,6 +721,53 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
 .rev-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;line-height:1.6}
 /* ── TRUST IC — clean dot ── */
 .trust-ic{display:inline-block;font-size:0;width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;opacity:.8}
+
+/* ══════════════════════════════
+   AUTO CLEAN — App Header & Tabs
+══════════════════════════════ */
+#app-header-ac{
+  display:none;
+  position:sticky;top:calc(var(--nav-h) + var(--cat-h));z-index:200;
+  height:var(--app-h);
+  background:rgba(5,6,14,.96);
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  border-bottom:1px solid var(--sep2);
+}
+body.on-autoclean #app-header-ac{display:block}
+body.on-autoclean #app-header{display:none}
+#tab-bar-ac{
+  display:none;
+  position:sticky;top:calc(var(--nav-h) + var(--cat-h) + var(--app-h));z-index:190;
+  background:rgba(5,6,14,.94);
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border-bottom:1px solid var(--sep2);
+}
+body.on-autoclean #tab-bar-ac{display:block}
+body.on-autoclean #tab-bar{display:none}
+.app-icon-sm-ac{
+  width:64px;height:64px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(145deg,#001318,#000a0d);
+  display:flex;align-items:center;justify-content:center;
+  font-size:32px;
+  border:1px solid rgba(6,182,212,.2);
+  box-shadow:0 4px 20px rgba(6,182,212,.12);
+}
+/* AC tab pages */
+.ac-tab-page{display:none;min-height:80vh;padding-bottom:80px}
+.ac-tab-page.active{display:block}
+/* Sticky sidebar inside AC page uses same formula */
+.ac-info-sticky{
+  position:sticky;
+  top:calc(var(--nav-h) + var(--cat-h) + var(--app-h) + var(--tab-h) + 20px);
+}
+/* Layout igual ao workspace */
+.page-layout-2col{display:grid;grid-template-columns:1fr 290px;gap:48px;align-items:start}
+@media(max-width:760px){.page-layout-2col{grid-template-columns:1fr}}
+/* Widen the inicio-layout too */
+.inicio-layout{display:grid;grid-template-columns:1fr 290px;gap:48px;align-items:start}
+@media(max-width:760px){.inicio-layout{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -799,7 +849,7 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
   </div>
 </div>
 
-<!-- ════════ TAB BAR ════════ -->
+<!-- ════════ TAB BAR — WORKSPACE ════════ -->
 <div id="tab-bar">
   <div class="tab-bar-inner">
     <button class="tab-btn active" data-tab="inicio"     onclick="goTab('inicio')">Início</button>
@@ -809,6 +859,34 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
     <button class="tab-btn"        data-tab="privacidade" onclick="goTab('privacidade')">Privacidade</button>
     <button class="tab-btn"        data-tab="faq"        onclick="goTab('faq')">FAQ</button>
     <button class="tab-btn" id="tab-admin-btn" data-tab="admin" onclick="goTab('admin')">⚙ Admin</button>
+  </div>
+</div>
+
+<!-- ════════ APP HEADER — AUTO CLEAN ════════ -->
+<div id="app-header-ac">
+  <div class="app-header-inner">
+    <div class="app-icon-sm-ac">🧹</div>
+    <div class="app-header-info">
+      <div class="app-header-name">PN Auto Clean PC</div>
+      <div class="app-header-dev">por PrintNeat · Utilitários do Sistema</div>
+      <div class="app-header-rating" id="ac-hdr-rating">
+        <span class="stars">—</span>
+        <span class="rating-txt">Sem avaliações ainda</span>
+      </div>
+    </div>
+    <div class="app-header-cta">
+      <a href="#" class="btn-get" data-dl="auto-clean" data-loc="app-header-ac" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:#000;font-weight:800">Download Grátis</a>
+      <span class="get-note">Windows 10/11 · 100% Gratuito</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ TAB BAR — AUTO CLEAN ════════ -->
+<div id="tab-bar-ac">
+  <div class="tab-bar-inner">
+    <button class="tab-btn active" data-tab="ac-inicio"          onclick="goTabAC('ac-inicio')">Início</button>
+    <button class="tab-btn"        data-tab="ac-funcionalidades" onclick="goTabAC('ac-funcionalidades')">Funcionalidades</button>
+    <button class="tab-btn"        data-tab="ac-avaliacoes"      onclick="goTabAC('ac-avaliacoes')">Avaliações</button>
   </div>
 </div>
 
@@ -1676,243 +1754,268 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
 </div>
 
 <!-- ════════════════════════════
-   STORE PAGE: UTILITÁRIOS
+   STORE PAGE: UTILITÁRIOS — AUTO CLEAN
 ════════════════════════════ -->
 <div class="store-page" id="page-utilidades">
-  <div class="cat-pg-hdr"><div class="wrap">
-    <button class="back-btn" onclick="goStore('descobrir')">← PRINTNEAT STORE</button>
-    <div class="cat-pg-eyebrow">Utilitário Gratuito</div>
-    <div class="cat-pg-title">PN Auto Clean PC</div>
-    <div class="cat-pg-desc">Limpeza, otimização e monitorização do PC. Tudo numa app standalone gratuita para Windows.</div>
-  </div></div>
 
-  <div class="cat-pg-body"><div class="wrap">
+<!-- ══ TAB: INÍCIO ══ -->
+<div class="ac-tab-page active" id="tab-ac-inicio">
+  <div class="wrap">
+    <div class="page-layout-2col">
 
-    <!-- App hero card -->
-    <div class="r" style="background:rgba(6,182,212,.06);border:1px solid rgba(6,182,212,.15);border-radius:18px;padding:28px 28px 24px;margin-bottom:28px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap">
-      <div style="font-size:56px;flex-shrink:0;line-height:1">🧹</div>
-      <div style="flex:1;min-width:220px">
-        <div style="font-size:22px;font-weight:900;letter-spacing:-.03em;margin-bottom:5px">PN Auto Clean PC</div>
-        <div style="font-size:14px;color:var(--fg2);line-height:1.6;margin-bottom:14px">Limpa o teu PC de forma inteligente. Remove ficheiros temporários, caches de browsers, duplicados e lixo do sistema. Monitoriza CPU e RAM em tempo real, gere programas de arranque, analisa o disco, testa a rede e agenda limpezas automáticas.</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px">
-          <span class="prog-tag tag-standalone" style="font-size:11px">GRÁTIS · Standalone</span>
-          <span style="font-size:11px;color:var(--muted)">v1.0 · Windows 10/11 · x64 · ~75 MB</span>
-        </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a href="#" class="btn-get" data-dl="auto-clean" data-loc="utilidades-hero" style="background:linear-gradient(135deg,#06b6d4,#0891b2)">⬇ Download Grátis — Windows</a>
-          <a href="https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PN.Auto.Clean.PC.1.0.0.exe" class="btn-get-ghost" style="font-size:13px">📦 Portable</a>
-        </div>
-      </div>
-      <!-- Mini app preview -->
-      <div style="flex-shrink:0;width:200px;background:#07090d;border-radius:12px;border:1px solid rgba(6,182,212,.2);overflow:hidden;font-family:monospace">
-        <div style="background:#0d1117;padding:6px 10px;display:flex;gap:5px;align-items:center;border-bottom:1px solid rgba(255,255,255,.06)">
-          <div style="width:8px;height:8px;border-radius:50%;background:#ff5f57"></div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#fec02f"></div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#28c840"></div>
-          <span style="font-size:8px;color:#3a5070;margin-left:6px;font-family:-apple-system,sans-serif">PN Auto Clean PC</span>
-        </div>
-        <div style="display:flex;height:130px">
-          <div style="width:70px;background:#0d1117;padding:8px 6px;border-right:1px solid rgba(255,255,255,.05)">
-            <div style="font-size:7px;color:#00d4aa;font-weight:800;margin-bottom:6px;font-family:-apple-system,sans-serif">🧹 PN AUTO</div>
-            <div style="font-size:7px;color:#e8edf5;background:rgba(0,212,170,.15);padding:3px 5px;border-radius:4px;margin-bottom:3px;font-family:-apple-system,sans-serif">🏠 Início</div>
-            <div style="font-size:7px;color:#4a5a78;padding:3px 5px;margin-bottom:3px;font-family:-apple-system,sans-serif">📊 Monitor</div>
-            <div style="font-size:7px;color:#4a5a78;padding:3px 5px;margin-bottom:3px;font-family:-apple-system,sans-serif">🧹 Limpeza</div>
-            <div style="font-size:7px;color:#4a5a78;padding:3px 5px;margin-bottom:3px;font-family:-apple-system,sans-serif">📋 Duplicados</div>
-            <div style="font-size:7px;color:#4a5a78;padding:3px 5px;font-family:-apple-system,sans-serif">⏰ Agendador</div>
-          </div>
-          <div style="flex:1;padding:8px 7px">
-            <div style="font-size:7px;color:#00d4aa;font-weight:800;margin-bottom:6px;font-family:-apple-system,sans-serif">Painel de Controlo</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:6px">
-              <div style="background:#111827;border-radius:5px;padding:5px"><div style="font-size:6px;color:#4a5a78;font-family:-apple-system,sans-serif">Disco Livre</div><div style="font-size:10px;font-weight:800;color:#e8edf5;font-family:-apple-system,sans-serif">42 GB</div></div>
-              <div style="background:#111827;border-radius:5px;padding:5px"><div style="font-size:6px;color:#4a5a78;font-family:-apple-system,sans-serif">RAM</div><div style="font-size:10px;font-weight:800;color:#a855f7;font-family:-apple-system,sans-serif">62%</div></div>
-            </div>
-            <div style="background:#111827;border-radius:5px;padding:5px">
-              <div style="font-size:6px;color:#4a5a78;margin-bottom:3px;font-family:-apple-system,sans-serif">CPU</div>
-              <div style="background:#1a2236;border-radius:2px;height:4px;overflow:hidden"><div style="background:#3b82f6;width:38%;height:100%;border-radius:2px"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Screenshots -->
-    <div class="sf-section-hdr" style="padding:0;margin-bottom:16px"><div class="sf-section-title">Capturas de ecrã</div></div>
-    <div class="sc-scroll r" style="margin-bottom:32px">
-      <!-- Dashboard -->
-      <div class="sc-frame">
-        <div class="sc-mock">
-          <div class="sc-bar">
-            <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#fec02f"></div><div class="dot" style="background:#28c840"></div>
-            <span style="font-size:10px;color:#444;margin-left:8px">PN Auto Clean PC · Painel Principal</span>
-          </div>
-          <div class="sc-body">
-            <div class="sc-sidebar" style="background:#080b12">
-              <div class="sc-logo" style="color:#06b6d4;font-size:8px">AUTO CLEAN</div>
-              <div class="sc-item on" style="color:#06b6d4;background:rgba(6,182,212,.12)">Início</div>
-              <div class="sc-item">Monitor</div>
-              <div class="sc-item">Limpeza</div>
-              <div class="sc-item">Duplicados</div>
-              <div class="sc-item">Arranque</div>
-              <div class="sc-item">Disco</div>
-            </div>
-            <div class="sc-main">
-              <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:10px">Painel de Controlo</div>
-              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
-                <div style="background:#0a1018;border:1px solid rgba(6,182,212,.12);border-radius:8px;padding:10px"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">DISCO LIVRE</div><div style="font-size:18px;font-weight:800;color:#06b6d4">42 GB</div></div>
-                <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">RAM USADA</div><div style="font-size:18px;font-weight:800;color:#a855f7">62%</div></div>
-                <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">CPU</div><div style="font-size:18px;font-weight:800;color:#eef2fc">38%</div></div>
+      <!-- Coluna principal -->
+      <div>
+        <!-- Screenshots -->
+        <div class="sc-scroll r">
+          <!-- Painel Principal -->
+          <div class="sc-frame">
+            <div class="sc-mock">
+              <div class="sc-bar">
+                <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#fec02f"></div><div class="dot" style="background:#28c840"></div>
+                <span style="font-size:10px;color:#444;margin-left:8px">PN Auto Clean PC · Painel Principal</span>
               </div>
-              <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
-                <div style="font-size:8px;font-weight:800;color:#3a5070;margin-bottom:6px">QUICK WINS — Recomendações</div>
-                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:8px;color:#c8d4e0">Temp do Windows</span><span style="font-size:8px;font-weight:700;color:#06b6d4">2.3 GB</span></div>
-                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:8px;color:#c8d4e0">Cache do Chrome</span><span style="font-size:8px;font-weight:700;color:#06b6d4">847 MB</span></div>
-                <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="font-size:8px;color:#c8d4e0">Ficheiros duplicados</span><span style="font-size:8px;font-weight:700;color:#06b6d4">12 encontrados</span></div>
-              </div>
-              <button style="background:linear-gradient(135deg,#06b6d4,#0891b2);border:none;border-radius:8px;color:#000;font-size:9px;font-weight:800;padding:8px;cursor:pointer;width:100%">Limpar tudo — Recuperar 3.1 GB</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Duplicados -->
-      <div class="sc-frame">
-        <div class="sc-mock">
-          <div class="sc-bar">
-            <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#fec02f"></div><div class="dot" style="background:#28c840"></div>
-            <span style="font-size:10px;color:#444;margin-left:8px">PN Auto Clean PC · Ficheiros Duplicados</span>
-          </div>
-          <div class="sc-body">
-            <div class="sc-sidebar" style="background:#080b12">
-              <div class="sc-logo" style="color:#06b6d4;font-size:8px">AUTO CLEAN</div>
-              <div class="sc-item">Início</div>
-              <div class="sc-item">Monitor</div>
-              <div class="sc-item">Limpeza</div>
-              <div class="sc-item on" style="color:#06b6d4;background:rgba(6,182,212,.12)">Duplicados</div>
-              <div class="sc-item">Arranque</div>
-              <div class="sc-item">Disco</div>
-            </div>
-            <div class="sc-main">
-              <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:3px">Ficheiros Duplicados</div>
-              <div style="font-size:8px;color:#3a5070;margin-bottom:10px">Downloads, Desktop, Documentos, Imagens</div>
-              <div style="background:#0a1018;border:1px solid rgba(6,182,212,.12);border-radius:8px;padding:10px;margin-bottom:6px">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#c8d4e0">foto_verao_2024.jpg</span><span style="font-size:7px;background:rgba(244,63,94,.1);color:#f43f5e;padding:2px 6px;border-radius:4px;border:1px solid rgba(244,63,94,.15)">2 cópias · 8.4 MB</span></div>
-                <div style="font-size:7px;color:#3a5070">Downloads\ e Desktop\Fotos\</div>
-              </div>
-              <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:6px">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#c8d4e0">relatorio_maio.pdf</span><span style="font-size:7px;background:rgba(244,63,94,.1);color:#f43f5e;padding:2px 6px;border-radius:4px;border:1px solid rgba(244,63,94,.15)">3 cópias · 2.1 MB</span></div>
-                <div style="font-size:7px;color:#3a5070">Documentos\ e OneDrive\</div>
-              </div>
-              <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#c8d4e0">setup_chrome.exe</span><span style="font-size:7px;background:rgba(244,63,94,.1);color:#f43f5e;padding:2px 6px;border-radius:4px;border:1px solid rgba(244,63,94,.15)">2 cópias · 145 MB</span></div>
-                <div style="font-size:7px;color:#3a5070">Downloads\ e Desktop\</div>
-              </div>
-              <button style="background:linear-gradient(135deg,#06b6d4,#0891b2);border:none;border-radius:8px;color:#000;font-size:9px;font-weight:800;padding:7px;cursor:pointer;width:100%">Eliminar duplicados — Poupar 155 MB</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Monitor -->
-      <div class="sc-frame">
-        <div class="sc-mock">
-          <div class="sc-bar">
-            <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#fec02f"></div><div class="dot" style="background:#28c840"></div>
-            <span style="font-size:10px;color:#444;margin-left:8px">PN Auto Clean PC · Monitor em Tempo Real</span>
-          </div>
-          <div class="sc-body">
-            <div class="sc-sidebar" style="background:#080b12">
-              <div class="sc-logo" style="color:#06b6d4;font-size:8px">AUTO CLEAN</div>
-              <div class="sc-item">Início</div>
-              <div class="sc-item on" style="color:#06b6d4;background:rgba(6,182,212,.12)">Monitor</div>
-              <div class="sc-item">Limpeza</div>
-              <div class="sc-item">Duplicados</div>
-              <div class="sc-item">Arranque</div>
-              <div class="sc-item">Disco</div>
-            </div>
-            <div class="sc-main">
-              <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:10px">Monitor em Tempo Real</div>
-              <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
-                <div style="font-size:8px;font-weight:800;color:#3a5070;margin-bottom:6px">CPU — Últimos 60s</div>
-                <div style="height:48px;display:flex;align-items:flex-end;gap:3px">
-                  <div style="flex:1;background:rgba(59,130,246,.3);border-radius:1px 1px 0 0;height:25%"></div>
-                  <div style="flex:1;background:rgba(59,130,246,.4);border-radius:1px 1px 0 0;height:38%"></div>
-                  <div style="flex:1;background:rgba(59,130,246,.45);border-radius:1px 1px 0 0;height:45%"></div>
-                  <div style="flex:1;background:rgba(59,130,246,.35);border-radius:1px 1px 0 0;height:30%"></div>
-                  <div style="flex:1;background:rgba(59,130,246,.55);border-radius:1px 1px 0 0;height:58%"></div>
-                  <div style="flex:1;background:rgba(59,130,246,.65);border-radius:1px 1px 0 0;height:65%"></div>
-                  <div style="flex:1;background:#3b82f6;border-radius:1px 1px 0 0;height:38%"></div>
+              <div class="sc-body">
+                <div class="sc-sidebar" style="background:#080b12">
+                  <div class="sc-logo" style="color:#06b6d4;font-size:8px">AUTO CLEAN</div>
+                  <div class="sc-item on" style="color:#06b6d4;background:rgba(6,182,212,.12)">Início</div>
+                  <div class="sc-item">Monitor</div>
+                  <div class="sc-item">Limpeza</div>
+                  <div class="sc-item">Duplicados</div>
+                  <div class="sc-item">Arranque</div>
+                  <div class="sc-item">Disco</div>
+                </div>
+                <div class="sc-main">
+                  <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:10px">Painel de Controlo</div>
+                  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px">
+                    <div style="background:#0a1018;border:1px solid rgba(6,182,212,.12);border-radius:8px;padding:10px"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">DISCO LIVRE</div><div style="font-size:18px;font-weight:800;color:#06b6d4">42 GB</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">RAM USADA</div><div style="font-size:18px;font-weight:800;color:#a855f7">62%</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">CPU</div><div style="font-size:18px;font-weight:800;color:#eef2fc">38%</div></div>
+                  </div>
+                  <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
+                    <div style="font-size:8px;font-weight:800;color:#3a5070;margin-bottom:6px">QUICK WINS — Recomendações</div>
+                    <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:8px;color:#c8d4e0">Temp do Windows</span><span style="font-size:8px;font-weight:700;color:#06b6d4">2.3 GB</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)"><span style="font-size:8px;color:#c8d4e0">Cache do Chrome</span><span style="font-size:8px;font-weight:700;color:#06b6d4">847 MB</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:4px 0"><span style="font-size:8px;color:#c8d4e0">Ficheiros duplicados</span><span style="font-size:8px;font-weight:700;color:#06b6d4">12 encontrados</span></div>
+                  </div>
+                  <button style="background:linear-gradient(135deg,#06b6d4,#0891b2);border:none;border-radius:8px;color:#000;font-size:9px;font-weight:800;padding:8px;cursor:pointer;width:100%">Limpar tudo — Recuperar 3.1 GB</button>
                 </div>
               </div>
-              <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
-                <div style="font-size:8px;font-weight:800;color:#3a5070;margin-bottom:5px">RAM — Top Processos</div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:8px;color:#c8d4e0">chrome.exe</span><span style="font-size:8px;font-weight:700;color:#a855f7">1.2 GB</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:8px;color:#c8d4e0">explorer.exe</span><span style="font-size:8px;font-weight:700;color:#a855f7">340 MB</span></div>
-                <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:8px;color:#c8d4e0">code.exe</span><span style="font-size:8px;font-weight:700;color:#a855f7">280 MB</span></div>
+            </div>
+          </div>
+          <!-- Duplicados -->
+          <div class="sc-frame">
+            <div class="sc-mock">
+              <div class="sc-bar">
+                <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#fec02f"></div><div class="dot" style="background:#28c840"></div>
+                <span style="font-size:10px;color:#444;margin-left:8px">PN Auto Clean PC · Ficheiros Duplicados</span>
               </div>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
-                <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">TEMP TOTAL</div><div style="font-size:14px;font-weight:800;color:#06b6d4">3.1 GB</div></div>
-                <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">UPTIME</div><div style="font-size:14px;font-weight:800;color:#eef2fc">4h 23m</div></div>
+              <div class="sc-body">
+                <div class="sc-sidebar" style="background:#080b12">
+                  <div class="sc-logo" style="color:#06b6d4;font-size:8px">AUTO CLEAN</div>
+                  <div class="sc-item">Início</div>
+                  <div class="sc-item">Monitor</div>
+                  <div class="sc-item">Limpeza</div>
+                  <div class="sc-item on" style="color:#06b6d4;background:rgba(6,182,212,.12)">Duplicados</div>
+                  <div class="sc-item">Arranque</div>
+                  <div class="sc-item">Disco</div>
+                </div>
+                <div class="sc-main">
+                  <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:3px">Ficheiros Duplicados</div>
+                  <div style="font-size:8px;color:#3a5070;margin-bottom:10px">Downloads, Desktop, Documentos, Imagens</div>
+                  <div style="background:#0a1018;border:1px solid rgba(6,182,212,.12);border-radius:8px;padding:10px;margin-bottom:6px">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#c8d4e0">foto_verao_2024.jpg</span><span style="font-size:7px;background:rgba(244,63,94,.1);color:#f43f5e;padding:2px 6px;border-radius:4px;border:1px solid rgba(244,63,94,.15)">2 cópias · 8.4 MB</span></div>
+                    <div style="font-size:7px;color:#3a5070">Downloads\ e Desktop\Fotos\</div>
+                  </div>
+                  <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:6px">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#c8d4e0">relatorio_maio.pdf</span><span style="font-size:7px;background:rgba(244,63,94,.1);color:#f43f5e;padding:2px 6px;border-radius:4px;border:1px solid rgba(244,63,94,.15)">3 cópias · 2.1 MB</span></div>
+                    <div style="font-size:7px;color:#3a5070">Documentos\ e OneDrive\</div>
+                  </div>
+                  <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:8px;font-weight:700;color:#c8d4e0">setup_chrome.exe</span><span style="font-size:7px;background:rgba(244,63,94,.1);color:#f43f5e;padding:2px 6px;border-radius:4px;border:1px solid rgba(244,63,94,.15)">2 cópias · 145 MB</span></div>
+                    <div style="font-size:7px;color:#3a5070">Downloads\ e Desktop\</div>
+                  </div>
+                  <button style="background:linear-gradient(135deg,#06b6d4,#0891b2);border:none;border-radius:8px;color:#000;font-size:9px;font-weight:800;padding:7px;cursor:pointer;width:100%">Eliminar duplicados — Poupar 155 MB</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Monitor -->
+          <div class="sc-frame">
+            <div class="sc-mock">
+              <div class="sc-bar">
+                <div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#fec02f"></div><div class="dot" style="background:#28c840"></div>
+                <span style="font-size:10px;color:#444;margin-left:8px">PN Auto Clean PC · Monitor em Tempo Real</span>
+              </div>
+              <div class="sc-body">
+                <div class="sc-sidebar" style="background:#080b12">
+                  <div class="sc-logo" style="color:#06b6d4;font-size:8px">AUTO CLEAN</div>
+                  <div class="sc-item">Início</div>
+                  <div class="sc-item on" style="color:#06b6d4;background:rgba(6,182,212,.12)">Monitor</div>
+                  <div class="sc-item">Limpeza</div>
+                  <div class="sc-item">Duplicados</div>
+                  <div class="sc-item">Arranque</div>
+                  <div class="sc-item">Disco</div>
+                </div>
+                <div class="sc-main">
+                  <div style="font-size:12px;font-weight:800;color:#eef2fc;margin-bottom:10px">Monitor em Tempo Real</div>
+                  <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
+                    <div style="font-size:8px;font-weight:800;color:#3a5070;margin-bottom:6px">CPU — Últimos 60s</div>
+                    <div style="height:48px;display:flex;align-items:flex-end;gap:3px">
+                      <div style="flex:1;background:rgba(59,130,246,.3);border-radius:1px 1px 0 0;height:25%"></div>
+                      <div style="flex:1;background:rgba(59,130,246,.4);border-radius:1px 1px 0 0;height:38%"></div>
+                      <div style="flex:1;background:rgba(59,130,246,.45);border-radius:1px 1px 0 0;height:45%"></div>
+                      <div style="flex:1;background:rgba(59,130,246,.35);border-radius:1px 1px 0 0;height:30%"></div>
+                      <div style="flex:1;background:rgba(59,130,246,.55);border-radius:1px 1px 0 0;height:58%"></div>
+                      <div style="flex:1;background:rgba(59,130,246,.65);border-radius:1px 1px 0 0;height:65%"></div>
+                      <div style="flex:1;background:#3b82f6;border-radius:1px 1px 0 0;height:38%"></div>
+                    </div>
+                  </div>
+                  <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:8px;padding:10px;margin-bottom:8px">
+                    <div style="font-size:8px;font-weight:800;color:#3a5070;margin-bottom:5px">RAM — Top Processos</div>
+                    <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:8px;color:#c8d4e0">chrome.exe</span><span style="font-size:8px;font-weight:700;color:#a855f7">1.2 GB</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:8px;color:#c8d4e0">explorer.exe</span><span style="font-size:8px;font-weight:700;color:#a855f7">340 MB</span></div>
+                    <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:8px;color:#c8d4e0">code.exe</span><span style="font-size:8px;font-weight:700;color:#a855f7">280 MB</span></div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                    <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">TEMP TOTAL</div><div style="font-size:14px;font-weight:800;color:#06b6d4">3.1 GB</div></div>
+                    <div style="background:#0a1018;border:1px solid rgba(6,182,212,.08);border-radius:7px;padding:8px;text-align:center"><div style="font-size:7px;color:#3a5070;margin-bottom:3px">UPTIME</div><div style="font-size:14px;font-weight:800;color:#eef2fc">4h 23m</div></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Descrição -->
+        <div class="desc-block r r1">
+          <div class="desc-title">Sobre o PN Auto Clean PC</div>
+          <div class="desc-body">
+            <p>O <strong>PN Auto Clean PC</strong> é uma app standalone gratuita para Windows que limpa, otimiza e monitoriza o teu PC sem configurações complicadas. Sem conta, sem subscrição, sem publicidade.</p>
+            <p>Remove ficheiros temporários, caches de browsers, CrashDumps e lixo do sistema com um clique. Deteta e elimina ficheiros duplicados em Downloads, Desktop, Documentos, Imagens e OneDrive. Monitoriza CPU e RAM em tempo real com gráfico de 60 segundos e lista os processos mais pesados.</p>
+            <p>Gere os programas que iniciam com o Windows, analisa o espaço em disco com treemap visual, agenda limpezas automáticas via Task Scheduler e mostra recomendações de alto impacto ordenadas por prioridade (Quick Wins).</p>
+          </div>
+        </div>
+
+        <!-- Novidades -->
+        <div class="wn-card r r2">
+          <div class="wn-top">
+            <div class="wn-title">O que há de novo</div>
+            <div class="version-pill">v1.0.0</div>
+          </div>
+          <div class="wn-date">Julho 2026</div>
+          <div class="wn-list">
+            <div class="wn-row"><div class="wn-dot"></div><div><strong>Lançamento inicial</strong> — Limpeza rápida + emergência com um clique</div></div>
+            <div class="wn-row"><div class="wn-dot"></div><div><strong>Monitor em tempo real</strong> — CPU, RAM e processos a cada segundo</div></div>
+            <div class="wn-row"><div class="wn-dot"></div><div><strong>Deteção de duplicados</strong> — hash SHA-256 em 6 pastas principais</div></div>
+            <div class="wn-row"><div class="wn-dot"></div><div><strong>Gestor de arranque</strong> — ativa/desativa apps do startup do Windows</div></div>
+            <div class="wn-row"><div class="wn-dot"></div><div><strong>Agendador automático</strong> — limpezas diárias ou semanais sem abrir a app</div></div>
+          </div>
+        </div>
+
+        <!-- Avaliações — resumo -->
+        <div class="prod-rev-section">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+            <div class="prod-rev-hdr" style="margin-bottom:0">Avaliações</div>
+            <button onclick="goTabAC('ac-avaliacoes')" style="background:none;border:none;font-size:12px;color:var(--teal);cursor:pointer;font-family:inherit;font-weight:600">Ver e avaliar →</button>
+          </div>
+          <div class="prod-rev-rating-row" id="ac-init-rating">
+            <div style="font-size:13px;color:var(--muted)">A carregar…</div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Features grid -->
-    <div class="sf-section-hdr" style="padding:0;margin-bottom:16px"><div class="sf-section-title">O que inclui</div></div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px" class="r">
-      <div class="prog-card r r1"><div class="prog-ic">🧹</div><div><div class="prog-name">Limpeza Rápida</div><div class="prog-desc">Remove ficheiros temporários, caches de browsers, CrashDumps e lixo do Windows em segundos.</div></div></div>
-      <div class="prog-card r r1"><div class="prog-ic">🚨</div><div><div class="prog-name">Limpeza de Emergência</div><div class="prog-desc">Apaga tudo de uma vez — todos os temps, caches e Reciclagem. Um clique, resultado imediato.</div></div></div>
-      <div class="prog-card r r2"><div class="prog-ic">📊</div><div><div class="prog-name">Monitor Live</div><div class="prog-desc">Gráfico em tempo real de CPU e RAM nos últimos 60 segundos, com histórico e estatísticas.</div></div></div>
-      <div class="prog-card r r2"><div class="prog-ic">📋</div><div><div class="prog-name">Ficheiros Duplicados</div><div class="prog-desc">Pesquisa inteligente em Downloads, Desktop, Documentos, Imagens, Vídeos e OneDrive. Mantém sempre o original.</div></div></div>
-      <div class="prog-card r r3"><div class="prog-ic">🚀</div><div><div class="prog-name">Gestor de Arranque</div><div class="prog-desc">Lista e desativa programas que iniciam com o Windows. Reduz o tempo de arranque.</div></div></div>
-      <div class="prog-card r r3"><div class="prog-ic">💾</div><div><div class="prog-name">Uso de RAM</div><div class="prog-desc">Top processos por consumo de memória. Encerra diretamente qualquer processo com um clique.</div></div></div>
-      <div class="prog-card r r3"><div class="prog-ic">🗺️</div><div><div class="prog-name">Mapa do Disco</div><div class="prog-desc">Treemap visual das pastas que mais ocupam espaço. Abre directamente no Explorer.</div></div></div>
-      <div class="prog-card r r3"><div class="prog-ic">⏰</div><div><div class="prog-name">Limpeza Automática</div><div class="prog-desc">Agenda limpezas semanais ou diárias via Windows Task Scheduler. O PC limpa-se sozinho.</div></div></div>
-      <div class="prog-card r r3"><div class="prog-ic">💡</div><div><div class="prog-name">Quick Wins</div><div class="prog-desc">Análise inteligente do sistema com recomendações de alto impacto ordenadas por prioridade.</div></div></div>
-    </div>
+      <!-- Barra lateral -->
+      <div class="ac-info-sticky r r1">
+        <div class="info-card">
+          <div class="ir"><span class="ir-label">Categoria</span><span class="ir-val">Utilitários</span></div>
+          <div class="ir"><span class="ir-label">Versão</span><span class="ir-val">1.0.0</span></div>
+          <div class="ir"><span class="ir-label">Sistema</span><span class="ir-val">Windows 10/11</span></div>
+          <div class="ir"><span class="ir-label">Tamanho</span><span class="ir-val">~75 MB</span></div>
+          <div class="ir"><span class="ir-label">Idioma</span><span class="ir-val">Português</span></div>
+          <div class="ir"><span class="ir-label">Licença</span><span class="ir-val green">100% Gratuito</span></div>
+          <div class="ir"><span class="ir-label">Conta</span><span class="ir-val">Não necessária</span></div>
+          <div class="ir"><span class="ir-label">Internet</span><span class="ir-val">Não necessária</span></div>
+          <div class="ir"><span class="ir-label">Publicidade</span><span class="ir-val">Nenhuma</span></div>
+        </div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
+          <a href="#" class="btn-get" data-dl="auto-clean" data-loc="sidebar-ac" style="text-align:center;padding:12px;background:linear-gradient(135deg,#06b6d4,#0891b2);color:#000;font-weight:800">Download Grátis</a>
+          <a href="https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PN.Auto.Clean.PC.1.0.0.exe" class="btn-get" style="text-align:center;padding:12px;background:rgba(255,255,255,.1)">Portable .exe</a>
+        </div>
+        <p style="font-size:11px;color:var(--muted);text-align:center;margin-top:10px">Sem conta · Sem subscrição · Sem publicidade</p>
+      </div>
 
-    <!-- Download CTA -->
-    <div class="cat-cta r">
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB: FUNCIONALIDADES ══ -->
+<div class="ac-tab-page" id="tab-ac-funcionalidades">
+  <div class="wrap">
+    <div class="programs-intro r">
+      <h2>9 ferramentas para o teu PC</h2>
+      <p>Cada funcionalidade foi pensada para ser simples, direta e eficaz. Sem configurações complexas — abre a app e usa.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="prog-card r"><div class="prog-ic">🧹</div><div class="prog-info"><div class="prog-name">Limpeza Rápida</div><div class="prog-desc">Remove ficheiros temporários, caches de browsers, CrashDumps e lixo do Windows em segundos.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r r1"><div class="prog-ic">🚨</div><div class="prog-info"><div class="prog-name">Limpeza de Emergência</div><div class="prog-desc">Apaga tudo de uma vez — todos os temps, caches e Reciclagem. Um clique, resultado imediato.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r r2"><div class="prog-ic">📊</div><div class="prog-info"><div class="prog-name">Monitor Live</div><div class="prog-desc">Gráfico em tempo real de CPU e RAM nos últimos 60 segundos, com histórico e estatísticas.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r"><div class="prog-ic">📋</div><div class="prog-info"><div class="prog-name">Ficheiros Duplicados</div><div class="prog-desc">Pesquisa inteligente em Downloads, Desktop, Documentos, Imagens, Vídeos e OneDrive. Mantém sempre o original.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r r1"><div class="prog-ic">🚀</div><div class="prog-info"><div class="prog-name">Gestor de Arranque</div><div class="prog-desc">Lista e desativa programas que iniciam com o Windows. Reduz o tempo de arranque.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r r2"><div class="prog-ic">💾</div><div class="prog-info"><div class="prog-name">Uso de RAM</div><div class="prog-desc">Top processos por consumo de memória. Encerra diretamente qualquer processo com um clique.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r"><div class="prog-ic">🗺️</div><div class="prog-info"><div class="prog-name">Mapa do Disco</div><div class="prog-desc">Treemap visual das pastas que mais ocupam espaço. Abre directamente no Explorer.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r r1"><div class="prog-ic">⏰</div><div class="prog-info"><div class="prog-name">Limpeza Automática</div><div class="prog-desc">Agenda limpezas semanais ou diárias via Windows Task Scheduler. O PC limpa-se sozinho.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+      <div class="prog-card r r2"><div class="prog-ic">💡</div><div class="prog-info"><div class="prog-name">Quick Wins</div><div class="prog-desc">Análise inteligente do sistema com recomendações de alto impacto ordenadas por prioridade.</div><span class="prog-tag tag-standalone">GRÁTIS</span></div></div>
+    </div>
+    <div style="margin-top:32px;padding:22px 24px;background:var(--surface);border-radius:var(--r);border:1px solid var(--sep2);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap" class="r">
       <div>
         <div style="font-size:15px;font-weight:700;margin-bottom:4px">100% gratuito · Sem subscrição · Sem conta</div>
-        <div style="font-size:13px;color:var(--muted)">Windows 10/11 · x64 · Instalador NSIS + Portable disponíveis</div>
+        <div style="font-size:14px;color:var(--muted)">Windows 10/11 · x64 · Instalador NSIS + Portable disponíveis</div>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="#" class="btn-get" data-dl="auto-clean" data-loc="utilidades-cta" style="background:linear-gradient(135deg,#06b6d4,#0891b2)">⬇ Download Grátis</a>
-        <a href="https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PN.Auto.Clean.PC.1.0.0.exe" class="btn-get-ghost" style="font-size:13px">Portable</a>
+        <a href="#" class="btn-get" data-dl="auto-clean" data-loc="func-cta" style="background:linear-gradient(135deg,#06b6d4,#0891b2);color:#000;font-weight:800">Download Grátis</a>
+        <a href="https://github.com/printneat2026-tech/printneat-releases/releases/download/v1.2.0/PN.Auto.Clean.PC.1.0.0.exe" class="btn-get" style="background:rgba(255,255,255,.1)">Portable</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TAB: AVALIAÇÕES ══ -->
+<div class="ac-tab-page" id="tab-ac-avaliacoes">
+  <div class="wrap">
+
+    <div class="ratings-page-layout r" style="margin-bottom:32px">
+      <div id="ac-rev-summary">
+        <div class="rating-score" style="color:var(--muted)">—</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:8px">A carregar…</div>
+      </div>
+      <div style="padding-top:8px">
+        <div style="font-size:15px;color:var(--fg2);line-height:1.75">Avaliações reais de utilizadores do PN Auto Clean PC. Partilha a tua experiência e ajuda outros a decidir.</div>
       </div>
     </div>
 
-    <!-- Reviews — dynamic -->
-    <div class="prod-rev-section r">
-      <div class="prod-rev-hdr">Avaliações</div>
-      <div class="prod-rev-rating-row" id="ac-rev-summary">
-        <div style="font-size:13px;color:var(--muted)">A carregar…</div>
+    <div class="rev-form-wrap r r1">
+      <div class="rev-form-title">Adicionar avaliação</div>
+      <div class="rev-star-row" id="ac-star-row" data-val="0">
+        <span class="rev-star" data-v="1">★</span>
+        <span class="rev-star" data-v="2">★</span>
+        <span class="rev-star" data-v="3">★</span>
+        <span class="rev-star" data-v="4">★</span>
+        <span class="rev-star" data-v="5">★</span>
       </div>
-
-      <!-- Add review form -->
-      <div class="rev-form-wrap" style="margin-top:4px">
-        <div class="rev-form-title">Adicionar avaliação</div>
-        <div class="rev-star-row" id="ac-star-row" data-val="0">
-          <span class="rev-star" data-v="1">★</span>
-          <span class="rev-star" data-v="2">★</span>
-          <span class="rev-star" data-v="3">★</span>
-          <span class="rev-star" data-v="4">★</span>
-          <span class="rev-star" data-v="5">★</span>
-        </div>
-        <input class="sup-input" id="ac-rev-name" type="text" placeholder="O teu nome" maxlength="60" autocomplete="name" style="margin-bottom:10px">
-        <textarea class="sup-ta" id="ac-rev-comment" placeholder="Partilha a tua experiência com o PN Auto Clean PC…" style="min-height:90px"></textarea>
-        <button class="sup-send" id="ac-rev-btn" onclick="revSubmit('auto-clean','ac-star-row','ac-rev-name','ac-rev-comment','ac-rev-btn','ac-rev-msg','ac-rev-list','ac-rev-summary')" style="margin-top:10px">Publicar avaliação →</button>
-        <div class="rev-form-msg" id="ac-rev-msg"></div>
-      </div>
-
-      <!-- List -->
-      <div id="ac-rev-list" style="display:flex;flex-direction:column;gap:0">
-        <div class="rev-empty">A carregar avaliações…</div>
-      </div>
+      <input class="sup-input" id="ac-rev-name" type="text" placeholder="O teu nome" maxlength="60" autocomplete="name" style="margin-bottom:10px">
+      <textarea class="sup-ta" id="ac-rev-comment" placeholder="Partilha a tua experiência com o PN Auto Clean PC…" style="min-height:90px"></textarea>
+      <button class="sup-send" id="ac-rev-btn" onclick="revSubmit('auto-clean','ac-star-row','ac-rev-name','ac-rev-comment','ac-rev-btn','ac-rev-msg','ac-rev-list','ac-rev-summary')" style="margin-top:10px">Publicar avaliação →</button>
+      <div class="rev-form-msg" id="ac-rev-msg"></div>
     </div>
 
-  </div></div>
+    <div class="reviews-header r">Avaliações</div>
+    <div id="ac-rev-list" style="display:flex;flex-direction:column;gap:0">
+      <div class="rev-empty">A carregar avaliações…</div>
+    </div>
+
+  </div>
+</div>
+
 </div><!-- /page-utilidades -->
 
 <!-- ════════════════════════════════
@@ -2137,13 +2240,34 @@ function goStore(pageId) {
   );
   if (pageId === 'workspace') {
     document.body.classList.add('on-workspace');
+    document.body.classList.remove('on-autoclean');
+  } else if (pageId === 'utilidades') {
+    document.body.classList.add('on-autoclean');
+    document.body.classList.remove('on-workspace');
+    // reset AC tabs to Início
+    document.querySelectorAll('.ac-tab-page').forEach(p => p.classList.remove('active'));
+    var ini = document.getElementById('tab-ac-inicio');
+    if (ini) ini.classList.add('active');
+    document.querySelectorAll('#tab-bar-ac .tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === 'ac-inicio'));
+    setTimeout(function(){ _revLoad('auto-clean','ac-rev-list','ac-rev-summary'); }, 600);
   } else {
     document.body.classList.remove('on-workspace');
+    document.body.classList.remove('on-autoclean');
   }
   history.replaceState(null, '', '#' + pageId);
   window.scrollTo(0, 0);
   setTimeout(triggerReveal, 100);
-  if (pageId === 'utilidades') setTimeout(function(){ _revLoad('auto-clean','ac-rev-list','ac-rev-summary'); }, 400);
+}
+
+// ── AUTO CLEAN TAB ROUTER ──
+function goTabAC(tabId) {
+  document.querySelectorAll('.ac-tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#tab-bar-ac .tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabId));
+  var page = document.getElementById('tab-' + tabId);
+  if (page) page.classList.add('active');
+  window.scrollTo(0, 0);
+  setTimeout(triggerReveal, 100);
+  if (tabId === 'ac-avaliacoes') setTimeout(function(){ _revLoad('auto-clean','ac-rev-list','ac-rev-summary'); }, 300);
 }
 
 // ── TAB ROUTER ──
@@ -2736,24 +2860,35 @@ function _revRenderList(reviews, listId) {
 function _revRenderSummary(reviews, summaryId) {
   var el = document.getElementById(summaryId);
   if (!el) return;
+  var isAC = summaryId === 'ac-rev-summary';
+  var miniId = isAC ? 'ac-init-rating' : 'ws-init-rating';
+  var hdrId  = isAC ? 'ac-hdr-rating'  : null;
+  var empty = '<div style="font-size:13px;color:var(--muted)">Ainda sem avaliações — sê o primeiro!</div>';
   if (!reviews || !reviews.length) {
-    el.innerHTML = '<div style="font-size:13px;color:var(--muted)">Ainda sem avaliações — sê o primeiro!</div>';
-    // also update ws-init-rating if workspace
-    var mini = document.getElementById('ws-init-rating');
+    el.innerHTML = empty;
+    var mini = document.getElementById(miniId);
     if (mini) mini.innerHTML = '<div style="font-size:13px;color:var(--muted)">Ainda sem avaliações.</div>';
+    if (hdrId) {
+      var hdr = document.getElementById(hdrId);
+      if (hdr) hdr.innerHTML = '<span class="stars">—</span><span class="rating-txt">Sem avaliações ainda</span>';
+    }
     return;
   }
   var avg = reviews.reduce(function(a,r){ return a+r.rating; },0)/reviews.length;
   var avgStr = avg.toFixed(1).replace(/\.0$/,'');
+  var count = reviews.length;
   var html = '<div class="prod-rev-score">'+avgStr+'</div>' +
     '<div>' +
       '<div style="color:var(--teal);font-size:16px;letter-spacing:1px;margin-bottom:2px">'+_revStarStr(Math.round(avg))+'</div>' +
-      '<div style="font-size:12px;color:var(--muted)">'+reviews.length+' avalia'+(reviews.length===1?'ção':'ções')+'</div>' +
+      '<div style="font-size:12px;color:var(--muted)">'+count+' avalia'+(count===1?'ção':'ções')+'</div>' +
     '</div>';
   el.innerHTML = html;
-  // update ws-init-rating mini block
-  var mini = document.getElementById('ws-init-rating');
+  var mini = document.getElementById(miniId);
   if (mini) mini.innerHTML = html;
+  if (hdrId) {
+    var hdr = document.getElementById(hdrId);
+    if (hdr) hdr.innerHTML = '<span class="stars" style="color:var(--amber)">'+_revStarStr(Math.round(avg))+'</span><span class="rating-txt">'+avgStr+' · '+count+' avalia'+(count===1?'ção':'ções')+'</span>';
+  }
 }
 
 async function _revLoad(app, listId, summaryId, retries) {
