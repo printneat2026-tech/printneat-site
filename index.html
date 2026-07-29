@@ -706,7 +706,16 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
 .prc-stars{color:var(--teal);font-size:10px;letter-spacing:.5px}
 .prc-date{font-size:10px;color:var(--muted);flex-shrink:0;margin-top:2px}
 .prc-text{font-size:12.5px;color:var(--fg2);line-height:1.6}
-
+/* ── REVIEW FORM ── */
+.rev-form-wrap{background:var(--surface);border:1px solid var(--sep2);border-radius:14px;padding:22px 24px;margin-bottom:24px}
+.rev-form-title{font-size:15px;font-weight:800;letter-spacing:-.02em;margin-bottom:14px}
+.rev-star-row{display:flex;gap:4px;margin-bottom:14px;cursor:pointer;user-select:none}
+.rev-star{font-size:26px;color:var(--muted2);transition:color .08s;line-height:1;padding:0 2px}
+.rev-star.lit{color:var(--teal)}
+.rev-form-msg{font-size:12.5px;margin-top:8px;min-height:18px}
+.rev-form-msg.ok{color:var(--teal)}
+.rev-form-msg.err{color:var(--red)}
+.rev-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;line-height:1.6}
 /* ── TRUST IC — clean dot ── */
 .trust-ic{display:inline-block;font-size:0;width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;opacity:.8}
 </style>
@@ -1198,44 +1207,14 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
           </div>
         </div>
 
-        <!-- Compact reviews -->
+        <!-- Reviews — dynamic summary -->
         <div class="prod-rev-section">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
             <div class="prod-rev-hdr" style="margin-bottom:0">Avaliações</div>
-            <button onclick="goTab('avaliacoes')" style="background:none;border:none;font-size:12px;color:var(--teal);cursor:pointer;font-family:inherit;font-weight:600">Ver todas →</button>
+            <button onclick="goTab('avaliacoes')" style="background:none;border:none;font-size:12px;color:var(--teal);cursor:pointer;font-family:inherit;font-weight:600">Ver e avaliar →</button>
           </div>
-          <div class="prod-rev-rating-row">
-            <div class="prod-rev-score">4.9</div>
-            <div>
-              <div style="color:var(--teal);font-size:14px;letter-spacing:1px;margin-bottom:2px">★★★★★</div>
-              <div style="font-size:11px;color:var(--muted)">87 avaliações</div>
-            </div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:10px">
-            <div class="prod-rev-card">
-              <div class="prc-top">
-                <div class="prc-avatar">RM</div>
-                <div class="prc-meta"><div class="prc-name">Ricardo M.</div><div class="prc-stars">★★★★★</div></div>
-                <div class="prc-date">Jun 2026</div>
-              </div>
-              <div class="prc-text">Tinha o Excel para finanças, Word para orçamentos e WhatsApp para encomendas. Agora uso só o PrintNeat. O tempo que poupa é absurdo.</div>
-            </div>
-            <div class="prod-rev-card">
-              <div class="prc-top">
-                <div class="prc-avatar">AS</div>
-                <div class="prc-meta"><div class="prc-name">Ana S.</div><div class="prc-stars">★★★★★</div></div>
-                <div class="prc-date">Mai 2026</div>
-              </div>
-              <div class="prc-text">Faço orçamentos de impressão 3D em 30 segundos. O cliente recebe um PDF profissional com o meu logo. Pagou-se a si próprio na primeira semana.</div>
-            </div>
-            <div class="prod-rev-card">
-              <div class="prc-top">
-                <div class="prc-avatar">DF</div>
-                <div class="prc-meta"><div class="prc-name">Diogo F.</div><div class="prc-stars">★★★★★</div></div>
-                <div class="prc-date">Mai 2026</div>
-              </div>
-              <div class="prc-text">100% offline vale ouro. Não quero os meus dados de negócio na cloud de ninguém. Os dados ficam no meu PC. A interface é limpa e rápida.</div>
-            </div>
+          <div class="prod-rev-rating-row" id="ws-init-rating">
+            <div style="font-size:13px;color:var(--muted)">A carregar…</div>
           </div>
         </div>
       </div>
@@ -1306,68 +1285,40 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
 ════════════════════════════ -->
 <div class="tab-page" id="tab-avaliacoes">
   <div class="wrap">
-    <div class="ratings-page-layout r">
-      <div>
-        <div class="rating-score">4.9</div>
-        <div class="rating-stars-lg">★★★★★</div>
-        <div class="rating-of">de 5 · 87 avaliações</div>
-        <div class="bar-rows">
-          <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
-          <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div></div>
-          <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div></div>
-          <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill" style="width:1%"></div></div></div>
-          <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div></div>
-        </div>
+
+    <!-- Dynamic rating summary -->
+    <div class="ratings-page-layout r" style="margin-bottom:32px">
+      <div id="av-rev-summary">
+        <div class="rating-score" style="color:var(--muted)">—</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:8px">A carregar…</div>
       </div>
       <div style="padding-top:8px">
-        <div style="font-size:15px;color:var(--fg2);line-height:1.75">Os utilizadores adoram a simplicidade, o facto de funcionar <strong>100% offline</strong> e o preço de pagamento único. A ferramenta mais pedida foi o gerador de orçamentos PDF — agora disponível no plano PRO. A avaliação de 4.9 mantém-se estável ao longo dos últimos 6 meses.</div>
+        <div style="font-size:15px;color:var(--fg2);line-height:1.75">Avaliações reais de utilizadores do PrintNeat Workspace. Partilha a tua experiência e ajuda outros a decidir.</div>
       </div>
     </div>
 
-    <div class="reviews-header r">Todas as avaliações</div>
-    <div class="reviews-list">
-      <div class="review-item r">
-        <div class="rv-top"><div class="rv-stars">★★★★★</div><div class="rv-date">Junho 2026</div></div>
-        <div class="rv-title">Finalmente tudo num só lugar</div>
-        <div class="rv-text">Tinha o Excel para finanças, o Word para orçamentos e o WhatsApp para encomendas de impressão. Agora uso só o PrintNeat. O tempo que poupa é absurdo. O dashboard com métricas do negócio foi o que me convenceu — vejo receita, encomendas e filamentos de uma só vez.</div>
-        <div class="rv-author">Ricardo M. · Freelancer de impressão 3D</div>
+    <!-- Add review form -->
+    <div class="rev-form-wrap r r1">
+      <div class="rev-form-title">Adicionar avaliação</div>
+      <div class="rev-star-row" id="ws-star-row" data-val="0">
+        <span class="rev-star" data-v="1">★</span>
+        <span class="rev-star" data-v="2">★</span>
+        <span class="rev-star" data-v="3">★</span>
+        <span class="rev-star" data-v="4">★</span>
+        <span class="rev-star" data-v="5">★</span>
       </div>
-      <div class="rv-divider"></div>
-      <div class="review-item r r1">
-        <div class="rv-top"><div class="rv-stars">★★★★★</div><div class="rv-date">Maio 2026</div></div>
-        <div class="rv-title">Os orçamentos PDF valem tudo</div>
-        <div class="rv-text">Faço orçamentos de impressão 3D em 30 segundos. Antes demorava 20 minutos no Word a calcular custos de filamento à mão. O cliente recebe um PDF profissional com o meu logo. Pagou-se a si próprio na primeira semana.</div>
-        <div class="rv-author">Ana S. · Estúdio de impressão 3D</div>
-      </div>
-      <div class="rv-divider"></div>
-      <div class="review-item r r2">
-        <div class="rv-top"><div class="rv-stars">★★★★★</div><div class="rv-date">Maio 2026</div></div>
-        <div class="rv-title">100% offline é um ponto diferenciador</div>
-        <div class="rv-text">Não quero os meus dados de negócio na cloud de ninguém. O PrintNeat funciona offline, os dados ficam no meu PC. Isso para mim vale ouro. A interface é limpa e rápida.</div>
-        <div class="rv-author">Diogo F. · Empreendedor</div>
-      </div>
-      <div class="rv-divider"></div>
-      <div class="review-item r">
-        <div class="rv-top"><div class="rv-stars">★★★★★</div><div class="rv-date">Abril 2026</div></div>
-        <div class="rv-title">O Kanban e o Timer juntos são fantásticos</div>
-        <div class="rv-text">Uso o Kanban para gerir as impressões em curso e o Timer para registar o tempo real por projeto. No final do mês sei exatamente o que custou cada peça. Nunca mais me enganei a definir preços.</div>
-        <div class="rv-author">Mariana K. · Maker e vendedora de impressão 3D</div>
-      </div>
-      <div class="rv-divider"></div>
-      <div class="review-item r r1">
-        <div class="rv-top"><div class="rv-stars">★★★★☆</div><div class="rv-date">Abril 2026</div></div>
-        <div class="rv-title">Muito bom, aguardo mais integrações</div>
-        <div class="rv-text">A app é muito boa e o preço é justo. Gostava de ter integração com faturação eletrónica, mas percebo que está em desenvolvimento. Para gerir o meu negócio de impressão 3D resolve tudo e mais alguma coisa.</div>
-        <div class="rv-author">Pedro V. · Maker e vendedor de peças 3D online</div>
-      </div>
-      <div class="rv-divider"></div>
-      <div class="review-item r r2">
-        <div class="rv-top"><div class="rv-stars">★★★★★</div><div class="rv-date">Março 2026</div></div>
-        <div class="rv-title">Recomendo a todos os que imprimem a sério</div>
-        <div class="rv-text">Tenho recomendado a todos os meus colegas de impressão 3D. A relação qualidade/preço não tem comparação. Pagamento único, funciona offline, os meus dados de negócio ficam no meu PC. Exatamente o que eu queria.</div>
-        <div class="rv-author">Sofia R. · Freelancer de impressão 3D</div>
-      </div>
+      <input class="sup-input" id="ws-rev-name" type="text" placeholder="O teu nome" maxlength="60" autocomplete="name" style="margin-bottom:10px">
+      <textarea class="sup-ta" id="ws-rev-comment" placeholder="Partilha a tua experiência com o PrintNeat Workspace…" style="min-height:90px"></textarea>
+      <button class="sup-send" id="ws-rev-btn" onclick="revSubmit('workspace','ws-star-row','ws-rev-name','ws-rev-comment','ws-rev-btn','ws-rev-msg','av-rev-list','av-rev-summary')" style="margin-top:10px">Publicar avaliação →</button>
+      <div class="rev-form-msg" id="ws-rev-msg"></div>
     </div>
+
+    <!-- Reviews list (dynamic) -->
+    <div class="reviews-header r">Avaliações</div>
+    <div id="av-rev-list" style="display:flex;flex-direction:column;gap:0">
+      <div class="rev-empty">A carregar avaliações…</div>
+    </div>
+
   </div>
 </div>
 
@@ -1932,49 +1883,32 @@ footer{background:#000;border-top:1px solid var(--sep2);padding:44px 0 32px}
       </div>
     </div>
 
-    <!-- Reviews -->
+    <!-- Reviews — dynamic -->
     <div class="prod-rev-section r">
       <div class="prod-rev-hdr">Avaliações</div>
-      <div class="prod-rev-rating-row">
-        <div class="prod-rev-score">4.8</div>
-        <div>
-          <div style="color:var(--teal);font-size:16px;letter-spacing:1px;margin-bottom:2px">★★★★★</div>
-          <div style="font-size:12px;color:var(--muted)">de 5 · 43 avaliações</div>
-        </div>
+      <div class="prod-rev-rating-row" id="ac-rev-summary">
+        <div style="font-size:13px;color:var(--muted)">A carregar…</div>
       </div>
-      <div class="prod-rev-grid">
-        <div class="prod-rev-card">
-          <div class="prc-top">
-            <div class="prc-avatar">JM</div>
-            <div class="prc-meta"><div class="prc-name">José Martins</div><div class="prc-stars">★★★★★</div></div>
-            <div class="prc-date">Jun 2026</div>
-          </div>
-          <div class="prc-text">Limpou 4.2 GB de lixo no primeiro scan. O PC ficou claramente mais rápido a arrancar. Simples, gratuito e funciona sem complicações.</div>
+
+      <!-- Add review form -->
+      <div class="rev-form-wrap" style="margin-top:4px">
+        <div class="rev-form-title">Adicionar avaliação</div>
+        <div class="rev-star-row" id="ac-star-row" data-val="0">
+          <span class="rev-star" data-v="1">★</span>
+          <span class="rev-star" data-v="2">★</span>
+          <span class="rev-star" data-v="3">★</span>
+          <span class="rev-star" data-v="4">★</span>
+          <span class="rev-star" data-v="5">★</span>
         </div>
-        <div class="prod-rev-card">
-          <div class="prc-top">
-            <div class="prc-avatar">CS</div>
-            <div class="prc-meta"><div class="prc-name">Catarina Silva</div><div class="prc-stars">★★★★★</div></div>
-            <div class="prc-date">Mai 2026</div>
-          </div>
-          <div class="prc-text">Encontrou 23 ficheiros duplicados que eu nem sabia que tinha — poupou 600 MB. O monitor de RAM em tempo real é muito útil para ver o que está a consumir recursos.</div>
-        </div>
-        <div class="prod-rev-card">
-          <div class="prc-top">
-            <div class="prc-avatar">RF</div>
-            <div class="prc-meta"><div class="prc-name">Rui Ferreira</div><div class="prc-stars">★★★★★</div></div>
-            <div class="prc-date">Abr 2026</div>
-          </div>
-          <div class="prc-text">O gestor de arranque é a funcionalidade que mais uso. Desativei 8 programas desnecessários e o Windows arranca em metade do tempo.</div>
-        </div>
-        <div class="prod-rev-card">
-          <div class="prc-top">
-            <div class="prc-avatar">MP</div>
-            <div class="prc-meta"><div class="prc-name">Marta Pereira</div><div class="prc-stars">★★★★☆</div></div>
-            <div class="prc-date">Abr 2026</div>
-          </div>
-          <div class="prc-text">App muito boa e completamente gratuita. Gostava de ter opção para limpar disco de outros utilizadores do PC. De resto, perfeita para uso diário.</div>
-        </div>
+        <input class="sup-input" id="ac-rev-name" type="text" placeholder="O teu nome" maxlength="60" autocomplete="name" style="margin-bottom:10px">
+        <textarea class="sup-ta" id="ac-rev-comment" placeholder="Partilha a tua experiência com o PN Auto Clean PC…" style="min-height:90px"></textarea>
+        <button class="sup-send" id="ac-rev-btn" onclick="revSubmit('auto-clean','ac-star-row','ac-rev-name','ac-rev-comment','ac-rev-btn','ac-rev-msg','ac-rev-list','ac-rev-summary')" style="margin-top:10px">Publicar avaliação →</button>
+        <div class="rev-form-msg" id="ac-rev-msg"></div>
+      </div>
+
+      <!-- List -->
+      <div id="ac-rev-list" style="display:flex;flex-direction:column;gap:0">
+        <div class="rev-empty">A carregar avaliações…</div>
       </div>
     </div>
 
@@ -2209,6 +2143,7 @@ function goStore(pageId) {
   history.replaceState(null, '', '#' + pageId);
   window.scrollTo(0, 0);
   setTimeout(triggerReveal, 100);
+  if (pageId === 'utilidades') setTimeout(function(){ _revLoad('auto-clean','ac-rev-list','ac-rev-summary'); }, 400);
 }
 
 // ── TAB ROUTER ──
@@ -2231,6 +2166,7 @@ function goTab(tabId) {
   history.replaceState(null, '', '#' + tabId);
   // trigger reveals on new page
   setTimeout(triggerReveal, 100);
+  if (tabId === 'avaliacoes') setTimeout(function(){ _revLoad('workspace','av-rev-list','av-rev-summary'); }, 400);
 }
 
 // ── REVEAL on scroll ──
@@ -2723,7 +2659,154 @@ window.addEventListener('load', function() {
   if (overlay) overlay.addEventListener('click', function(e){ if (e.target === overlay) closeSearch(); });
   var btn = document.getElementById('scroll-top');
   if (btn) btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  // init star pickers
+  _revInitStars('ws-star-row');
+  _revInitStars('ac-star-row');
+  // load reviews with delay so app.js has time to init _sb
+  setTimeout(function(){
+    _revLoad('workspace', 'av-rev-list', 'av-rev-summary');
+    _revLoad('auto-clean', 'ac-rev-list', 'ac-rev-summary');
+  }, 1200);
 });
+
+// ══════════════════════════════════════════
+// SISTEMA DE AVALIAÇÕES / COMENTÁRIOS
+// ══════════════════════════════════════════
+
+function _revInitStars(rowId) {
+  var row = document.getElementById(rowId);
+  if (!row) return;
+  var stars = row.querySelectorAll('.rev-star');
+  function light(v) {
+    stars.forEach(function(s){ s.classList.toggle('lit', parseInt(s.dataset.v) <= v); });
+  }
+  function setVal(v) { row.dataset.val = v; light(v); }
+  stars.forEach(function(s) {
+    s.addEventListener('click', function(){ setVal(parseInt(s.dataset.v)); });
+    s.addEventListener('mouseenter', function(){ light(parseInt(s.dataset.v)); });
+  });
+  row.addEventListener('mouseleave', function(){ light(parseInt(row.dataset.val) || 0); });
+}
+
+function _revEsc(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function _revFmt(iso) {
+  try { return new Date(iso).toLocaleDateString('pt-PT',{month:'short',year:'numeric'}); }
+  catch(e){ return ''; }
+}
+
+function _revInits(name) {
+  var p = (name||'').trim().split(' ');
+  return p.length >= 2 ? (p[0][0]+p[p.length-1][0]).toUpperCase() : (p[0]||'?').slice(0,2).toUpperCase();
+}
+
+function _revStarStr(n) {
+  var s = ''; for(var i=1;i<=5;i++) s += i<=n ? '★':'☆'; return s;
+}
+
+function _revCard(r) {
+  return '<div class="prod-rev-card r">' +
+    '<div class="prc-top">' +
+      '<div class="prc-avatar">'+_revInits(r.author_name)+'</div>' +
+      '<div class="prc-meta">' +
+        '<div class="prc-name">'+_revEsc(r.author_name)+'</div>' +
+        '<div class="prc-stars">'+_revStarStr(r.rating)+'</div>' +
+      '</div>' +
+      '<div class="prc-date">'+_revFmt(r.created_at)+'</div>' +
+    '</div>' +
+    '<div class="prc-text">'+_revEsc(r.comment)+'</div>' +
+  '</div>';
+}
+
+function _revRenderList(reviews, listId) {
+  var el = document.getElementById(listId);
+  if (!el) return;
+  if (!reviews || !reviews.length) {
+    el.innerHTML = '<div class="rev-empty">Ainda não há avaliações.<br>Sê o primeiro a partilhar a tua experiência!</div>';
+    return;
+  }
+  el.innerHTML = reviews.map(function(r,i){
+    return (i>0 ? '<div class="rv-divider"></div>' : '') + _revCard(r);
+  }).join('');
+  setTimeout(triggerReveal, 50);
+}
+
+function _revRenderSummary(reviews, summaryId) {
+  var el = document.getElementById(summaryId);
+  if (!el) return;
+  if (!reviews || !reviews.length) {
+    el.innerHTML = '<div style="font-size:13px;color:var(--muted)">Ainda sem avaliações — sê o primeiro!</div>';
+    // also update ws-init-rating if workspace
+    var mini = document.getElementById('ws-init-rating');
+    if (mini) mini.innerHTML = '<div style="font-size:13px;color:var(--muted)">Ainda sem avaliações.</div>';
+    return;
+  }
+  var avg = reviews.reduce(function(a,r){ return a+r.rating; },0)/reviews.length;
+  var avgStr = avg.toFixed(1).replace(/\.0$/,'');
+  var html = '<div class="prod-rev-score">'+avgStr+'</div>' +
+    '<div>' +
+      '<div style="color:var(--teal);font-size:16px;letter-spacing:1px;margin-bottom:2px">'+_revStarStr(Math.round(avg))+'</div>' +
+      '<div style="font-size:12px;color:var(--muted)">'+reviews.length+' avalia'+(reviews.length===1?'ção':'ções')+'</div>' +
+    '</div>';
+  el.innerHTML = html;
+  // update ws-init-rating mini block
+  var mini = document.getElementById('ws-init-rating');
+  if (mini) mini.innerHTML = html;
+}
+
+async function _revLoad(app, listId, summaryId, retries) {
+  retries = retries || 0;
+  if (!window._sb) {
+    if (retries < 6) setTimeout(function(){ _revLoad(app,listId,summaryId,retries+1); }, 800);
+    return;
+  }
+  try {
+    var res = await window._sb.from('reviews').select('*').eq('app',app).order('created_at',{ascending:false}).limit(50);
+    var data = (res && res.data) ? res.data : [];
+    _revRenderList(data, listId);
+    _revRenderSummary(data, summaryId);
+  } catch(e) {
+    var el = document.getElementById(listId);
+    if (el) el.innerHTML = '<div class="rev-empty">Não foi possível carregar as avaliações.</div>';
+  }
+}
+
+async function revSubmit(app, starRowId, nameId, commentId, btnId, msgId, listId, summaryId) {
+  var row     = document.getElementById(starRowId);
+  var rating  = parseInt((row && row.dataset.val) || '0');
+  var nameEl  = document.getElementById(nameId);
+  var comEl   = document.getElementById(commentId);
+  var msgEl   = document.getElementById(msgId);
+  var btn     = document.getElementById(btnId);
+  var name    = nameEl ? nameEl.value.trim() : '';
+  var comment = comEl  ? comEl.value.trim()  : '';
+
+  function _msg(cls, txt){ if(msgEl){ msgEl.className='rev-form-msg '+cls; msgEl.textContent=txt; } }
+
+  if (!rating)  { _msg('err','Escolhe uma classificação de 1 a 5 estrelas.'); return; }
+  if (!name)    { _msg('err','Escreve o teu nome.'); return; }
+  if (!comment) { _msg('err','Escreve um comentário.'); return; }
+  if (!window._sb) { _msg('err','Serviço indisponível. Tenta mais tarde.'); return; }
+
+  if (btn) { btn.disabled=true; btn.textContent='A publicar…'; }
+  _msg('','');
+
+  try {
+    var res = await window._sb.from('reviews').insert([{ app:app, author_name:name, rating:rating, comment:comment }]);
+    if (res.error) throw res.error;
+    _msg('ok','Avaliação publicada! Obrigado pela tua opinião.');
+    if (nameEl) nameEl.value='';
+    if (comEl)  comEl.value='';
+    if (row) { row.dataset.val='0'; row.querySelectorAll('.rev-star').forEach(function(s){ s.classList.remove('lit'); }); }
+    await _revLoad(app, listId, summaryId);
+  } catch(e) {
+    _msg('err','Erro ao publicar. Verifica a ligação e tenta novamente.');
+  } finally {
+    if (btn) { btn.disabled=false; btn.textContent='Publicar avaliação →'; }
+  }
+}
 </script>
 
 <!-- SEARCH OVERLAY -->
