@@ -2183,22 +2183,25 @@ var _admTeam = [
 ];
 
 var _sectorLabels = { tecnico:'Suporte Técnico', faturacao:'Faturação', reembolso:'Reembolsos', licenca:'Licenças', sugestao:'Sugestões', outro:'Geral' };
-var _admActiveTab = 'tickets';
+var _admActiveTab  = 'tickets';
+var _admIsCEO      = false;
+var _admSector     = 'tecnico';
+var _admDN         = 'Colaborador';
+var _admRole       = 'colaborador';
 
 function buildAdminPanel(user) {
   var root = document.getElementById('adm-root');
   if (!root) return;
   var meta = (user && user.user_metadata) || {};
-  var role = meta.role || 'colaborador';
-  var sector = meta.sector || 'tecnico';
-  var displayName = meta.display_name || (user && user.email ? user.email.split('@')[0] : 'Colaborador');
-  var isCEO = (role === 'admin' || role === 'ceo');
+  _admRole    = meta.role || 'colaborador';
+  _admSector  = meta.sector || 'tecnico';
+  _admDN      = meta.display_name || (user && user.email ? user.email.split('@')[0] : 'Colaborador');
+  _admIsCEO   = (_admRole === 'admin' || _admRole === 'ceo');
 
-  // Show admin tab button
   var tabBtn = document.getElementById('tab-admin-btn');
   if (tabBtn) tabBtn.style.display = 'inline-block';
 
-  _renderAdminPanel(root, isCEO, sector, displayName, role, _admActiveTab);
+  _renderAdminPanel(root, _admIsCEO, _admSector, _admDN, _admRole, _admActiveTab);
 }
 
 function _renderAdminPanel(root, isCEO, sector, displayName, role, activeTab) {
@@ -2338,12 +2341,7 @@ window._admSwitch = function(tab) {
   _admActiveTab = tab;
   var root = document.getElementById('adm-root');
   if (!root) return;
-  // rebuild preserving same user — use data attrs stored on root
-  var isCEO = root.dataset.isceo === '1';
-  var sector = root.dataset.sector || 'tecnico';
-  var dn = root.dataset.dn || 'Admin';
-  var role = root.dataset.role || 'admin';
-  _renderAdminPanel(root, isCEO, sector, dn, role, tab);
+  _renderAdminPanel(root, _admIsCEO, _admSector, _admDN, _admRole, tab);
 };
 
 function _admCycleStatus(idx, btn, sector, role) {
