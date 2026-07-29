@@ -768,6 +768,76 @@ body.on-autoclean #tab-bar{display:none}
 /* Widen the inicio-layout too */
 .inicio-layout{display:grid;grid-template-columns:1fr 290px;gap:48px;align-items:start}
 @media(max-width:760px){.inicio-layout{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════
+   HOME — App Store Gallery
+═══════════════════════════════════ */
+.store-home{padding-bottom:80px}
+
+/* Category pills */
+.store-pills{display:flex;gap:8px;padding:20px 0 12px;overflow-x:auto;scrollbar-width:none}
+.store-pills::-webkit-scrollbar{display:none}
+.store-pill{padding:7px 18px;border-radius:99px;font-size:13px;font-weight:600;background:var(--surface2);border:1px solid var(--sep2);color:var(--fg2);cursor:pointer;white-space:nowrap;transition:all .18s;flex-shrink:0;font-family:inherit}
+.store-pill:hover{color:var(--fg);border-color:rgba(255,255,255,.18)}
+.store-pill.active{background:var(--teal);color:#000;border-color:var(--teal);font-weight:700}
+
+/* Large editorial featured cards */
+.store-featured{display:flex;gap:16px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.store-featured::-webkit-scrollbar{display:none}
+.store-ed-card{flex-shrink:0;width:min(440px,84vw);border-radius:22px;overflow:hidden;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.store-ed-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.store-ed-icon{position:absolute;top:24px;right:24px;width:68px;height:68px;border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:34px}
+.store-ed-inner{padding:28px 28px 24px;height:260px;display:flex;flex-direction:column;justify-content:flex-end}
+.store-ed-badge{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.65;margin-bottom:5px}
+.store-ed-name{font-family:'Syne',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:5px}
+.store-ed-sub{font-size:12.5px;opacity:.7;line-height:1.5;margin-bottom:16px;max-width:260px}
+.store-ed-footer{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.store-ed-meta{font-size:10px;opacity:.55}
+.store-ed-btn{padding:7px 20px;border-radius:99px;font-size:13px;font-weight:800;border:none;cursor:pointer;white-space:nowrap}
+
+/* Compact app list (iOS-style) */
+.store-app-list{display:flex;flex-direction:column}
+.store-app-item{display:flex;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--sep2);cursor:pointer;transition:opacity .15s}
+.store-app-item:last-child{border-bottom:none}
+.store-app-item:hover{opacity:.72}
+.sai-icon{width:54px;height:54px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px}
+.sai-info{flex:1;min-width:0}
+.sai-name{font-size:14px;font-weight:700;letter-spacing:-.01em;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sai-sub{font-size:12px;color:var(--muted);margin-bottom:2px}
+.sai-stars{font-size:10px;letter-spacing:.5px}
+.sai-btn{padding:6px 16px;border-radius:99px;font-size:12.5px;font-weight:700;border:none;cursor:pointer;flex-shrink:0;letter-spacing:-.01em}
+
+/* Category grid */
+.store-cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:700px){.store-cat-grid{grid-template-columns:repeat(2,1fr)}}
+.store-cat-card{border-radius:14px;padding:18px 16px;cursor:pointer;transition:transform .18s,box-shadow .18s;border:1px solid var(--sep2);display:flex;flex-direction:column;gap:10px}
+.store-cat-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.store-cat-ic{font-size:26px;line-height:1}
+.store-cat-nm{font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.store-cat-cnt{font-size:11.5px;color:var(--muted)}
+
+/* Section header — App Store style */
+.as-section{padding:28px 0 0}
+.as-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid var(--sep2);padding-bottom:10px}
+.as-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:900;letter-spacing:-.03em}
+.as-see-all{font-size:13px;color:var(--teal);font-weight:600;background:none;border:none;cursor:pointer;font-family:inherit;padding:0;flex-shrink:0}
+
+/* Editorial update card */
+.as-update-card{border-radius:16px;padding:26px;background:var(--surface2);border:1px solid var(--sep2);display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+@media(max-width:520px){.as-update-card{grid-template-columns:1fr}.as-update-emoji{display:none}}
+
+/* ═══════════════════════════════════
+   POLICY MODAL — content styles
+═══════════════════════════════════ */
+.pol-title{font-family:'Syne',sans-serif;font-size:24px;font-weight:900;letter-spacing:-.03em;margin-bottom:6px}
+.pol-date{font-size:12px;color:var(--muted);margin-bottom:28px}
+.pol-h2{font-size:15px;font-weight:800;letter-spacing:-.01em;margin:22px 0 8px;color:var(--fg)}
+.pol-p{font-size:13.5px;color:var(--fg2);line-height:1.75;margin-bottom:10px}
+.pol-ul{list-style:none;padding:0;margin:0 0 10px}
+.pol-ul li{font-size:13.5px;color:var(--fg2);line-height:1.7;padding-left:16px;position:relative}
+.pol-ul li::before{content:'·';position:absolute;left:0;color:var(--teal);font-weight:900}
+.pol-sep{height:1px;background:var(--sep2);margin:20px 0}
+.pol-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.06em;background:rgba(0,212,170,.1);color:var(--teal);margin-bottom:14px}
 </style>
 </head>
 <body>
@@ -894,21 +964,156 @@ body.on-autoclean #tab-bar{display:none}
    STORE PAGE: DESCOBRIR
 ════════════════════════════ -->
 <div class="store-page active" id="page-descobrir">
-  <div class="featured-hero">
-    <div class="fh-inner">
-      <div>
-        <div class="fh-eyebrow"><span class="fh-dot"></span>Software Nº1 para Impressão 3D</div>
-        <div class="fh-title">PrintNeat<br>Workspace</div>
-        <div class="fh-sub">Gere o teu negócio de impressão 3D como um profissional. Encomendas, custos de filamento, orçamentos PDF e finanças — tudo num só lugar, 100% offline.</div>
-        <div class="fh-actions">
-          <a href="#" class="btn-get" data-dl="lite" data-loc="hero-descobrir">Obter — Grátis</a>
-          <button class="btn-get-ghost" onclick="goStore('workspace')">Ver detalhes →</button>
-        </div>
-        <div class="fh-meta">
-          <span class="fh-meta-item" style="color:var(--amber)">★★★★★ 4.9</span>
-          <span class="fh-meta-item">· Grátis · Windows 10/11 · 100% Offline · Impressão 3D</span>
+  <div class="store-home">
+   <div class="wrap">
+
+    <!-- ── Category pills ── -->
+    <div class="store-pills">
+      <button class="store-pill active">Todos</button>
+      <button class="store-pill" onclick="goStore('produtividade')">Produtividade</button>
+      <button class="store-pill" onclick="goStore('financas')">Finanças</button>
+      <button class="store-pill" onclick="goStore('gestao')">Gestão</button>
+      <button class="store-pill" onclick="goStore('producao')">Produção</button>
+      <button class="store-pill" onclick="goStore('utilidades')">Utilitários</button>
+      <button class="store-pill" onclick="goStore('planos')">Planos</button>
+    </div>
+
+    <!-- ── Featured editorial cards ── -->
+    <div class="store-featured r">
+      <div class="store-ed-card" onclick="goStore('workspace')" style="background:linear-gradient(145deg,#020e08 0%,#031812 50%,#060f1c 100%);color:#edf2ff">
+        <div class="store-ed-icon" style="background:linear-gradient(145deg,#001a14,#000d08);border:1px solid rgba(0,212,170,.25);box-shadow:0 4px 24px rgba(0,212,170,.15)">🖥️</div>
+        <div class="store-ed-inner">
+          <div class="store-ed-badge" style="color:#00d4aa">App Principal · Produção</div>
+          <div class="store-ed-name">PrintNeat<br>Workspace</div>
+          <div class="store-ed-sub">Gere o teu negócio de impressão 3D. Encomendas, custos, orçamentos PDF — 100% offline.</div>
+          <div class="store-ed-footer">
+            <div>
+              <div style="font-size:10px;color:rgba(0,212,170,.8);margin-bottom:2px">★★★★★ 4.9 · 87 avaliações</div>
+              <div class="store-ed-meta">Windows 10/11 · ~95 MB · Impressão 3D</div>
+            </div>
+            <button class="store-ed-btn" style="background:#00d4aa;color:#000" data-dl="lite" data-loc="featured-ws" onclick="event.stopPropagation()">Obter</button>
+          </div>
         </div>
       </div>
+      <div class="store-ed-card" onclick="goStore('utilidades')" style="background:linear-gradient(145deg,#010d10 0%,#021418 50%,#051219 100%);color:#edf2ff">
+        <div class="store-ed-icon" style="background:linear-gradient(145deg,#001318,#000a0d);border:1px solid rgba(6,182,212,.25);box-shadow:0 4px 24px rgba(6,182,212,.12)">🧹</div>
+        <div class="store-ed-inner">
+          <div class="store-ed-badge" style="color:#06b6d4">Utilitário · Gratuito</div>
+          <div class="store-ed-name">PN Auto<br>Clean PC</div>
+          <div class="store-ed-sub">Limpa, otimiza e monitoriza o teu PC. Remove duplicados, gere o arranque e agenda limpezas automáticas.</div>
+          <div class="store-ed-footer">
+            <div>
+              <div style="font-size:10px;color:rgba(6,182,212,.8);margin-bottom:2px">App 100% gratuita · Sem conta</div>
+              <div class="store-ed-meta">Windows 10/11 · ~75 MB · Standalone</div>
+            </div>
+            <button class="store-ed-btn" style="background:#06b6d4;color:#000" data-dl="auto-clean" data-loc="featured-ac" onclick="event.stopPropagation()">Download</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Apps disponíveis (iOS compact list) ── -->
+    <div class="as-section r r1">
+      <div class="as-hdr">
+        <div class="as-title">Apps Disponíveis</div>
+        <button class="as-see-all" onclick="goStore('planos')">Ver planos →</button>
+      </div>
+      <div class="store-app-list">
+        <div class="store-app-item" onclick="goStore('workspace')">
+          <div class="sai-icon" style="background:linear-gradient(145deg,#001a14,#000d08);border:1px solid rgba(0,212,170,.2)">🖥️</div>
+          <div class="sai-info">
+            <div class="sai-name">PrintNeat Workspace</div>
+            <div class="sai-sub">Gestão · Impressão 3D · 15+ ferramentas</div>
+            <div class="sai-stars" style="color:#00d4aa">★★★★★</div>
+          </div>
+          <button class="sai-btn" style="background:rgba(0,212,170,.12);color:#00d4aa" data-dl="lite" data-loc="applist-ws" onclick="event.stopPropagation()">Grátis</button>
+        </div>
+        <div class="store-app-item" onclick="goStore('utilidades')">
+          <div class="sai-icon" style="background:linear-gradient(145deg,#001318,#000a0d);border:1px solid rgba(6,182,212,.2)">🧹</div>
+          <div class="sai-info">
+            <div class="sai-name">PN Auto Clean PC</div>
+            <div class="sai-sub">Utilitários · Windows · 9 ferramentas</div>
+            <div class="sai-stars" style="color:#06b6d4">★★★★★</div>
+          </div>
+          <button class="sai-btn" style="background:rgba(6,182,212,.12);color:#06b6d4" data-dl="auto-clean" data-loc="applist-ac" onclick="event.stopPropagation()">Grátis</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Categorias ── -->
+    <div class="as-section r r2">
+      <div class="as-hdr">
+        <div class="as-title">Categorias</div>
+      </div>
+      <div class="store-cat-grid">
+        <div class="store-cat-card" onclick="goStore('produtividade')" style="background:linear-gradient(145deg,rgba(0,212,170,.05),var(--surface2))">
+          <div class="store-cat-ic">📊</div>
+          <div><div class="store-cat-nm">Produtividade</div><div class="store-cat-cnt">4 ferramentas</div></div>
+        </div>
+        <div class="store-cat-card" onclick="goStore('financas')" style="background:linear-gradient(145deg,rgba(123,94,167,.05),var(--surface2))">
+          <div class="store-cat-ic">💶</div>
+          <div><div class="store-cat-nm">Finanças</div><div class="store-cat-cnt">4 ferramentas</div></div>
+        </div>
+        <div class="store-cat-card" onclick="goStore('gestao')" style="background:linear-gradient(145deg,rgba(59,130,246,.05),var(--surface2))">
+          <div class="store-cat-ic">🛒</div>
+          <div><div class="store-cat-nm">Gestão</div><div class="store-cat-cnt">4 ferramentas</div></div>
+        </div>
+        <div class="store-cat-card" onclick="goStore('producao')" style="background:linear-gradient(145deg,rgba(244,63,94,.05),var(--surface2))">
+          <div class="store-cat-ic">🎨</div>
+          <div><div class="store-cat-nm">Produção</div><div class="store-cat-cnt">3 ferramentas</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Ferramentas Essenciais ── -->
+    <div class="as-section r r3">
+      <div class="as-hdr">
+        <div class="as-title">Ferramentas Essenciais</div>
+        <button class="as-see-all" onclick="goStore('workspace');goTab('programas')">Ver todas →</button>
+      </div>
+      <div class="sf-row">
+        <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">🧮</div><div class="sf-card-name">Calculadora</div><div class="sf-card-desc">Custo real de filamento, energia, tempo e margem.</div><span class="prog-tag tag-free">LITE</span></div>
+        <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">📄</div><div class="sf-card-name">Orçamentos PDF</div><div class="sf-card-desc">Gera PDF profissional com logo em segundos.</div><span class="prog-tag tag-pro">PRO</span></div>
+        <div class="sf-card" onclick="goStore('gestao')"><div class="sf-card-ic">🛒</div><div class="sf-card-name">Encomendas</div><div class="sf-card-desc">Pipeline completo da entrada à entrega.</div><span class="prog-tag tag-free">LITE</span></div>
+        <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">💶</div><div class="sf-card-name">Finanças</div><div class="sf-card-desc">Receitas, despesas e ROI com gráficos mensais.</div><span class="prog-tag tag-free">LITE</span></div>
+      </div>
+    </div>
+
+    <!-- ── Novidades editorial card ── -->
+    <div class="as-section r" style="padding-top:28px">
+      <div class="as-hdr">
+        <div class="as-title">Novidades</div>
+      </div>
+      <div class="as-update-card">
+        <div>
+          <div class="pol-tag">v1.2.0 · Julho 2026</div>
+          <div style="font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px">Orçamentos profissionais e dashboard personalizado</div>
+          <div style="font-size:13px;color:var(--fg2);line-height:1.7">Novo gerador de orçamentos PDF com logo, termos e impostos. Dashboard com widgets e atalhos à escolha. Gastos de produção em tabs. Theme retro amber.</div>
+          <button class="btn-get" onclick="goStore('workspace')" style="margin-top:14px;padding:8px 20px;font-size:13px">Ver novidades →</button>
+        </div>
+        <div class="as-update-emoji" style="font-size:72px;line-height:1;flex-shrink:0">🖥️</div>
+      </div>
+    </div>
+
+    <!-- ── CTA banner ── -->
+    <div class="cta-banner r" style="margin-top:32px">
+      <div class="cta-inner">
+        <div>
+          <div class="cta-title">O software que faltava para o teu negócio de impressão 3D.</div>
+          <div class="cta-sub">Custos de filamento · Encomendas · Orçamentos PDF · 100% offline · Pagamento único</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="#" class="btn-get" data-dl="lite" data-loc="cta-descobrir">Obter Grátis</a>
+          <button class="btn-get-ghost" onclick="goStore('planos')">Ver planos →</button>
+        </div>
+      </div>
+    </div>
+
+   </div><!-- /wrap -->
+  </div><!-- /store-home -->
+
+  <!-- legacy ids (hidden) -->
+  <div style="display:none" aria-hidden="true" id="_legacy-descobrir">
       <div class="fh-preview">
         <div class="fhp-bar">
           <div class="dot" style="background:#ff5f57"></div>
@@ -1004,111 +1209,9 @@ body.on-autoclean #tab-bar{display:none}
     </div>
   </div>
 
-  <!-- ── TRUST BAR ── -->
-  <div class="trust-bar">
-    <div class="trust-inner">
-      <div class="trust-item"><span class="trust-ic"></span>Filamentos &amp; Impressoras</div>
-      <div class="trust-item"><span class="trust-ic"></span>100% Offline</div>
-      <div class="trust-item"><span class="trust-ic"></span>Pagamento único</div>
-      <div class="trust-item"><span class="trust-ic"></span>15+ ferramentas integradas</div>
-      <div class="trust-item"><span class="trust-ic"></span>Dados sempre no teu PC</div>
-      <div class="trust-item"><span class="trust-ic"></span>Licença vitalícia</div>
-    </div>
-  </div>
 
-  <!-- ── ANTES vs DEPOIS ── -->
-  <div class="ps-section">
-    <div class="wrap">
-      <div class="ps-header r">
-        <div class="ps-eyebrow">O problema</div>
-        <div class="ps-title">Impressão 3D como trabalho<br>merece ferramentas a sério.</div>
-        <p class="ps-sub">A maioria dos impressores 3D perde horas por semana a calcular custos de filamento no Excel, a fazer orçamentos no Word e a gerir encomendas no WhatsApp. Há uma forma melhor.</p>
-      </div>
-      <div class="ps-grid">
-        <div class="ps-col before r">
-          <div class="ps-col-title">Antes do PrintNeat</div>
-          <div class="ps-list">
-            <div class="ps-item"><span class="ps-x">✕</span>Custos de filamento calculados à mão ou no Excel</div>
-            <div class="ps-item"><span class="ps-x">✕</span>Orçamentos feitos no Word, um a um</div>
-            <div class="ps-item"><span class="ps-x">✕</span>Encomendas geridas pelo WhatsApp</div>
-            <div class="ps-item"><span class="ps-x">✕</span>Stock de filamentos controlado em papel</div>
-            <div class="ps-item"><span class="ps-x">✕</span>Sem registo de falhas de impressão</div>
-            <div class="ps-item"><span class="ps-x">✕</span>Sem visão do que o negócio realmente lucra</div>
-          </div>
-        </div>
-        <div class="ps-col after r r1">
-          <div class="ps-col-title">Com o PrintNeat Workspace</div>
-          <div class="ps-list">
-            <div class="ps-item"><span class="ps-check">✓</span>Custo de cada peça calculado automaticamente (filamento + energia + tempo)</div>
-            <div class="ps-item"><span class="ps-check">✓</span>Orçamentos PDF profissionais em 30 segundos</div>
-            <div class="ps-item"><span class="ps-check">✓</span>Pipeline de encomendas do pedido à entrega</div>
-            <div class="ps-item"><span class="ps-check">✓</span>Stock de filamentos por cor e marca com alertas</div>
-            <div class="ps-item"><span class="ps-check">✓</span>Registo de falhas com causa e custo de desperdício</div>
-            <div class="ps-item"><span class="ps-check">✓</span>Dashboard com receita, lucro e ROI em tempo real</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="sf-section"><div class="sf-section-hdr"><div class="sf-section-title">Produtividade</div><button class="sf-see-all" onclick="goStore('produtividade')">Ver todos →</button></div>
-    <div class="sf-row">
-      <div class="sf-card" onclick="goStore('produtividade')"><div class="sf-card-ic">📊</div><div class="sf-card-name">Dashboard</div><div class="sf-card-desc">Visão geral do negócio com métricas e atalhos personalizáveis.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('produtividade')"><div class="sf-card-ic">📋</div><div class="sf-card-name">Kanban</div><div class="sf-card-desc">Organiza tarefas em colunas A Fazer / Em Curso / Feito.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('produtividade')"><div class="sf-card-ic">⏱️</div><div class="sf-card-name">Timer</div><div class="sf-card-desc">Cronometra trabalhos e calcula custo de hora automaticamente.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('produtividade')"><div class="sf-card-ic">📝</div><div class="sf-card-name">Notas</div><div class="sf-card-desc">Notas rápidas sempre acessíveis no workspace.</div><span class="prog-tag tag-free">LITE</span></div>
-    </div>
-  </div>
 
-  <div class="sf-section"><div class="sf-section-hdr"><div class="sf-section-title">Finanças</div><button class="sf-see-all" onclick="goStore('financas')">Ver todos →</button></div>
-    <div class="sf-row">
-      <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">🧮</div><div class="sf-card-name">Calculadora</div><div class="sf-card-desc">Calcula custos de produção: material, energia, tempo e margem.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">💶</div><div class="sf-card-name">Finanças</div><div class="sf-card-desc">Receitas, despesas, lucro e ROI com gráficos mensais.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">📄</div><div class="sf-card-name">Orçamentos PDF</div><div class="sf-card-desc">Gera orçamentos profissionais e exporta PDF com o teu logo.</div><span class="prog-tag tag-pro">PRO</span></div>
-      <div class="sf-card" onclick="goStore('financas')"><div class="sf-card-ic">💡</div><div class="sf-card-name">Simulador</div><div class="sf-card-desc">Simula cenários de lucro antes de definir preços.</div><span class="prog-tag tag-free">LITE</span></div>
-    </div>
-  </div>
-
-  <div class="sf-section"><div class="sf-section-hdr"><div class="sf-section-title">Gestão</div><button class="sf-see-all" onclick="goStore('gestao')">Ver todos →</button></div>
-    <div class="sf-row">
-      <div class="sf-card" onclick="goStore('gestao')"><div class="sf-card-ic">🛒</div><div class="sf-card-name">Encomendas</div><div class="sf-card-desc">Pipeline da entrada à entrega. Estado, prazo, cliente e valor.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('gestao')"><div class="sf-card-ic">👥</div><div class="sf-card-name">CRM · Clientes</div><div class="sf-card-desc">Regista clientes, histórico de encomendas e contactos.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('gestao')"><div class="sf-card-ic">📦</div><div class="sf-card-name">Produtos</div><div class="sf-card-desc">Catálogo com preços, margens e materiais associados.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('gestao')"><div class="sf-card-ic">🧵</div><div class="sf-card-name">Stock</div><div class="sf-card-desc">Controla inventário com alertas de stock mínimo.</div><span class="prog-tag tag-free">LITE</span></div>
-    </div>
-  </div>
-
-  <div class="sf-section"><div class="sf-section-hdr"><div class="sf-section-title">Produção</div><button class="sf-see-all" onclick="goStore('producao')">Ver todos →</button></div>
-    <div class="sf-row" style="grid-template-columns:repeat(3,1fr)">
-      <div class="sf-card" onclick="goStore('producao')"><div class="sf-card-ic">🎨</div><div class="sf-card-name">Filamentos</div><div class="sf-card-desc">Gestão por cor e marca com cálculo automático de consumo.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('producao')"><div class="sf-card-ic">🔧</div><div class="sf-card-name">Manutenção</div><div class="sf-card-desc">Agenda manutenções de equipamentos. Alertas antes de avarias.</div><span class="prog-tag tag-free">LITE</span></div>
-      <div class="sf-card" onclick="goStore('producao')"><div class="sf-card-ic">⚠️</div><div class="sf-card-name">Falhas</div><div class="sf-card-desc">Regista e analisa falhas de produção com dados reais.</div><span class="prog-tag tag-free">LITE</span></div>
-    </div>
-  </div>
-
-  <div class="sf-section"><div class="sf-section-hdr"><div class="sf-section-title">Utilitários do Sistema</div><button class="sf-see-all" onclick="goStore('utilidades')">Ver todos →</button></div>
-    <div class="sf-row" style="grid-template-columns:repeat(2,1fr)">
-      <div class="sf-card" onclick="goStore('utilidades')" style="grid-column:span 2;display:flex;align-items:center;gap:16px;flex-direction:row;padding:16px 18px">
-        <div style="font-size:36px;flex-shrink:0">🧹</div>
-        <div style="flex:1">
-          <div class="sf-card-name" style="font-size:15px">PN Auto Clean PC</div>
-          <div class="sf-card-desc">Limpa ficheiros temporários, remove duplicados, monitoriza RAM e CPU em tempo real, gere o arranque do Windows e muito mais. App standalone gratuita.</div>
-          <span class="prog-tag tag-standalone">GRÁTIS · Standalone</span>
-        </div>
-        <button class="btn-get-ghost" style="flex-shrink:0;font-size:13px;padding:8px 18px">Ver →</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="cta-banner">
-    <div class="cta-inner">
-      <div><div class="cta-title">O software que faltava para o teu negócio de impressão 3D.</div><div class="cta-sub">Custos de filamento, encomendas, orçamentos PDF · 100% offline · Pagamento único · Garantia 30 dias</div></div>
-      <div style="display:flex;gap:10px;flex-wrap:wrap">
-        <a href="#" class="btn-get" data-dl="lite" data-loc="cta-descobrir">Obter Grátis</a>
-        <button class="btn-get-ghost" onclick="goStore('planos')">Ver planos →</button>
-      </div>
-    </div>
-  </div>
 </div><!-- /page-descobrir -->
 
 <!-- ════════════════════════════
@@ -2347,14 +2450,169 @@ function openAuth(tab) {
 function closeAuth() {
   document.getElementById('auth-backdrop').classList.remove('open');
 }
+var _POLICIES = {
+  privacy: {
+    title: 'Política de Privacidade',
+    date: 'Última atualização: 1 de julho de 2026',
+    tag: 'LGPD / GDPR compliant',
+    body: `
+      <p class="pol-p">A PrintNeat ("nós", "nosso") respeita a tua privacidade e compromete-se a proteger os dados pessoais que nos forneces ao usar o site <strong>printneat2026-tech.github.io</strong> e as nossas aplicações.</p>
+      <div class="pol-sep"></div>
+      <h2 class="pol-h2">1. Dados que recolhemos</h2>
+      <ul class="pol-ul">
+        <li><strong>Dados fornecidos voluntariamente</strong> — nome e endereço de e-mail quando crias uma conta Supabase ou envias uma avaliação.</li>
+        <li><strong>Avaliações e comentários</strong> — texto que escreves nas avaliações de apps, guardado na nossa base de dados (Supabase).</li>
+        <li><strong>Dados de uso anónimos</strong> — cliques em botões de download, página visitada. Não identificamos o utilizador individualmente.</li>
+        <li><strong>Dados do dispositivo</strong> — sistema operativo e versão do browser para fins de compatibilidade.</li>
+      </ul>
+      <h2 class="pol-h2">2. Como usamos os dados</h2>
+      <ul class="pol-ul">
+        <li>Fornecer e melhorar as nossas aplicações e o website.</li>
+        <li>Mostrar avaliações públicas de utilizadores.</li>
+        <li>Enviar comunicações sobre atualizações, se consentires.</li>
+        <li>Cumprir obrigações legais.</li>
+      </ul>
+      <h2 class="pol-h2">3. Partilha de dados</h2>
+      <p class="pol-p">Não vendemos, alugamos nem partilhamos os teus dados com terceiros para fins publicitários. Podemos partilhar apenas com:</p>
+      <ul class="pol-ul">
+        <li><strong>Supabase</strong> — infraestrutura de base de dados (servidores na União Europeia).</li>
+        <li><strong>GitHub Pages</strong> — hospedagem do website estático, sem acesso aos dados dos utilizadores.</li>
+        <li>Autoridades competentes, quando exigido por lei.</li>
+      </ul>
+      <h2 class="pol-h2">4. Retenção de dados</h2>
+      <p class="pol-p">As avaliações são mantidas indefinidamente como conteúdo público. Podes solicitar a remoção dos teus dados a qualquer momento por e-mail.</p>
+      <h2 class="pol-h2">5. Os teus direitos (LGPD / GDPR)</h2>
+      <ul class="pol-ul">
+        <li>Acesso aos teus dados pessoais.</li>
+        <li>Correção de dados incorretos.</li>
+        <li>Eliminação ("direito ao esquecimento").</li>
+        <li>Portabilidade dos dados.</li>
+        <li>Oposição ao tratamento.</li>
+      </ul>
+      <p class="pol-p">Para exercer qualquer direito, contacta-nos em: <strong>conta2upadaps4@gmail.com</strong></p>
+      <h2 class="pol-h2">6. Cookies</h2>
+      <p class="pol-p">O nosso website não usa cookies de rastreamento ou publicidade. Apenas sessão técnica via Supabase Auth (cookie de sessão estritamente necessário).</p>
+      <h2 class="pol-h2">7. Segurança</h2>
+      <p class="pol-p">Os dados são transmitidos via HTTPS e armazenados com encriptação em repouso na infraestrutura Supabase. Tomamos medidas técnicas e organizacionais para proteger os teus dados.</p>
+      <h2 class="pol-h2">8. Alterações a esta política</h2>
+      <p class="pol-p">Quaisquer alterações serão publicadas nesta página com nova data. O uso continuado após as alterações constitui aceitação da nova política.</p>
+    `
+  },
+  terms: {
+    title: 'Termos de Uso',
+    date: 'Última atualização: 1 de julho de 2026',
+    tag: 'Versão 1.0',
+    body: `
+      <p class="pol-p">Ao aceder ao website PrintNeat ou fazer download de qualquer aplicação nossa, aceitas estes Termos de Uso na íntegra. Lê-os com atenção.</p>
+      <div class="pol-sep"></div>
+      <h2 class="pol-h2">1. Licença de uso das aplicações</h2>
+      <p class="pol-p"><strong>PrintNeat Workspace (versão Lite)</strong> é distribuído gratuitamente para uso pessoal e comercial. Ao fazer download, receberes uma licença não exclusiva, intransmissível, para instalar e usar a aplicação num único computador.</p>
+      <p class="pol-p"><strong>Versão PRO</strong>: após pagamento único, a licença é vitalícia para uso numa empresa ou atividade individual.</p>
+      <ul class="pol-ul">
+        <li>Não podes redistribuir, vender ou sublicenciar a aplicação.</li>
+        <li>Não podes fazer engenharia reversa, descompilar ou modificar o código-fonte.</li>
+        <li>A licença é intransmissível — não pode ser transferida para terceiros.</li>
+      </ul>
+      <h2 class="pol-h2">2. Uso aceitável do website</h2>
+      <ul class="pol-ul">
+        <li>Usar o website apenas para fins legítimos e legais.</li>
+        <li>Não tentar aceder a áreas restritas sem autorização.</li>
+        <li>Não publicar avaliações falsas, ofensivas ou spam.</li>
+        <li>Não usar o website para atividades ilegais ou prejudiciais.</li>
+      </ul>
+      <h2 class="pol-h2">3. Conteúdo gerado pelo utilizador (avaliações)</h2>
+      <p class="pol-p">Ao submeter uma avaliação, concedes à PrintNeat uma licença gratuita, perpétua e mundial para publicar esse conteúdo no website. Afirmas que o conteúdo é original e não viola direitos de terceiros.</p>
+      <p class="pol-p">Reservamo-nos o direito de remover qualquer avaliação que viole estes termos, sem aviso prévio.</p>
+      <h2 class="pol-h2">4. Propriedade intelectual</h2>
+      <p class="pol-p">Todo o conteúdo do website e das aplicações — logótipos, código, design, texto — é propriedade exclusiva da PrintNeat ou dos seus licenciantes. Todos os direitos reservados.</p>
+      <h2 class="pol-h2">5. Isenção de garantias</h2>
+      <p class="pol-p">As aplicações são fornecidas "tal como estão", sem garantias de qualquer tipo. Não garantimos que o software esteja livre de erros ou que funcione sem interrupções. Não somos responsáveis por perda de dados resultante do uso das aplicações.</p>
+      <h2 class="pol-h2">6. Limitação de responsabilidade</h2>
+      <p class="pol-p">Em nenhuma circunstância a PrintNeat será responsável por danos indiretos, incidentais ou consequenciais resultantes do uso ou impossibilidade de uso das nossas aplicações.</p>
+      <h2 class="pol-h2">7. Lei aplicável</h2>
+      <p class="pol-p">Estes termos regem-se pela lei portuguesa. Qualquer litígio será submetido aos tribunais competentes de Portugal.</p>
+      <h2 class="pol-h2">8. Alterações</h2>
+      <p class="pol-p">Podemos atualizar estes termos a qualquer momento. O uso continuado após as alterações constitui aceitação. Para questões: <strong>conta2upadaps4@gmail.com</strong></p>
+    `
+  },
+  refund: {
+    title: 'Política de Reembolso',
+    date: 'Última atualização: 1 de julho de 2026',
+    tag: 'Garantia 30 dias',
+    body: `
+      <p class="pol-p">A PrintNeat oferece uma <strong>garantia de reembolso total de 30 dias</strong> em todas as compras da versão PRO. Queremos que fiques completamente satisfeito com o teu investimento.</p>
+      <div class="pol-sep"></div>
+      <h2 class="pol-h2">1. Direito de reembolso</h2>
+      <p class="pol-p">Tens direito a um reembolso total se:</p>
+      <ul class="pol-ul">
+        <li>Solicitares o reembolso dentro de <strong>30 dias</strong> após a data de compra.</li>
+        <li>O software não funcionar como anunciado no teu sistema (Windows 10/11).</li>
+        <li>Ocorrer duplicação acidental de compra.</li>
+      </ul>
+      <h2 class="pol-h2">2. Como solicitar</h2>
+      <p class="pol-p">Envia um e-mail para <strong>conta2upadaps4@gmail.com</strong> com:</p>
+      <ul class="pol-ul">
+        <li>Assunto: "Reembolso — PrintNeat PRO"</li>
+        <li>Prova de compra (recibo ou número de transação)</li>
+        <li>Motivo do pedido (opcional, mas ajuda-nos a melhorar)</li>
+      </ul>
+      <p class="pol-p">Processamos todos os pedidos em até <strong>3 dias úteis</strong>. O reembolso é efetuado para o método de pagamento original.</p>
+      <h2 class="pol-h2">3. Versão Lite (gratuita)</h2>
+      <p class="pol-p">A versão Lite é 100% gratuita e não envolve qualquer transação financeira, pelo que não existe política de reembolso aplicável.</p>
+      <h2 class="pol-h2">4. Casos não elegíveis</h2>
+      <ul class="pol-ul">
+        <li>Pedidos após os 30 dias da compra.</li>
+        <li>Compras onde já foi emitida uma nova licença por perda (exceto duplicação).</li>
+        <li>Dano por uso indevido ou incompatibilidade com sistema não suportado.</li>
+      </ul>
+      <h2 class="pol-h2">5. Sem perguntas nos 30 dias</h2>
+      <p class="pol-p">Dentro do período de garantia, processamos o reembolso sem questões adicionais. A tua satisfação é a nossa prioridade.</p>
+      <h2 class="pol-h2">6. Contacto</h2>
+      <p class="pol-p">Para qualquer dúvida sobre reembolsos: <strong>conta2upadaps4@gmail.com</strong></p>
+    `
+  }
+};
+
+function _openPolicy(type) {
+  var pol = _POLICIES[type];
+  if (!pol) return;
+  var bd = document.getElementById('policy-backdrop');
+  var box = document.getElementById('policy-box');
+  var ct = document.getElementById('policy-content');
+  if (!bd || !ct) return;
+  ct.innerHTML = '<span class="pol-tag">' + pol.tag + '</span>' +
+    '<div class="pol-title">' + pol.title + '</div>' +
+    '<div class="pol-date">' + pol.date + '</div>' +
+    pol.body;
+  bd.style.display = 'flex';
+  bd.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() {
+    bd.style.opacity = '1';
+    if (box) box.style.transform = 'translateY(0)';
+  });
+}
+function _closePolicy() {
+  var bd = document.getElementById('policy-backdrop');
+  var box = document.getElementById('policy-box');
+  if (!bd) return;
+  bd.style.opacity = '0';
+  if (box) box.style.transform = 'translateY(24px)';
+  setTimeout(function() { bd.style.display = 'none'; }, 280);
+  document.body.style.overflow = '';
+}
+
 function openPolicy(type) {
-  if (typeof _openPolicy === 'function') _openPolicy(type);
+  _openPolicy(type);
 }
 function closePolicy() {
-  if (typeof _closePolicy === 'function') _closePolicy();
+  _closePolicy();
 }
 document.getElementById('auth-backdrop').addEventListener('click', e => {
   if (e.target === document.getElementById('auth-backdrop')) closeAuth();
+});
+document.getElementById('policy-backdrop').addEventListener('click', e => {
+  if (e.target === document.getElementById('policy-backdrop')) closePolicy();
 });
 
 // ── HASH routing on load ──
